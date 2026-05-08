@@ -1,15 +1,13 @@
 ---
 title: "Regression Analysis: Introduction to Econometrics"
-subtitle: "Lecture 7"
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: true
-    code-tools: true
-    fig-width: 10
-    fig-height: 6
+abstract: |
+  Regression is powerful — and easily misused. This chapter introduces ordinary least 
+  squares regression, coefficient interpretation, hypothesis testing in a multivariate 
+  context, and the key assumptions that must hold for results to be trustworthy. Working 
+  through Sunburst Homes Construction's pricing analysis, where a statistically 
+  significant coefficient masks confounding, multicollinearity, and heteroskedasticity, 
+  students learn not just how to run a regression but how to interrogate one — and when 
+  not to act on it.
 ---
 
 ## Learning Objectives {.unnumbered}

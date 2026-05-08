@@ -1,15 +1,13 @@
 ---
 title: "Statistical Foundations Review: From Description to Decision"
-subtitle: "Lecture 6"
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: true
-    code-tools: true
-    fig-width: 10
-    fig-height: 6
+abstract: |
+  After five consulting engagements across five industries, David and Maria return to 
+  campus to synthesize what they have learned. This review chapter maps the full 
+  statistical progression from description to probability to inference to comparison, 
+  identifies the most common and costly interpretation errors encountered in practice, 
+  and connects the foundational methods of Lectures 1–5 to the econometric tools 
+  introduced in Lecture 7. It is as much a lesson in statistical thinking as it is a 
+  recap of technical content.
 ---
 
 ## Learning Objectives {.unnumbered}

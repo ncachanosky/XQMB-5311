@@ -1,0 +1,2476 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Course readings for XQMB 5311 – Statistics for Business – The University of Texas at El Paso.">
+
+<title>5&nbsp; ANOVA: Analysis of Variance – The Precision Advantage: Statistics for Business</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter_05.html" rel="next">
+<link href="./chapter_03.html" rel="prev">
+<link href="./favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-224b48a91c0f626bf087add3423f4096.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-8fba65ec5d79e9223d5579f32ee5f772.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-224b48a91c0f626bf087add3423f4096.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="https://raw.github.com/ncachanosky/EO-styles/main/styles.css">
+<meta property="og:title" content="The Precision Advantage: Statistics for Business">
+<meta property="og:description" content="Course readings for XQMB 5311 – Quantitative Methods for Business – The University of Texas at El Paso. An institutions-first treatment of monetary and financial economics.">
+<meta property="og:image" content="https://ncachanosky.github.io/XQMB-5311/assets/logo.png">
+<meta property="og:site_name" content="The Precision Advantage: Statistics for Business">
+<meta property="og:image:height" content="1687">
+<meta property="og:image:width" content="1687">
+<meta name="twitter:title" content="Money, The Precision Advantage: Statistics for Business">
+<meta name="twitter:description" content="Course readings for ECON 3320 – Quantitative Methods for Business – The University of Texas at El Paso. An institutions-first treatment of monetary and financial economics.">
+<meta name="twitter:image" content="https://ncachanosky.github.io/XQMB-5311/assets/logo.png">
+<meta name="twitter:creator" content="@n_cachanosky">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="1687">
+<meta name="twitter:image-width" content="1687">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_04.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ANOVA: Analysis of Variance</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./assets/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./assets/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Precision Advantage: Statistics for Business</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ncachanosky/XQMB-5311" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interval Estimation and Hypothesis Testing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_04.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ANOVA: Analysis of Variance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical Data Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistical Foundations Review: From Description to Decision</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Regression Analysis: Introduction to Econometrics</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#introduction-the-8-million-question" id="toc-introduction-the-8-million-question" class="nav-link" data-scroll-target="#introduction-the-8-million-question"><span class="header-section-number">5.1</span> Introduction: The $8 Million Question</a></li>
+  <li><a href="#connecting-the-journey-four-questions-four-statistical-tools" id="toc-connecting-the-journey-four-questions-four-statistical-tools" class="nav-link" data-scroll-target="#connecting-the-journey-four-questions-four-statistical-tools"><span class="header-section-number">5.2</span> Connecting the Journey: Four Questions, Four Statistical Tools</a></li>
+  <li><a href="#the-desertvine-dataset-four-properties-312-guests" id="toc-the-desertvine-dataset-four-properties-312-guests" class="nav-link" data-scroll-target="#the-desertvine-dataset-four-properties-312-guests"><span class="header-section-number">5.3</span> The DesertVine Dataset: Four Properties, 312 Guests</a></li>
+  <li><a href="#one-way-anova-the-logic" id="toc-one-way-anova-the-logic" class="nav-link" data-scroll-target="#one-way-anova-the-logic"><span class="header-section-number">5.4</span> One-Way ANOVA: The Logic</a></li>
+  <li><a href="#one-way-anova-the-calculation" id="toc-one-way-anova-the-calculation" class="nav-link" data-scroll-target="#one-way-anova-the-calculation"><span class="header-section-number">5.5</span> One-Way ANOVA: The Calculation</a>
+  <ul class="collapse">
+  <li><a href="#step-1-calculate-the-overall-mean" id="toc-step-1-calculate-the-overall-mean" class="nav-link" data-scroll-target="#step-1-calculate-the-overall-mean">Step 1: Calculate the Overall Mean</a></li>
+  <li><a href="#step-2-calculate-sum-of-squares" id="toc-step-2-calculate-sum-of-squares" class="nav-link" data-scroll-target="#step-2-calculate-sum-of-squares">Step 2: Calculate Sum of Squares</a></li>
+  <li><a href="#step-3-calculate-degrees-of-freedom" id="toc-step-3-calculate-degrees-of-freedom" class="nav-link" data-scroll-target="#step-3-calculate-degrees-of-freedom">Step 3: Calculate Degrees of Freedom</a></li>
+  <li><a href="#step-4-calculate-mean-squares" id="toc-step-4-calculate-mean-squares" class="nav-link" data-scroll-target="#step-4-calculate-mean-squares">Step 4: Calculate Mean Squares</a></li>
+  <li><a href="#step-5-calculate-f-statistic" id="toc-step-5-calculate-f-statistic" class="nav-link" data-scroll-target="#step-5-calculate-f-statistic">Step 5: Calculate F-Statistic</a></li>
+  <li><a href="#step-6-find-p-value" id="toc-step-6-find-p-value" class="nav-link" data-scroll-target="#step-6-find-p-value">Step 6: Find p-value</a></li>
+  <li><a href="#anova-table-summary" id="toc-anova-table-summary" class="nav-link" data-scroll-target="#anova-table-summary">ANOVA Table Summary</a></li>
+  </ul></li>
+  <li><a href="#what-anova-just-told-us-and-what-it-didnt" id="toc-what-anova-just-told-us-and-what-it-didnt" class="nav-link" data-scroll-target="#what-anova-just-told-us-and-what-it-didnt"><span class="header-section-number">5.6</span> What ANOVA Just Told Us (And What It Didn’t)</a>
+  <ul class="collapse">
+  <li><a href="#what-anova-said" id="toc-what-anova-said" class="nav-link" data-scroll-target="#what-anova-said">What ANOVA Said:</a></li>
+  <li><a href="#what-this-means" id="toc-what-this-means" class="nav-link" data-scroll-target="#what-this-means">What This Means:</a></li>
+  <li><a href="#what-this-does-not-answer" id="toc-what-this-does-not-answer" class="nav-link" data-scroll-target="#what-this-does-not-answer">What This Does NOT Answer:</a></li>
+  </ul></li>
+  <li><a href="#anova-on-satisfaction-components" id="toc-anova-on-satisfaction-components" class="nav-link" data-scroll-target="#anova-on-satisfaction-components"><span class="header-section-number">5.7</span> ANOVA on Satisfaction Components</a>
+  <ul class="collapse">
+  <li><a href="#wifi-score-by-property" id="toc-wifi-score-by-property" class="nav-link" data-scroll-target="#wifi-score-by-property">WiFi Score by Property</a></li>
+  <li><a href="#cleanliness-score-by-property" id="toc-cleanliness-score-by-property" class="nav-link" data-scroll-target="#cleanliness-score-by-property">Cleanliness Score by Property</a></li>
+  <li><a href="#staff-service-score-by-property" id="toc-staff-service-score-by-property" class="nav-link" data-scroll-target="#staff-service-score-by-property">Staff Service Score by Property</a></li>
+  <li><a href="#summary-of-component-anovas" id="toc-summary-of-component-anovas" class="nav-link" data-scroll-target="#summary-of-component-anovas">Summary of Component ANOVAs</a></li>
+  </ul></li>
+  <li><a href="#post-hoc-tests-which-properties-differ-on-wifi" id="toc-post-hoc-tests-which-properties-differ-on-wifi" class="nav-link" data-scroll-target="#post-hoc-tests-which-properties-differ-on-wifi"><span class="header-section-number">5.8</span> Post-Hoc Tests: Which Properties Differ on WiFi?</a>
+  <ul class="collapse">
+  <li><a href="#the-multiple-comparisons-problem-revisited" id="toc-the-multiple-comparisons-problem-revisited" class="nav-link" data-scroll-target="#the-multiple-comparisons-problem-revisited">The Multiple Comparisons Problem (Revisited)</a></li>
+  <li><a href="#tukeys-hsd-results-for-wifi-scores" id="toc-tukeys-hsd-results-for-wifi-scores" class="nav-link" data-scroll-target="#tukeys-hsd-results-for-wifi-scores">Tukey’s HSD Results for WiFi Scores</a></li>
+  <li><a href="#business-implications-for-wifi" id="toc-business-implications-for-wifi" class="nav-link" data-scroll-target="#business-implications-for-wifi">Business Implications for WiFi</a></li>
+  </ul></li>
+  <li><a href="#anova-assumptions-checking-the-fine-print" id="toc-anova-assumptions-checking-the-fine-print" class="nav-link" data-scroll-target="#anova-assumptions-checking-the-fine-print"><span class="header-section-number">5.9</span> ANOVA Assumptions: Checking the Fine Print</a>
+  <ul class="collapse">
+  <li><a href="#checking-desertvines-anova-assumptions" id="toc-checking-desertvines-anova-assumptions" class="nav-link" data-scroll-target="#checking-desertvines-anova-assumptions">Checking DesertVine’s ANOVA Assumptions</a></li>
+  </ul></li>
+  <li><a href="#two-way-anova-analyzing-multiple-factors" id="toc-two-way-anova-analyzing-multiple-factors" class="nav-link" data-scroll-target="#two-way-anova-analyzing-multiple-factors"><span class="header-section-number">5.10</span> Two-Way ANOVA: Analyzing Multiple Factors</a>
+  <ul class="collapse">
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research Question</a></li>
+  <li><a href="#two-way-anova-age-group-travel-purpose" id="toc-two-way-anova-age-group-travel-purpose" class="nav-link" data-scroll-target="#two-way-anova-age-group-travel-purpose">Two-Way ANOVA: Age Group × Travel Purpose</a></li>
+  </ul></li>
+  <li><a href="#two-way-anova-property-booking-channel" id="toc-two-way-anova-property-booking-channel" class="nav-link" data-scroll-target="#two-way-anova-property-booking-channel"><span class="header-section-number">5.11</span> Two-Way ANOVA: Property × Booking Channel</a></li>
+  <li><a href="#what-all-these-anovas-tell-michael" id="toc-what-all-these-anovas-tell-michael" class="nav-link" data-scroll-target="#what-all-these-anovas-tell-michael"><span class="header-section-number">5.12</span> What All These ANOVAs Tell Michael</a>
+  <ul class="collapse">
+  <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings">Key Findings</a></li>
+  <li><a href="#business-recommendations" id="toc-business-recommendations" class="nav-link" data-scroll-target="#business-recommendations">Business Recommendations</a></li>
+  </ul></li>
+  <li><a href="#anova-vs.-other-tests-when-to-use-what" id="toc-anova-vs.-other-tests-when-to-use-what" class="nav-link" data-scroll-target="#anova-vs.-other-tests-when-to-use-what"><span class="header-section-number">5.13</span> ANOVA vs.&nbsp;Other Tests: When to Use What</a></li>
+  <li><a href="#the-presentation-when-statistics-changes-strategy" id="toc-the-presentation-when-statistics-changes-strategy" class="nav-link" data-scroll-target="#the-presentation-when-statistics-changes-strategy"><span class="header-section-number">5.14</span> The Presentation: When Statistics Changes Strategy</a></li>
+  <li><a href="#excel-implementation-running-anova" id="toc-excel-implementation-running-anova" class="nav-link" data-scroll-target="#excel-implementation-running-anova"><span class="header-section-number">5.15</span> Excel Implementation: Running ANOVA</a></li>
+  <li><a href="#problem-sets" id="toc-problem-sets" class="nav-link" data-scroll-target="#problem-sets"><span class="header-section-number">5.16</span> Problem Sets</a>
+  <ul class="collapse">
+  <li><a href="#problem-set-1-hotel-renovation-decision" id="toc-problem-set-1-hotel-renovation-decision" class="nav-link" data-scroll-target="#problem-set-1-hotel-renovation-decision">Problem Set 1: Hotel Renovation Decision</a></li>
+  <li><a href="#problem-set-2-cleanliness-initiative" id="toc-problem-set-2-cleanliness-initiative" class="nav-link" data-scroll-target="#problem-set-2-cleanliness-initiative">Problem Set 2: Cleanliness Initiative</a></li>
+  <li><a href="#problem-set-3-multiple-comparisons" id="toc-problem-set-3-multiple-comparisons" class="nav-link" data-scroll-target="#problem-set-3-multiple-comparisons">Problem Set 3: Multiple Comparisons</a></li>
+  <li><a href="#problem-set-4-interaction-effects" id="toc-problem-set-4-interaction-effects" class="nav-link" data-scroll-target="#problem-set-4-interaction-effects">Problem Set 4: Interaction Effects</a></li>
+  <li><a href="#problem-set-5-anova-assumptions" id="toc-problem-set-5-anova-assumptions" class="nav-link" data-scroll-target="#problem-set-5-anova-assumptions">Problem Set 5: ANOVA Assumptions</a></li>
+  </ul></li>
+  <li><a href="#excel-functions-quick-reference" id="toc-excel-functions-quick-reference" class="nav-link" data-scroll-target="#excel-functions-quick-reference"><span class="header-section-number">5.17</span> Excel Functions Quick Reference</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ncachanosky/XQMB-5311/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ANOVA: Analysis of Variance</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>When a hotel CEO faces $8 million in renovation proposals, the key question is whether observed differences in guest satisfaction across properties are real or just random noise. This chapter introduces Analysis of Variance (ANOVA) as a framework for comparing means across multiple groups simultaneously. Working through DesertVine Hospitality’s satisfaction data, students learn one-way and two-way ANOVA, post-hoc pairwise comparisons, and the statistical discipline required to avoid spending millions on problems that may not exist.</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ol type="1">
+<li>✅ Understand when to use ANOVA versus t-tests for comparing means</li>
+<li>✅ Calculate and interpret one-way ANOVA F-statistics and p-values</li>
+<li>✅ Conduct post-hoc pairwise comparisons to identify specific group differences</li>
+<li>✅ Check ANOVA assumptions and understand the consequences of violations</li>
+<li>✅ Apply two-way ANOVA to analyze multiple factors simultaneously</li>
+<li>✅ Communicate ANOVA results effectively in business contexts</li>
+</ol>
+</section>
+<section id="introduction-the-8-million-question" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="introduction-the-8-million-question"><span class="header-section-number">5.1</span> Introduction: The $8 Million Question</h2>
+<p>It’s 9:00 AM on October 3, 2025. Michael Chen, CEO of DesertVine Hospitality Group, sits in his El Paso headquarters reviewing Q2 2025 guest satisfaction data. On his desk are renovation proposals totaling <strong>$8 million</strong> spread across his four boutique hotel properties in the Southwest.</p>
+<p>The proposals are specific:</p>
+<blockquote class="blockquote">
+<p>El Paso Desert Rose: $2.1M for WiFi infrastructure and room technology upgrades<br>
+Tucson Canyon Vista: $2.3M for staff training programs and service excellence initiative<br>
+Santa Fe Adobe Retreat: $1.9M for room renovations and cleanliness systems<br>
+Albuquerque Rio Grande: $1.7M for comprehensive property-wide improvements</p>
+</blockquote>
+<p>His VP of Operations had prepared a summary:</p>
+<blockquote class="blockquote">
+<p>“Guest satisfaction varies across properties. El Paso averages around 7.9, Tucson is about 8.2, Santa Fe is roughly 8.1, and Albuquerque is approximately 8.2. The differences seem small but might be significant. El Paso’s WiFi scores are notably lower, suggesting technology is the issue there. Santa Fe’s cleanliness scores are concerning. We should probably invest in the areas where each property underperforms…”</p>
+</blockquote>
+<p>Michael sets down the report. “Should I write three checks for $6 million? Or one check for $2 million? Or no checks at all?”</p>
+<p>His CFO speaks up. “Those satisfaction scores, 7.9 versus 8.2, is that difference real or just random variation? If it’s random, we’re wasting $8 million. If it’s real, which property needs help most?”</p>
+<p>His Director of Guest Experience adds, “And what about the factors behind satisfaction? Is WiFi really El Paso’s problem? Age of guests? Travel purpose? We’re seeing patterns but can’t tell if they mean anything.”</p>
+<p>Michael looks at his leadership team. “This report gives me averages and hunches. I need statistical evidence. Are these properties genuinely different in guest satisfaction? Which specific properties differ from which? What factors actually drive satisfaction—property location, guest age, booking channel, travel purpose?”</p>
+<p>He slides the report back. “Get me answers by Monday. Real statistical answers. I’m not spending $8 million on gut feelings.”</p>
+<p>The operations team realizes they lack the statistical expertise to distinguish real differences from random variation and to analyze multiple factors simultaneously. Following the success stories from TechFlow Solutions, PrecisionCast Industries, and BorderMed Pharmaceuticals, they reach out to the EMBA program at The University of Texas at El Paso.</p>
+<p>Enter David Martinez and Maria Rodriguez, the same EMBA students who have transformed business analytics across the Southwest. But this time, the challenge requires a new statistical toolkit. Multiple groups. Multiple factors. Complex questions about what drives performance.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The Cost of “Roughly The Same”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When TechFlow said “around $767,000,” they couldn’t track changes precisely. That cost opportunities.</p>
+<p>When PrecisionCast said “tests are pretty good,” they risked shipping defects. That was catastrophic.</p>
+<p>When BorderMed said “proves the drug works,” they risked $500M on overconfident conclusions. That could cost lives.</p>
+<p>When DesertVine says “satisfaction is roughly the same across properties,” they might:</p>
+<ul>
+<li>Waste $8M renovating properties that don’t need it</li>
+<li>Miss critical problems at underperforming locations<br>
+</li>
+<li>Misidentify root causes of dissatisfaction</li>
+<li>Allocate resources based on hunches rather than evidence</li>
+</ul>
+<p>In hospitality, saying “roughly the same” when statistical differences exist costs both money and guest loyalty.</p>
+<p><strong>The fix</strong>: Use ANOVA to test whether group means truly differ. Conduct post-hoc tests to identify which specific groups differ. Analyze multiple factors to understand what really drives satisfaction. Make data-driven investment decisions.</p>
+</div>
+</div>
+<p>This chapter is about that transformation. From “roughly the same” to statistical evidence. From comparing two groups to comparing many. From single-factor analysis to multi-factor understanding. From hunches to ANOVA.</p>
+<p>Welcome to Analysis of Variance. The mathematics of comparing groups.</p>
+</section>
+<section id="connecting-the-journey-four-questions-four-statistical-tools" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="connecting-the-journey-four-questions-four-statistical-tools"><span class="header-section-number">5.2</span> Connecting the Journey: Four Questions, Four Statistical Tools</h2>
+<p>David and Maria sit in DesertVine’s El Paso office, reviewing the Q2 satisfaction data. It’s been nine months since they started their EMBA program, and their statistical journey has followed a clear progression.</p>
+<p>“Remember January?” Maria says, pulling up their TechFlow analysis. “Sarah Chen asked: ‘What happened in Q4?’ We used descriptive statistics (means, medians, standard deviations) to describe past performance.”</p>
+<p>David nods. “Then April with PrecisionCast. Robert Martinez asked: ‘What will happen next quarter?’ We used probability, p(Defect), expected values, binomial distributions—to predict the future.”</p>
+<p>“July brought BorderMed,” Maria continues. “Dr.&nbsp;Walsh asked: ‘What can we conclude from our clinical trial?’ We used hypothesis testing and confidence intervals to draw inferences about a drug’s efficacy. But that was still comparing one group against a standard, or two groups at most.”</p>
+<p>“And now,” David says, tapping the DesertVine data, “Michael Chen is asking something more complex: ‘Which of my four properties are actually different? What factors drive those differences?’ This isn’t one group versus a target. This isn’t even two groups. This is multiple groups, multiple factors, all at once.”</p>
+<p>Maria opens her laptop and creates a comparison:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 24%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Lecture</strong></th>
+<th style="text-align: left;"><strong>Company</strong></th>
+<th style="text-align: left;"><strong>Question</strong></th>
+<th style="text-align: left;"><strong>Groups Compared</strong></th>
+<th style="text-align: left;"><strong>Statistical Tool</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Lecture 1</td>
+<td style="text-align: left;">TechFlow</td>
+<td style="text-align: left;">“What happened in Q4?”</td>
+<td style="text-align: left;">One group (descriptive)</td>
+<td style="text-align: left;">Mean, SD, z-scores</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lecture 2</td>
+<td style="text-align: left;">PrecisionCast</td>
+<td style="text-align: left;">“What will happen in Q2?”</td>
+<td style="text-align: left;">One group (predictive)</td>
+<td style="text-align: left;">Probability, E(X)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lecture 3</td>
+<td style="text-align: left;">BorderMed</td>
+<td style="text-align: left;">“Does the drug work?”</td>
+<td style="text-align: left;">Two groups (treatment vs placebo)</td>
+<td style="text-align: left;">t-test, confidence intervals</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lecture 4</td>
+<td style="text-align: left;">DesertVine</td>
+<td style="text-align: left;">“Which properties differ? What drives satisfaction?”</td>
+<td style="text-align: left;">Four+ groups, multiple factors</td>
+<td style="text-align: left;">ANOVA</td>
+</tr>
+</tbody>
+</table>
+<p>“Three months ago, we could compare treatment versus placebo using a t-test,” David explains. “But now we have four properties. If we wanted to use t-tests, we’d need six separate comparisons: El Paso vs Tucson, El Paso vs Santa Fe, El Paso vs Albuquerque, Tucson vs Santa Fe, Tucson vs Albuquerque, Santa Fe vs Albuquerque.”</p>
+<p>“And each test has a 5% chance of false positive,” Maria adds. “Six tests mean a 26% chance of at least one false positive. That’s the multiple comparisons problem.”</p>
+<p>“Exactly. That’s why we need ANOVA,” David confirms. “Analysis of Variance answers the question: ‘Are these group means different?’ in one omnibus test. Then, if we find a difference, we use post-hoc tests to identify which specific groups differ.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Key Distinction: t-Test vs.&nbsp;ANOVA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>t-Test (Lecture 3):</strong><br>
+<em>Compares two group means</em></p>
+<ul>
+<li>BorderMed: Treatment group vs Placebo group<br>
+</li>
+<li>Tests: <span class="math inline">\(H_0: \mu_1 = \mu_2\)</span><br>
+</li>
+<li>When: Comparing exactly two groups</li>
+</ul>
+<p><strong>ANOVA (Lecture 4):</strong><br>
+<em>Compares three or more group means simultaneously</em></p>
+<ul>
+<li>DesertVine: El Paso vs Tucson vs Santa Fe vs Albuquerque<br>
+</li>
+<li>Tests: <span class="math inline">\(H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4\)</span><br>
+</li>
+<li>When: Comparing three or more groups</li>
+</ul>
+<p><strong>Why not multiple t-tests?</strong></p>
+<ul>
+<li><strong>Multiple Comparisons Problem</strong>: Each test has α = 0.05 risk of false positive<br>
+</li>
+<li>With k groups, need k(k-1)/2 pairwise comparisons<br>
+</li>
+<li>4 groups = 6 comparisons = 26% chance of at least one false positive<br>
+</li>
+<li>ANOVA maintains overall α = 0.05 while testing all groups simultaneously</li>
+</ul>
+<p><strong>The ANOVA workflow:</strong><br>
+1. Run ANOVA omnibus test: “Are there ANY differences among the groups?”<br>
+2. If significant: Run post-hoc pairwise tests: “Which specific groups differ from which?”<br>
+3. If not significant: Stop. No evidence of group differences.</p>
+</div>
+</div>
+<p>“So ANOVA is our first step,” Maria says. “If it says ‘yes, there are differences somewhere,’ then we do follow-up tests to find out where.”</p>
+<p>“And that’s just one-way ANOVA,” David adds. “Later we’ll use two-way ANOVA to analyze multiple factors simultaneously, like property AND age group AND booking channel, all at once.”</p>
+<p>“Let’s show them how,” Maria says, opening the guest satisfaction file.</p>
+</section>
+<section id="the-desertvine-dataset-four-properties-312-guests" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="the-desertvine-dataset-four-properties-312-guests"><span class="header-section-number">5.3</span> The DesertVine Dataset: Four Properties, 312 Guests</h2>
+<p>David loads the Q2 2025 data.</p>
+<p>“We have 312 guest surveys collected between April and June 2025,” he explains. “Each guest stayed at one of four properties.”</p>
+<p><strong>Property Distribution:</strong></p>
+<ul>
+<li>El Paso Desert Rose: 95 guests<br>
+</li>
+<li>Tucson Canyon Vista: 88 guests<br>
+</li>
+<li>Santa Fe Adobe Retreat: 82 guests<br>
+</li>
+<li>Albuquerque Rio Grande: 47 guests</li>
+</ul>
+<p>“The sample sizes aren’t perfectly balanced,” Maria notes, “but ANOVA can handle that.”</p>
+<p><strong>Variables measured:</strong></p>
+<ul>
+<li><strong>Overall_Satisfaction</strong>: Guest rating 1-10 (our primary outcome)<br>
+</li>
+<li><strong>Property</strong>: Which location (our grouping variable for one-way ANOVA)<br>
+</li>
+<li><strong>Cleanliness_Score</strong>: Room cleanliness rating 1-10<br>
+</li>
+<li><strong>Staff_Service_Score</strong>: Staff service rating 1-10<br>
+</li>
+<li><strong>WiFi_Score</strong>: WiFi quality rating 1-10<br>
+</li>
+<li><strong>Guest_Age</strong>: Age of guest<br>
+</li>
+<li><strong>Age_Group</strong>: Under 45 vs 45 and Over<br>
+</li>
+<li><strong>Travel_Purpose</strong>: Business vs Leisure<br>
+</li>
+<li><strong>Booking_Channel</strong>: Direct vs OTA vs Corporate/Group<br>
+</li>
+<li><strong>Room_Rate</strong>: Nightly rate paid ($)</li>
+</ul>
+<p>“Michael wants to know if Overall_Satisfaction differs by Property,” David says. “That’s a perfect one-way ANOVA question.”</p>
+<p>Maria calculates the property means:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Property</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">Mean Satisfaction</th>
+<th style="text-align: right;">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">El Paso Desert Rose</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">7.93</td>
+<td style="text-align: right;">1.38</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tucson Canyon Vista</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">8.15</td>
+<td style="text-align: right;">1.41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Santa Fe Adobe Retreat</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">8.07</td>
+<td style="text-align: right;">1.44</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Albuquerque Rio Grande</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">8.16</td>
+<td style="text-align: right;">1.14</td>
+</tr>
+</tbody>
+</table>
+<p>“The report said they’re ‘roughly the same,’” Maria observes. “El Paso is lowest at 7.93, Albuquerque highest at 8.16. That’s only a 0.23 point difference.”</p>
+<p>“But is that difference statistically significant,” David asks, “or could it just be random sampling variation?”</p>
+<p>“That’s exactly what ANOVA will tell us,” Maria replies.</p>
+</section>
+<section id="one-way-anova-the-logic" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="one-way-anova-the-logic"><span class="header-section-number">5.4</span> One-Way ANOVA: The Logic</h2>
+<p>Before running calculations, David explains the fundamental logic of ANOVA.</p>
+<p>“ANOVA works by comparing two types of variation,” he says, sketching on the whiteboard.</p>
+<pre><code>ANOVA Intuition
+
+If groups are truly different:           If groups are the same:
+Variation BETWEEN groups &gt;&gt; Variation    Variation BETWEEN ≈ Variation  
+WITHIN groups                            WITHIN groups
+
+Property A: ■■■■■■                       Property A: ■■■■■■  
+Property B:    ■■■■■■■■                  Property B: ■■■■■■  
+Property C:  ■■■■■                       Property C: ■■■■■■  
+Property D:     ■■■■■■■                  Property D: ■■■■■■  
+
+Large separation, tight clusters         Overlapping, similar spread
+
+F = Between-group variation /            F = Between-group variation /
+    Within-group variation                   Within-group variation
+  = Large / Small                          = Small / Small
+  = LARGE F-statistic                      = SMALL F-statistic
+  → Reject H₀                              → Fail to reject H₀</code></pre>
+<p>“ANOVA partitions total variation into two components,” Maria explains:</p>
+<ol type="1">
+<li><strong>Between-Group Variation (SSB)</strong>: How much do the group means differ from the overall mean?<br>
+</li>
+<li><strong>Within-Group Variation (SSW)</strong>: How much do individual observations vary within each group?</li>
+</ol>
+<p>“If group means are truly different, between-group variation will be large relative to within-group variation,” David continues. “If groups are the same, between-group variation will be similar in size to within-group variation.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: The F-Statistic
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ANOVA tests: <span class="math display">\[H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4 \text{ (all population means equal)}\]</span> <span class="math display">\[H_A: \text{At least one } \mu_i \text{ differs}\]</span></p>
+<p><strong>The F-statistic:</strong> <span class="math display">\[F = \frac{\text{Between-group variance}}{\text{Within-group variance}} = \frac{MSB}{MSW}\]</span></p>
+<p>Where:</p>
+<ul>
+<li><strong>MSB</strong> (Mean Square Between) = Between-group variance<br>
+</li>
+<li><strong>MSW</strong> (Mean Square Within) = Within-group variance</li>
+</ul>
+<p><strong>If <span class="math inline">\(H_0\)</span> is true</strong> (groups equal): <span class="math inline">\(F \approx 1\)</span> (both variances similar)<br>
+<strong>If <span class="math inline">\(H_A\)</span> is true</strong> (groups differ): <span class="math inline">\(F &gt;&gt; 1\)</span> (between-group variance much larger)</p>
+<p><strong>Decision rule:</strong><br>
+If <span class="math inline">\(F &gt; F_{\text{critical}}\)</span> or <span class="math inline">\(p &lt; \alpha\)</span>: Reject <span class="math inline">\(H_0\)</span> (groups differ)<br>
+If <span class="math inline">\(F \leq F_{\text{critical}}\)</span> or <span class="math inline">\(p \geq \alpha\)</span>: Fail to reject <span class="math inline">\(H_0\)</span> (insufficient evidence of differences)</p>
+</div>
+</div>
+<p>“Think of it this way,” Maria adds. “We’re asking: Is the variation between property means large enough, relative to the natural variation within properties, to conclude the properties are genuinely different?”</p>
+</section>
+<section id="one-way-anova-the-calculation" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="one-way-anova-the-calculation"><span class="header-section-number">5.5</span> One-Way ANOVA: The Calculation</h2>
+<p>David opens Excel and begins the ANOVA calculation.</p>
+<p>“ANOVA breaks down the total variation in satisfaction scores into between-group and within-group components,” he explains. “Let’s calculate each piece.”</p>
+<section id="step-1-calculate-the-overall-mean" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-calculate-the-overall-mean">Step 1: Calculate the Overall Mean</h3>
+<pre><code>Overall Mean (Grand Mean):
+x̄ = Sum of all 312 satisfaction scores / 312
+x̄ = 8.02</code></pre>
+</section>
+<section id="step-2-calculate-sum-of-squares" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-calculate-sum-of-squares">Step 2: Calculate Sum of Squares</h3>
+<p><strong>Sum of Squares Total (SST)</strong>: Total variation in all observations</p>
+<p><span class="math display">\[SST = \sum_{i=1}^{k}\sum_{j=1}^{n_i}(x_{ij} - \bar{x})^2\]</span></p>
+<p>For DesertVine: <span class="math display">\[SST = 600.23\]</span></p>
+<p><strong>Sum of Squares Between (SSB)</strong>: Variation due to differences between group means</p>
+<p><span class="math display">\[SSB = \sum_{i=1}^{k} n_i(\bar{x}_i - \bar{x})^2\]</span></p>
+<p>Where:<br>
+<span class="math inline">\(n_i\)</span> = sample size of group <span class="math inline">\(i\)</span><br>
+<span class="math inline">\(\bar{x}_i\)</span> = mean of group <span class="math inline">\(i\)</span><br>
+<span class="math inline">\(\bar{x}\)</span> = overall mean</p>
+<p>For DesertVine: <span class="math display">\[\begin{aligned}
+SSB &amp;= 95(7.93 - 8.02)^2 + 88(8.15 - 8.02)^2 \\
+&amp;\quad + 82(8.07 - 8.02)^2 + 47(8.16 - 8.02)^2 \\
+&amp;= 95(0.09)^2 + 88(0.13)^2 + 82(0.05)^2 + 47(0.14)^2 \\
+&amp;= 0.77 + 1.49 + 0.21 + 0.92 \\
+&amp;= 3.39
+\end{aligned}\]</span></p>
+<p><strong>Sum of Squares Within (SSW)</strong>: Variation within groups</p>
+<p><span class="math display">\[SSW = SST - SSB = 600.23 - 3.39 = 596.84\]</span></p>
+</section>
+<section id="step-3-calculate-degrees-of-freedom" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-calculate-degrees-of-freedom">Step 3: Calculate Degrees of Freedom</h3>
+<p><strong>Between groups:</strong> <span class="math inline">\(df_B = k - 1 = 4 - 1 = 3\)</span><br>
+Where <span class="math inline">\(k\)</span> = number of groups</p>
+<p><strong>Within groups:</strong> <span class="math inline">\(df_W = N - k = 312 - 4 = 308\)</span><br>
+Where <span class="math inline">\(N\)</span> = total sample size</p>
+<p><strong>Total:</strong> <span class="math inline">\(df_T = N - 1 = 312 - 1 = 311\)</span></p>
+</section>
+<section id="step-4-calculate-mean-squares" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-calculate-mean-squares">Step 4: Calculate Mean Squares</h3>
+<p><strong>Mean Square Between (MSB):</strong> <span class="math display">\[MSB = \frac{SSB}{df_B} = \frac{3.39}{3} = 1.13\]</span></p>
+<p><strong>Mean Square Within (MSW):</strong> <span class="math display">\[MSW = \frac{SSW}{df_W} = \frac{596.84}{308} = 1.94\]</span></p>
+</section>
+<section id="step-5-calculate-f-statistic" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-calculate-f-statistic">Step 5: Calculate F-Statistic</h3>
+<p><span class="math display">\[F = \frac{MSB}{MSW} = \frac{1.13}{1.94} = 0.58\]</span></p>
+</section>
+<section id="step-6-find-p-value" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-find-p-value">Step 6: Find p-value</h3>
+<p>With <span class="math inline">\(df_B = 3\)</span> and <span class="math inline">\(df_W = 308\)</span>, we look up the F-distribution:</p>
+<p><span class="math display">\[F_{0.05, 3, 308} \approx 2.63\]</span></p>
+<p>Our calculated <span class="math inline">\(F = 0.58 &lt; 2.63\)</span></p>
+<p><span class="math display">\[p\text{-value} = 0.627\]</span></p>
+</section>
+<section id="anova-table-summary" class="level3">
+<h3 class="anchored" data-anchor-id="anova-table-summary">ANOVA Table Summary</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Source</th>
+<th style="text-align: right;">SS</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">MS</th>
+<th style="text-align: right;">F</th>
+<th style="text-align: right;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Between Groups</td>
+<td style="text-align: right;">3.39</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.13</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.627</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Within Groups</td>
+<td style="text-align: right;">596.84</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;">1.94</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>600.23</strong></td>
+<td style="text-align: right;"><strong>311</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Interpreting the ANOVA Results
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>F-statistic = 0.58</strong><br>
+<strong>p-value = 0.627</strong></p>
+<p><strong>Decision:</strong> Fail to reject <span class="math inline">\(H_0\)</span> at <span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>Interpretation:</strong> There is insufficient evidence to conclude that mean guest satisfaction differs significantly across the four DesertVine properties.</p>
+<p><strong>What this means for Michael:</strong></p>
+<ul>
+<li>The observed differences in satisfaction (El Paso: 7.93, Albuquerque: 8.16) are consistent with random sampling variation<br>
+</li>
+<li>We cannot conclude that properties genuinely differ in guest satisfaction<br>
+</li>
+<li>The variation between property means (MSB = 1.13) is actually <em>smaller</em> than the variation within properties (MSW = 1.94)</li>
+</ul>
+<p><strong>Business implication:</strong> The $8M renovation proposals targeting individual properties may not be justified by satisfaction differences alone. Properties appear to perform similarly on overall satisfaction.</p>
+</div>
+</div>
+<p>Maria pauses. “Wait. The F-statistic is less than 1?”</p>
+<p>“Yes,” David confirms. “That means the between-group variation is actually <em>smaller</em> than the within-group variation. The properties are remarkably similar.”</p>
+<p>“So the differences in the means, 7.93 versus 8.16, that’s just random noise?”</p>
+<p>“Exactly. With an F of 0.58 and a p-value of 0.627, we have no statistical evidence that these properties truly differ in guest satisfaction.”</p>
+</section>
+</section>
+<section id="what-anova-just-told-us-and-what-it-didnt" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="what-anova-just-told-us-and-what-it-didnt"><span class="header-section-number">5.6</span> What ANOVA Just Told Us (And What It Didn’t)</h2>
+<p>David and Maria prepare their initial findings for Michael.</p>
+<section id="what-anova-said" class="level3">
+<h3 class="anchored" data-anchor-id="what-anova-said">What ANOVA Said:</h3>
+<p>“The four DesertVine properties show no statistically significant differences in overall guest satisfaction (F(3, 308) = 0.58, p = 0.627).”</p>
+</section>
+<section id="what-this-means" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-means">What This Means:</h3>
+<ol type="1">
+<li><strong>Not “All properties are identical”</strong>: ANOVA doesn’t prove equality, it just fails to find sufficient evidence of difference<br>
+</li>
+<li><strong>Not “Property doesn’t matter”</strong>: Perhaps location influences satisfaction in ways our current measurement doesn’t capture<br>
+</li>
+<li><strong>Not “Don’t invest”</strong>: Other factors beyond overall satisfaction might justify investment</li>
+</ol>
+</section>
+<section id="what-this-does-not-answer" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-does-not-answer">What This Does NOT Answer:</h3>
+<ol type="1">
+<li><strong>Which specific properties differ?</strong>: We don’t need post-hoc tests because ANOVA found no overall differences<br>
+</li>
+<li><strong>How large are the differences?</strong>: Not relevant when differences aren’t statistically significant<br>
+</li>
+<li><strong>What drives satisfaction?</strong>: ANOVA only tests whether groups differ, not why they differ</li>
+</ol>
+<p>“So we should stop here and tell Michael to save his $8 million?” Maria asks.</p>
+<p>“Not quite,” David responds. “Remember, we’re testing Overall_Satisfaction. But Michael also asked about specific satisfaction drivers: WiFi, cleanliness, staff service. Let’s see if properties differ on those dimensions.”</p>
+</section>
+</section>
+<section id="anova-on-satisfaction-components" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="anova-on-satisfaction-components"><span class="header-section-number">5.7</span> ANOVA on Satisfaction Components</h2>
+<p>David runs separate one-way ANOVAs for each satisfaction component:</p>
+<section id="wifi-score-by-property" class="level3">
+<h3 class="anchored" data-anchor-id="wifi-score-by-property">WiFi Score by Property</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Source</th>
+<th style="text-align: right;">SS</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">MS</th>
+<th style="text-align: right;">F</th>
+<th style="text-align: right;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Between Groups</td>
+<td style="text-align: right;">15.82</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5.27</td>
+<td style="text-align: right;">2.67</td>
+<td style="text-align: right;"><strong>0.048</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Within Groups</td>
+<td style="text-align: right;">608.12</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;">1.97</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>623.94</strong></td>
+<td style="text-align: right;"><strong>311</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Result:</strong> F(3, 308) = 2.67, <strong>p = 0.048 &lt; 0.05</strong></p>
+<p>“Now we have something!” Maria exclaims. “WiFi scores DO differ significantly across properties.”</p>
+</section>
+<section id="cleanliness-score-by-property" class="level3">
+<h3 class="anchored" data-anchor-id="cleanliness-score-by-property">Cleanliness Score by Property</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Source</th>
+<th style="text-align: right;">SS</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">MS</th>
+<th style="text-align: right;">F</th>
+<th style="text-align: right;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Between Groups</td>
+<td style="text-align: right;">8.94</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.98</td>
+<td style="text-align: right;">1.52</td>
+<td style="text-align: right;">0.209</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Within Groups</td>
+<td style="text-align: right;">602.89</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;">1.96</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>611.83</strong></td>
+<td style="text-align: right;"><strong>311</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Result:</strong> F(3, 308) = 1.52, p = 0.209</p>
+<p>“Cleanliness doesn’t differ significantly,” David notes.</p>
+</section>
+<section id="staff-service-score-by-property" class="level3">
+<h3 class="anchored" data-anchor-id="staff-service-score-by-property">Staff Service Score by Property</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Source</th>
+<th style="text-align: right;">SS</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">MS</th>
+<th style="text-align: right;">F</th>
+<th style="text-align: right;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Between Groups</td>
+<td style="text-align: right;">5.21</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.74</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">0.447</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Within Groups</td>
+<td style="text-align: right;">600.45</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;">1.95</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>605.66</strong></td>
+<td style="text-align: right;"><strong>311</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Result:</strong> F(3, 308) = 0.89, p = 0.447</p>
+<p>“Staff service doesn’t differ either,” Maria observes.</p>
+</section>
+<section id="summary-of-component-anovas" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-component-anovas">Summary of Component ANOVAs</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: right;">F-statistic</th>
+<th style="text-align: right;">p-value</th>
+<th style="text-align: left;">Significant?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Overall Satisfaction</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.627</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">WiFi Score</td>
+<td style="text-align: right;">2.67</td>
+<td style="text-align: right;"><strong>0.048</strong></td>
+<td style="text-align: left;"><strong>Yes</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cleanliness Score</td>
+<td style="text-align: right;">1.52</td>
+<td style="text-align: right;">0.209</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Staff Service Score</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">0.447</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>“So properties don’t differ on overall satisfaction, cleanliness, or staff service,” David summarizes, “but they DO differ on WiFi.”</p>
+<p>“Which means Michael’s $2.1M WiFi investment for El Paso might actually be justified,” Maria adds. “Let’s find out which properties differ on WiFi.”</p>
+</section>
+</section>
+<section id="post-hoc-tests-which-properties-differ-on-wifi" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="post-hoc-tests-which-properties-differ-on-wifi"><span class="header-section-number">5.8</span> Post-Hoc Tests: Which Properties Differ on WiFi?</h2>
+<p>Since the ANOVA for WiFi was significant (p = 0.048), David and Maria conduct post-hoc pairwise comparisons.</p>
+<p>“When ANOVA is significant, it tells us ‘there’s a difference somewhere,’ but not where,” David explains. “Post-hoc tests compare each pair of properties to identify which specific pairs differ.”</p>
+<section id="the-multiple-comparisons-problem-revisited" class="level3">
+<h3 class="anchored" data-anchor-id="the-multiple-comparisons-problem-revisited">The Multiple Comparisons Problem (Revisited)</h3>
+<p>With 4 properties, there are 6 possible pairwise comparisons:</p>
+<ol type="1">
+<li>El Paso vs Tucson<br>
+</li>
+<li>El Paso vs Santa Fe<br>
+</li>
+<li>El Paso vs Albuquerque<br>
+</li>
+<li>Tucson vs Santa Fe<br>
+</li>
+<li>Tucson vs Albuquerque<br>
+</li>
+<li>Santa Fe vs Albuquerque</li>
+</ol>
+<p>“If we ran each comparison as a separate t-test at α = 0.05,” Maria notes, “we’d have a high probability of false positives.”</p>
+<p>“That’s why we use post-hoc corrections,” David responds. “The most common methods are Tukey’s HSD and Bonferroni correction.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Post-Hoc Multiple Comparison Methods
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Tukey’s Honestly Significant Difference (HSD):</strong><br>
+- Most common post-hoc test<br>
+- Controls family-wise error rate at α<br>
+- More powerful (less conservative) than Bonferroni<br>
+- Best when: All pairwise comparisons are of interest</p>
+<p><strong>Bonferroni Correction:</strong><br>
+- Adjusts α for each test: <span class="math inline">\(\alpha_{\text{adjusted}} = \frac{\alpha}{m}\)</span> where m = number of comparisons<br>
+- Very conservative (reduces power)<br>
+- Best when: Only a few planned comparisons</p>
+<p><strong>For DesertVine:</strong><br>
+With 6 pairwise comparisons and α = 0.05:<br>
+- Bonferroni adjusted α = 0.05/6 = 0.0083 per test<br>
+- Tukey’s HSD maintains overall α = 0.05 but is less conservative</p>
+<p><strong>Excel/Software:</strong> Most statistical packages provide Tukey’s HSD automatically after ANOVA.</p>
+</div>
+</div>
+</section>
+<section id="tukeys-hsd-results-for-wifi-scores" class="level3">
+<h3 class="anchored" data-anchor-id="tukeys-hsd-results-for-wifi-scores">Tukey’s HSD Results for WiFi Scores</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 28%">
+<col style="width: 13%">
+<col style="width: 15%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Comparison</th>
+<th style="text-align: right;">Mean Difference</th>
+<th style="text-align: left;">95% CI</th>
+<th style="text-align: right;">p-value</th>
+<th style="text-align: left;">Significant?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">El Paso vs Tucson</td>
+<td style="text-align: right;">-0.32</td>
+<td style="text-align: left;">(-0.85, 0.21)</td>
+<td style="text-align: right;">0.382</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>El Paso vs Santa Fe</strong></td>
+<td style="text-align: right;"><strong>-0.67</strong></td>
+<td style="text-align: left;"><strong>(-1.21, -0.13)</strong></td>
+<td style="text-align: right;"><strong>0.008</strong></td>
+<td style="text-align: left;"><strong>Yes</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">El Paso vs Albuquerque</td>
+<td style="text-align: right;">-0.48</td>
+<td style="text-align: left;">(-1.13, 0.17)</td>
+<td style="text-align: right;">0.220</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tucson vs Santa Fe</td>
+<td style="text-align: right;">-0.35</td>
+<td style="text-align: left;">(-0.89, 0.19)</td>
+<td style="text-align: right;">0.318</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tucson vs Albuquerque</td>
+<td style="text-align: right;">-0.16</td>
+<td style="text-align: left;">(-0.82, 0.50)</td>
+<td style="text-align: right;">0.920</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Santa Fe vs Albuquerque</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: left;">(-0.48, 0.86)</td>
+<td style="text-align: right;">0.882</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Property WiFi Means:</strong><br>
+- El Paso: 7.65<br>
+- Tucson: 7.97<br>
+- <strong>Santa Fe: 8.32</strong><br>
+- Albuquerque: 8.13</p>
+<p>“Only one comparison is significant,” Maria observes. “El Paso versus Santa Fe.”</p>
+<p>“Santa Fe’s mean WiFi score is 8.32,” David notes, “compared to El Paso’s 7.65. That’s a 0.67-point difference, and the confidence interval doesn’t include zero: (-1.21, -0.13).”</p>
+<p>“So El Paso’s WiFi is significantly worse than Santa Fe’s,” Maria concludes, “but not significantly different from Tucson or Albuquerque.”</p>
+</section>
+<section id="business-implications-for-wifi" class="level3">
+<h3 class="anchored" data-anchor-id="business-implications-for-wifi">Business Implications for WiFi</h3>
+<p>David summarizes the findings:</p>
+<p>“Properties don’t differ significantly on overall satisfaction, cleanliness, or staff service. They DO differ on WiFi, with one specific contrast: El Paso has significantly lower WiFi scores than Santa Fe.</p>
+<p>“This supports targeted WiFi investment at El Paso. However, the $2.1M proposal should be evaluated against:<br>
+1. The magnitude of difference (0.67 points on a 10-point scale)<br>
+2. Whether improved WiFi would increase overall satisfaction<br>
+3. Cost-benefit analysis of the investment</p>
+<p>“ANOVA tells us WHERE the statistical differences are. Business judgment determines whether those differences justify the investment.”</p>
+</section>
+</section>
+<section id="anova-assumptions-checking-the-fine-print" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="anova-assumptions-checking-the-fine-print"><span class="header-section-number">5.9</span> ANOVA Assumptions: Checking the Fine Print</h2>
+<p>Maria raises an important point. “We’ve calculated F-statistics and p-values. But are we allowed to trust them? Don’t statistical tests have assumptions?”</p>
+<p>“Excellent question,” David responds. “ANOVA has three key assumptions. Violating them can invalidate our conclusions.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>ANOVA Assumptions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1. Independence of Observations</strong><br>
+Each observation must be independent of others<br>
+- <strong>Violation example</strong>: Multiple responses from same guest, guests influencing each other<br>
+- <strong>Check</strong>: Consider study design<br>
+- <strong>Solution if violated</strong>: Use repeated measures ANOVA or mixed models</p>
+<p><strong>2. Normality</strong><br>
+Within each group, the response variable should be approximately normally distributed<br>
+- <strong>Importance</strong>: Less critical with large samples (Central Limit Theorem)<br>
+- <strong>Check</strong>: Q-Q plots, Shapiro-Wilk test, histograms for each group<br>
+- <strong>Robust to</strong>: Moderate violations, especially with n &gt; 30 per group<br>
+- <strong>Solution if violated</strong>: Transform data or use non-parametric Kruskal-Wallis test</p>
+<p><strong>3. Homogeneity of Variance (Homoscedasticity)</strong><br>
+All groups should have approximately equal variances<br>
+- <strong>Importance</strong>: Most critical assumption<br>
+- <strong>Check</strong>: Levene’s test, visual inspection of residuals<br>
+- <strong>Rule of thumb</strong>: Largest SD / Smallest SD &lt; 2 is acceptable<br>
+- <strong>Solution if violated</strong>: Use Welch’s ANOVA (doesn’t assume equal variances)</p>
+<p><strong>Excel Note:</strong> Excel’s basic ANOVA tool doesn’t check assumptions. You must verify manually or use statistical software (R, Python, SPSS, Minitab).</p>
+</div>
+</div>
+<section id="checking-desertvines-anova-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="checking-desertvines-anova-assumptions">Checking DesertVine’s ANOVA Assumptions</h3>
+<p><strong>1. Independence</strong></p>
+<p>“Each guest provides one survey about one stay at one property,” David confirms. “No guest appears twice. Independence assumption is satisfied.”</p>
+<p><strong>2. Normality</strong></p>
+<p>Maria creates histograms of satisfaction scores for each property.</p>
+<p>“With sample sizes of 47-95 per group, the Central Limit Theorem protects us,” she observes. “The distributions look reasonably symmetric. No severe violations.”</p>
+<p><strong>3. Homogeneity of Variance</strong></p>
+<p>David calculates the standard deviations:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Property</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">El Paso</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">1.38</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tucson</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">1.41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Santa Fe</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">1.44</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Albuquerque</strong></td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;"><strong>1.14</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Ratio: Largest SD / Smallest SD = 1.44 / 1.14 = 1.26</p>
+<p>“The ratio is 1.26, well below the threshold of 2.0,” Maria notes. “Equal variance assumption is reasonable.”</p>
+<p><strong>Conclusion:</strong> “All three assumptions are adequately met,” David summarizes. “We can trust our ANOVA results.”</p>
+</section>
+</section>
+<section id="two-way-anova-analyzing-multiple-factors" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="two-way-anova-analyzing-multiple-factors"><span class="header-section-number">5.10</span> Two-Way ANOVA: Analyzing Multiple Factors</h2>
+<p>“We’ve established that properties don’t differ on overall satisfaction,” David says, “but Michael also asked about other factors. Does age matter? Travel purpose? Booking channel?”</p>
+<p>“We could run separate one-way ANOVAs,” Maria suggests. “Satisfaction by Age Group, Satisfaction by Travel Purpose, and so on.”</p>
+<p>“We could,” David agrees. “But two-way ANOVA is more powerful. It lets us analyze TWO factors simultaneously AND test whether they interact.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>One-Way vs.&nbsp;Two-Way ANOVA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>One-Way ANOVA:</strong><br>
+- One categorical factor (Property)<br>
+- Tests: Do group means differ?<br>
+- Example: Does satisfaction differ across Properties?</p>
+<p><strong>Two-Way ANOVA:</strong><br>
+- Two categorical factors (e.g., Property AND Age Group)<br>
+- Tests three hypotheses:<br>
+1. <strong>Main effect of Factor A</strong>: Do means differ across levels of Factor A (averaging across Factor B)?<br>
+2. <strong>Main effect of Factor B</strong>: Do means differ across levels of Factor B (averaging across Factor A)?<br>
+3. <strong>Interaction</strong>: Does the effect of Factor A depend on the level of Factor B?</p>
+<p><strong>Advantages of Two-Way ANOVA:</strong><br>
+- More efficient than running separate one-way ANOVAs<br>
+- Can detect interactions between factors<br>
+- Controls for multiple factors simultaneously</p>
+<p><strong>Example:</strong><br>
+Factor A = Age Group (Under 45 vs 45 and Over)<br>
+Factor B = Travel Purpose (Business vs Leisure)</p>
+<p>Tests:<br>
+1. Main effect of Age: Do younger and older guests differ in satisfaction (averaging across Business and Leisure)?<br>
+2. Main effect of Travel Purpose: Do Business and Leisure travelers differ (averaging across age groups)?<br>
+3. Interaction: Does the effect of Age depend on Travel Purpose? (Maybe younger Business travelers are more satisfied, but older Leisure travelers are more satisfied)</p>
+</div>
+</div>
+<section id="research-question" class="level3">
+<h3 class="anchored" data-anchor-id="research-question">Research Question</h3>
+<p>“Does guest satisfaction differ by Age Group and/or Travel Purpose? Is there an interaction between age and travel purpose?”</p>
+</section>
+<section id="two-way-anova-age-group-travel-purpose" class="level3">
+<h3 class="anchored" data-anchor-id="two-way-anova-age-group-travel-purpose">Two-Way ANOVA: Age Group × Travel Purpose</h3>
+<p>David runs a two-way ANOVA with:<br>
+- Factor A: Age Group (Under 45 vs 45 and Over)<br>
+- Factor B: Travel Purpose (Business vs Leisure)<br>
+- Dependent Variable: Overall Satisfaction</p>
+<p><strong>Descriptive Statistics:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Age Group</th>
+<th style="text-align: left;">Travel Purpose</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Under 45</td>
+<td style="text-align: left;">Business</td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;">7.96</td>
+<td style="text-align: right;">1.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Under 45</td>
+<td style="text-align: left;">Leisure</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">8.14</td>
+<td style="text-align: right;">1.35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">45 and Over</td>
+<td style="text-align: left;">Business</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">7.97</td>
+<td style="text-align: right;">1.43</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">45 and Over</td>
+<td style="text-align: left;">Leisure</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">8.18</td>
+<td style="text-align: right;">1.35</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Two-Way ANOVA Results:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Source</th>
+<th style="text-align: right;">SS</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">MS</th>
+<th style="text-align: right;">F</th>
+<th style="text-align: right;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Age Group</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.683</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Travel Purpose</td>
+<td style="text-align: right;">4.89</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.89</td>
+<td style="text-align: right;">2.52</td>
+<td style="text-align: right;">0.113</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Age × Travel</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.941</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Error (Within)</td>
+<td style="text-align: right;">595.00</td>
+<td style="text-align: right;">307</td>
+<td style="text-align: right;">1.94</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>600.23</strong></td>
+<td style="text-align: right;"><strong>310</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretation:</strong></p>
+<ol type="1">
+<li><p><strong>Main effect of Age Group</strong>: F(1, 307) = 0.17, p = 0.683<br>
+→ No significant effect. Satisfaction doesn’t differ by age.</p></li>
+<li><p><strong>Main effect of Travel Purpose</strong>: F(1, 307) = 2.52, p = 0.113<br>
+→ No significant effect. Business and Leisure travelers don’t differ significantly.</p></li>
+<li><p><strong>Interaction</strong>: F(1, 307) = 0.01, p = 0.941<br>
+→ No significant interaction. The effect of age doesn’t depend on travel purpose.</p></li>
+</ol>
+<p>“None of the effects are significant,” Maria observes. “Age and travel purpose don’t appear to drive satisfaction differences.”</p>
+</section>
+</section>
+<section id="two-way-anova-property-booking-channel" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="two-way-anova-property-booking-channel"><span class="header-section-number">5.11</span> Two-Way ANOVA: Property × Booking Channel</h2>
+<p>“Let’s try another combination,” David suggests. “Property and Booking Channel.”</p>
+<p>Factor A: Property (4 levels)<br>
+Factor B: Booking Channel (3 levels: Direct, OTA, Corporate/Group)</p>
+<p><strong>Two-Way ANOVA Results:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Source</th>
+<th style="text-align: right;">SS</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">MS</th>
+<th style="text-align: right;">F</th>
+<th style="text-align: right;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Property</td>
+<td style="text-align: right;">3.21</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.07</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">0.648</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Booking Channel</td>
+<td style="text-align: right;">8.92</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4.46</td>
+<td style="text-align: right;">2.31</td>
+<td style="text-align: right;">0.101</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Property × Channel</td>
+<td style="text-align: right;">15.64</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2.61</td>
+<td style="text-align: right;">1.35</td>
+<td style="text-align: right;">0.234</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Error</td>
+<td style="text-align: right;">572.46</td>
+<td style="text-align: right;">297</td>
+<td style="text-align: right;">1.93</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>600.23</strong></td>
+<td style="text-align: right;"><strong>308</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretation:</strong></p>
+<ol type="1">
+<li><strong>Main effect of Property</strong>: Not significant (consistent with our earlier one-way ANOVA)<br>
+</li>
+<li><strong>Main effect of Booking Channel</strong>: Not significant at α = 0.05, but p = 0.101 suggests possible difference<br>
+</li>
+<li><strong>Interaction</strong>: Not significant</li>
+</ol>
+<p>“Still no significant results,” Maria notes.</p>
+</section>
+<section id="what-all-these-anovas-tell-michael" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="what-all-these-anovas-tell-michael"><span class="header-section-number">5.12</span> What All These ANOVAs Tell Michael</h2>
+<p>David and Maria prepare their comprehensive report for Michael Chen.</p>
+<section id="key-findings" class="level3">
+<h3 class="anchored" data-anchor-id="key-findings">Key Findings</h3>
+<ol type="1">
+<li><p><strong>Overall Satisfaction</strong>: Properties do not differ significantly (F = 0.58, p = 0.627)</p></li>
+<li><p><strong>Satisfaction Components</strong>:</p>
+<ul>
+<li><strong>WiFi</strong>: Properties DO differ (F = 2.67, p = 0.048)
+<ul>
+<li>El Paso significantly lower than Santa Fe<br>
+</li>
+</ul></li>
+<li>Cleanliness: No significant differences<br>
+</li>
+<li>Staff Service: No significant differences</li>
+</ul></li>
+<li><p><strong>Guest Factors</strong>: Neither Age Group nor Travel Purpose significantly affects satisfaction</p></li>
+<li><p><strong>Booking Channel</strong>: No significant effect (though p = 0.101 warrants monitoring)</p></li>
+</ol>
+</section>
+<section id="business-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="business-recommendations">Business Recommendations</h3>
+<ol type="1">
+<li><p><strong>Hold on overall property-wide renovations</strong>: Properties perform similarly on overall satisfaction. The $8M comprehensive renovation plan lacks statistical justification based on satisfaction data.</p></li>
+<li><p><strong>Consider targeted WiFi investment at El Paso</strong>: The $2.1M WiFi upgrade has statistical support, as El Paso significantly underperforms Santa Fe on WiFi. However:</p>
+<ul>
+<li>Effect size is moderate (0.67 points on 10-point scale)<br>
+</li>
+<li>Need to assess whether WiFi improvement would increase overall satisfaction<br>
+</li>
+<li>Consider whether Santa Fe’s higher WiFi satisfaction translates to business outcomes (bookings, reviews, repeat stays)</li>
+</ul></li>
+<li><p><strong>Look beyond satisfaction scores</strong>: Since properties are statistically similar on satisfaction, other factors might better guide investment:</p>
+<ul>
+<li>Revenue per guest<br>
+</li>
+<li>Occupancy rates<br>
+</li>
+<li>Operational efficiency<br>
+</li>
+<li>Preventive maintenance needs<br>
+</li>
+<li>Market positioning</li>
+</ul></li>
+<li><p><strong>Consider alternative explanations</strong>: Why do guests rate properties similarly despite different physical conditions?</p>
+<ul>
+<li>Perhaps guest expectations differ by property<br>
+</li>
+<li>Maybe satisfaction is driven by factors we haven’t measured<br>
+</li>
+<li>Possibly properties excel in different areas that balance out</li>
+</ul></li>
+</ol>
+<p>“ANOVA answered Michael’s statistical question,” Maria summarizes. “‘Are the properties different?’ Answer: Not significantly on overall satisfaction.”</p>
+<p>“But it also revealed a more nuanced story,” David adds. “WiFi at El Paso needs attention, but wholesale renovations across all properties lack statistical support.”</p>
+</section>
+</section>
+<section id="anova-vs.-other-tests-when-to-use-what" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="anova-vs.-other-tests-when-to-use-what"><span class="header-section-number">5.13</span> ANOVA vs.&nbsp;Other Tests: When to Use What</h2>
+<p>Maria creates a decision tree for future reference:</p>
+<pre><code>Statistical Test Selection for Comparing Means
+
+One group, compare to target value?
+→ One-sample t-test (BorderMed: "Is BP reduction different from 10 mmHg?")
+
+Two independent groups?
+→ Independent samples t-test (BorderMed: Treatment vs Placebo)
+
+Three or more independent groups?
+→ One-way ANOVA (DesertVine: Four properties)
+  If significant → Post-hoc tests (Tukey's HSD)
+
+Two or more factors simultaneously?
+→ Two-way ANOVA (DesertVine: Property × Age Group)
+  Tests main effects AND interactions
+
+Paired/repeated measures?
+→ Paired t-test (two timepoints) or Repeated Measures ANOVA (3+ timepoints)
+  (Example: Same guests rating same property pre-renovation and post-renovation)
+
+Assumptions violated? (especially normality)
+→ Non-parametric alternative: Kruskal-Wallis test</code></pre>
+</section>
+<section id="the-presentation-when-statistics-changes-strategy" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="the-presentation-when-statistics-changes-strategy"><span class="header-section-number">5.14</span> The Presentation: When Statistics Changes Strategy</h2>
+<p>October 10, 2025, 2:00 PM. David and Maria stand in DesertVine’s executive conference room, their analysis displayed on the screen behind them. Michael Chen sits at the head of the table, flanked by his CFO, VP of Operations, and Director of Guest Experience.</p>
+<p>“Before you showed me this analysis,” Michael begins, “I was ready to write checks totaling $8 million based on gut feelings and vague observations about ‘roughly similar’ satisfaction scores.”</p>
+<p>He gestures to their ANOVA tables on screen.</p>
+<p>“You’ve shown me three things that changed my thinking completely. First, my properties don’t actually differ in overall satisfaction. That F-statistic of 0.58 with a p-value of 0.627, that’s not close to significant. It’s nowhere near significant. The variation between my properties is actually <em>smaller</em> than the variation within them.”</p>
+<p>Maria nods. “The differences you were seeing—7.93 versus 8.16—are consistent with random sampling variation. Properties are performing similarly.”</p>
+<p>“Second,” Michael continues, “you didn’t just stop there. You broke down satisfaction into components and found that WiFi <em>does</em> differ significantly across properties. And you pinpointed exactly where: El Paso is significantly behind Santa Fe. That gives me a focused, data-driven investment target instead of a scattershot $8M spend.”</p>
+<p>David pulls up the WiFi post-hoc results. “El Paso’s WiFi scores are 0.67 points lower than Santa Fe’s, with a 95% confidence interval of (-1.21, -0.13). That’s real, measurable, and statistically significant.”</p>
+<p>“Third,” Michael says, “and this is what really impressed me, you showed me what <em>doesn’t</em> matter. Age doesn’t drive satisfaction. Travel purpose doesn’t drive satisfaction. Booking channel barely matters. You saved me from chasing ghosts.”</p>
+<p>His VP of Operations leans forward. “Michael, this changes our whole capital allocation strategy. Instead of $8 million spread across all properties on hunches, we focus $2.1 million on El Paso’s WiFi infrastructure. We monitor cleanliness and staff service, but we don’t throw money at problems that don’t exist statistically.”</p>
+<p>“Exactly,” Michael agrees. “But I have a new question.”</p>
+<p>David and Maria exchange glances.</p>
+<p>“You’ve told me my properties perform similarly on satisfaction,” Michael continues. “But they don’t perform similarly on revenue. El Paso generates $182 per room on average. Santa Fe generates $249. That’s a $67 difference, way bigger than the 0.67-point satisfaction gap you found.”</p>
+<p>He pulls up a spreadsheet.</p>
+<p>“And I’m seeing patterns. Higher room rates at Santa Fe correlate with higher satisfaction scores. Direct bookings seem to generate more revenue than OTA bookings. Older guests might pay more. WiFi quality could influence willingness to pay premium rates.”</p>
+<p>Maria sees where this is going.</p>
+<p>“ANOVA told me <em>whether</em> groups differ and <em>which</em> groups differ,” Michael says. “But now I need to understand <em>relationships</em>. How much does WiFi score affect room rate? If I improve El Paso’s WiFi by one point, how much more can I charge? What’s the relationship between satisfaction and revenue? Between guest age and spending? Between booking channel and lifetime value?”</p>
+<p>He looks directly at David and Maria.</p>
+<p>“You’ve given me comparison tools, t-tests and ANOVA to compare groups. But business isn’t just about groups being different. It’s about relationships. It’s about prediction. It’s about building models that help me understand: if I change X, what happens to Y?”</p>
+<p>David glances at his notes. He knows exactly what Michael is asking for.</p>
+<p>“ANOVA told you that El Paso’s WiFi is significantly worse,” David explains. “But it can’t tell you how WiFi scores relate to room rates or revenue. It can’t quantify: ‘For every one-point increase in WiFi score, room rates increase by $X.’ It can’t tell you whether the $2.1M WiFi investment will generate positive ROI through higher rates.”</p>
+<p>“Precisely,” Michael confirms. “I need to understand the relationships between variables, not just whether groups differ.”</p>
+<p>Maria pulls up a scatter plot she had prepared, anticipating this question. Guest satisfaction on the x-axis, room rate on the y-axis. The points show a clear upward trend.</p>
+<p>“This looks like a relationship,” she says. “As satisfaction increases, room rates increase. But how strong is this relationship? Can we quantify it? Can we predict room rates based on satisfaction? Can we build a model that includes WiFi scores, cleanliness, staff service, guest age, and booking channel all at once?”</p>
+<p>“That’s exactly what I’m asking,” Michael says.</p>
+<p>David closes his laptop. “What you’re describing is regression analysis. That’s our next toolkit.”</p>
+<p>He draws on the whiteboard:</p>
+<pre><code>Statistical Journey
+
+Lecture 1 (TechFlow): 
+What happened?
+→ Descriptive Statistics
+
+Lecture 2 (PrecisionCast):
+What will happen?
+→ Probability
+
+Lecture 3 (BorderMed):
+What can we conclude about differences?
+→ Hypothesis Testing (t-tests)
+
+Lecture 4 (DesertVine):
+Are groups different? Which ones?
+→ ANOVA
+
+Lecture 5 (?):
+How do categorical variables relate?
+Are two factors independent or associated?
+→ Categorical Data Analysis (Chi-square)
+
+Lecture 6 (?):
+What is the relationship between variables?
+How much does X affect Y?
+Can we predict Y from X?
+→ Regression Analysis</code></pre>
+<p>“But before we get to regression,” Maria interjects, “there’s something else Michael needs to understand.”</p>
+<p>She pulls up the DesertVine data again, this time showing the cross-tabulation of Booking Channel and Property.</p>
+<p>“Look at this,” she says. “El Paso has 38% of bookings through OTA platforms, but Santa Fe only has 28%. Is that difference meaningful? Are certain properties more dependent on OTA channels? Is there a relationship between booking channel and property location?”</p>
+<p>David nods, understanding where she’s going. “And look at Age Group versus Travel Purpose. Among business travelers, 63% are under 45. Among leisure travelers, only 40% are under 45. Is that association statistically significant?”</p>
+<p>Michael leans forward. “So we’re talking about relationships between categorical variables?”</p>
+<p>“Exactly,” Maria confirms. “ANOVA works when your outcome is continuous, satisfaction scores, revenue, WiFi ratings. But much of business data is categorical: yes/no, success/failure, Channel A/B/C, Business/Leisure.”</p>
+<p>She continues, “Before we can build regression models that include these categorical factors, we need to understand how categorical variables relate to each other. That’s chi-square analysis and categorical data methods.”</p>
+<p>David adds to the whiteboard:</p>
+<pre><code>Question Evolution:
+
+ANOVA: Do satisfaction SCORES differ by PROPERTY?
+→ Continuous outcome, categorical predictor
+
+Chi-Square: Is BOOKING CHANNEL associated with PROPERTY?
+→ Categorical outcome, categorical predictor
+→ Is AGE GROUP independent of TRAVEL PURPOSE?
+→ Categorical × Categorical relationships
+
+Regression: How do WiFi, cleanliness, and age PREDICT room rate?
+→ Continuous outcome, multiple predictors (continuous + categorical)</code></pre>
+<p>“So the progression is logical,” Michael observes. “First, compare groups with ANOVA. Then, understand how categorical variables relate to each other. Finally, build regression models that incorporate everything.”</p>
+<p>“Precisely,” David confirms. “Chi-square tests will help you answer questions like: Are Direct bookings more common at certain properties? Does guest age group relate to booking channel? Is repeat guest status independent of property location?”</p>
+<p>Maria pulls up another table. “And here’s why it matters for your business decisions. Look at this: Among guests who booked Direct, 72% rated satisfaction 8 or higher. Among OTA bookings, only 58% rated satisfaction 8 or higher. Is that difference statistically significant? Or random variation?”</p>
+<p>“That’s a categorical question,” Michael realizes. “Booking channel, categorical. High satisfaction (8+) versus lower satisfaction, categorical. You’re testing whether those two categorical variables are independent or associated.”</p>
+<p>“And if they’re significantly associated,” David adds, “it might justify investing in your direct booking platform rather than paying OTA commissions. But first, we need statistical evidence that the association is real.”</p>
+<p>Michael smiles. “So next week isn’t regression. Next week is categorical data analysis.”</p>
+<p>“Chi-square tests, odds ratios, relative risk,” Maria confirms. “The statistics of ‘yes versus no,’ ‘this category versus that category,’ ‘success versus failure.’”</p>
+<p>“And once we understand which categorical factors matter,” David continues, “then we can include them in regression models to predict continuous outcomes like room rates and revenue.”</p>
+<p>Michael smiles. “When can you start?”</p>
+<p>His CFO interrupts. “Michael, before they go, can I just say something?”</p>
+<p>Everyone turns.</p>
+<p>“Nine months ago, our reports were full of ‘around’ and ‘roughly’ and ‘seems like.’ Sarah Chen at TechFlow had the same problem. Robert Martinez at PrecisionCast had the same problem. Dr.&nbsp;Walsh at BorderMed had the same problem. And now us.”</p>
+<p>She looks at David and Maria.</p>
+<p>“Every time, you’ve transformed vague observations into statistical precision. You’ve taught us that business intuition needs statistical rigor. That ‘roughly the same’ might cost millions. That differences need evidence, not hunches.”</p>
+<p>She turns back to Michael.</p>
+<p>“Whatever they charge for the next analysis, it’s worth it. Because every company they’ve worked with has made better decisions, avoided costly mistakes, and allocated resources based on evidence rather than guesses.”</p>
+<p>Michael nods. “Agreed. Let’s talk about categorical data analysis and then regression after that.”</p>
+<p>As David and Maria pack up, Maria reflects on their journey.</p>
+<p>“Four companies. Four different questions. But the same pattern every time.”</p>
+<p>“What pattern?” David asks.</p>
+<p>“They all had data,” Maria explains. “TechFlow had Q4 revenue. PrecisionCast had defect rates. BorderMed had blood pressure measurements. DesertVine has satisfaction scores. Everyone has data.”</p>
+<p>“But data isn’t enough,” David continues her thought.</p>
+<p>“Right. Data becomes actionable when you ask the right statistical question. TechFlow needed to <em>describe</em> performance. PrecisionCast needed to <em>predict</em> defects. BorderMed needed to <em>test</em> efficacy. DesertVine needed to <em>compare</em> properties.”</p>
+<p>“And now Michael needs to understand <em>relationships</em> between categorical variables first,” David adds. “Booking channel and property. Age group and travel purpose. Direct bookings and satisfaction levels. Those are all categorical associations that need chi-square analysis before we can build regression models.”</p>
+<p>Maria looks at her notes on booking channels.</p>
+<p>“You know what’s interesting? We’ve been working with categorical data all along. TechFlow had products A, B, C, D, categorical. PrecisionCast had defective versus good—categorical. BorderMed had treatment versus placebo, categorical. DesertVine has properties, booking channels, age groups, all categorical.”</p>
+<p>“But we’ve been treating them as grouping variables for continuous outcomes,” David observes. “Now we need to analyze the categorical variables themselves. How do they relate to each other? Are they independent or associated?”</p>
+<p>“And that’s fundamentally different from ANOVA,” Maria says. “ANOVA asks: ‘Do continuous outcomes differ across categorical groups?’ Chi-square asks: ‘Do categorical variables relate to each other?’”</p>
+<p>“Exactly. It’s the statistics of counts and proportions rather than means and variances,” David confirms.</p>
+<p>Maria looks at the satisfaction versus room rate scatter plot still on screen.</p>
+<p>“But first, we need to understand the categorical relationships,” she says. “Booking channels. Property locations. Age groups. Travel purposes. Are they independent? Or do they relate to each other in ways that matter?”</p>
+<p>David grins. “You’re already thinking about the next analysis.”</p>
+<p>“Nine months ago, I thought statistics was just calculating means and standard deviations,” Maria admits. “Now I see it’s a language for understanding the world. A framework for making better decisions. A way to transform uncertainty into insight.”</p>
+<p>“And we still have categorical data analysis, regression, and business analytics integration ahead of us,” David reminds her.</p>
+<p>“Good,” Maria says. “Because every company we’ve helped has raised new questions. Better questions. Questions that require more sophisticated tools.”</p>
+<p>“That’s the beauty of statistics,” David reflects. “Every answer generates new questions. Every question requires new tools. Every tool reveals new insights.”</p>
+<p>As they leave DesertVine’s office, Maria’s phone buzzes. An email from Michael:</p>
+<blockquote class="blockquote">
+<p>David and Maria,</p>
+<p>Your ANOVA analysis saved us from wasting $8M on unfocused renovations. The board approved focused $2.1M WiFi investment for El Paso based on your statistical evidence.</p>
+<p>But more importantly, you’ve changed how we think about decisions. No more “seems like” or “roughly.” Show us the data. Run the analysis. Let evidence guide strategy.</p>
+<p>Ready for categorical data analysis when you are. I need to understand: Are booking channels associated with property location? Does guest age relate to travel purpose? Are Direct bookings really driving higher satisfaction?</p>
+<p>Then we’ll tackle regression to predict room rates and revenue.</p>
+<p>—Michael</p>
+</blockquote>
+<p>Maria shows David the email.</p>
+<p>“Four companies down,” she says. “Each one making better decisions because of statistics.”</p>
+<p>“And each one raising questions that require the next statistical tool,” David adds.</p>
+<p>They walk toward their car, already thinking about chi-square tests, about independence versus association, about analyzing categorical relationships.</p>
+<p>The statistical journey continues.</p>
+<p>But first, they need to document what they’ve learned about ANOVA—the tool that compares groups, identifies differences, and separates real patterns from random noise.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The ANOVA Mindset: Questions to Ask
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before running ANOVA, ask:</p>
+<ol type="1">
+<li><strong>Am I comparing means?</strong> (If not, ANOVA isn’t the right tool)</li>
+<li><strong>Do I have three or more groups?</strong> (If only two groups, use t-test)</li>
+<li><strong>Is the outcome variable continuous?</strong> (Satisfaction scores, revenue, time, etc.)</li>
+<li><strong>Are the groups independent?</strong> (Different people/properties, not repeated measures)</li>
+<li><strong>Do I need to know which specific groups differ?</strong> (Plan for post-hoc tests)</li>
+<li><strong>Am I analyzing multiple factors?</strong> (Consider two-way ANOVA)</li>
+<li><strong>What business decision depends on this analysis?</strong> (Always connect statistics to strategy)</li>
+</ol>
+<p>ANOVA answers: <strong>Are groups different?</strong></p>
+<p>But it cannot answer: - How do categorical variables relate to each other? → <strong>Chi-square tests</strong> (Lecture 5) - What’s the strength of association between categories? → <strong>Chi-square, odds ratios</strong> (Lecture 5) - How strong is the relationship between continuous variables? → <strong>Regression</strong> (Lecture 6) - Can we predict outcomes from multiple predictors? → <strong>Regression</strong> (Lecture 6)<br>
+- What’s the effect size of each factor? → <strong>Regression</strong> (Lecture 6)</p>
+<p>When ANOVA shows groups differ, the next questions are often: <strong>How do categorical factors relate to each other?</strong> (Chi-square) and <strong>How much do predictors affect outcomes?</strong> (Regression). That’s where the next two lectures begin.</p>
+</div>
+</div>
+</section>
+<section id="excel-implementation-running-anova" class="level2" data-number="5.15">
+<h2 data-number="5.15" class="anchored" data-anchor-id="excel-implementation-running-anova"><span class="header-section-number">5.15</span> Excel Implementation: Running ANOVA</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Excel: One-Way ANOVA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Data Setup:</strong><br>
+- Column A: Property (El Paso, Tucson, Santa Fe, Albuquerque)<br>
+- Column B: Overall_Satisfaction</p>
+<p><strong>Steps:</strong><br>
+1. Click <strong>Data</strong> → <strong>Data Analysis</strong> → <strong>ANOVA: Single Factor</strong><br>
+(If Data Analysis not visible: File → Options → Add-ins → Analysis ToolPak → Go → Check box)<br>
+2. Input Range: Select all data including headers<br>
+3. Check “Labels in First Row”<br>
+4. Alpha: 0.05<br>
+5. Output Range: Select where you want results<br>
+6. Click OK</p>
+<p><strong>Output Includes:</strong><br>
+- Summary statistics for each group<br>
+- ANOVA table with F-statistic and p-value</p>
+<p><strong>For Post-Hoc Tests:</strong><br>
+Excel doesn’t provide built-in post-hoc tests. Use:<br>
+- Manual t-tests with Bonferroni correction, OR<br>
+- Statistical software (R, Python, SPSS, Minitab)</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Excel: Two-Way ANOVA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Data Setup:</strong><br>
+Must be in specific format with factors as rows and columns</p>
+<p><strong>Steps:</strong><br>
+1. <strong>Data</strong> → <strong>Data Analysis</strong> → <strong>ANOVA: Two-Factor With Replication</strong><br>
+(if equal sample sizes per cell)<br>
+OR<br>
+<strong>ANOVA: Two-Factor Without Replication</strong><br>
+(if no interaction of interest)<br>
+2. Follow prompts for range and options<br>
+3. Click OK</p>
+<p><strong>Note:</strong> Excel’s two-way ANOVA is limited. For unbalanced designs or complex models, use R, Python, or statistical software.</p>
+</div>
+</div>
+</section>
+<section id="problem-sets" class="level2" data-number="5.16">
+<h2 data-number="5.16" class="anchored" data-anchor-id="problem-sets"><span class="header-section-number">5.16</span> Problem Sets</h2>
+<section id="problem-set-1-hotel-renovation-decision" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-1-hotel-renovation-decision">Problem Set 1: Hotel Renovation Decision</h3>
+<p>DesertVine is considering a $1.5M renovation at Tucson Canyon Vista. Using the WiFi ANOVA results:</p>
+<p><strong>Calculate and Analyze:</strong><br>
+1. What is Tucson’s mean WiFi score? How does it compare to El Paso and Santa Fe?<br>
+2. Would the Tukey HSD test show Tucson significantly different from El Paso or Santa Fe?<br>
+3. Based on ANOVA results alone, is there statistical justification for WiFi investment at Tucson?<br>
+4. What additional analyses would you recommend before approving the renovation?<br>
+5. Write a one-paragraph recommendation to Michael about Tucson’s WiFi investment.</p>
+</section>
+<section id="problem-set-2-cleanliness-initiative" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-2-cleanliness-initiative">Problem Set 2: Cleanliness Initiative</h3>
+<p>DesertVine’s COO proposes a $400K cleanliness training program for Santa Fe, citing “concerns about cleanliness scores.”</p>
+<p>Santa Fe cleanliness mean: 7.88<br>
+Overall cleanliness mean: 7.92<br>
+ANOVA for cleanliness: F(3, 308) = 1.52, p = 0.209</p>
+<p><strong>Answer:</strong><br>
+1. Is Santa Fe’s cleanliness significantly different from other properties?<br>
+2. What does the ANOVA p-value tell you about cleanliness differences?<br>
+3. Calculate how much Santa Fe’s mean differs from the overall mean<br>
+4. Would you approve the $400K program based on these statistics? Why or why not?<br>
+5. What additional information would help make this decision?</p>
+</section>
+<section id="problem-set-3-multiple-comparisons" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-3-multiple-comparisons">Problem Set 3: Multiple Comparisons</h3>
+<p>A competitor boutique hotel chain has six properties. They want to compare guest satisfaction across all properties.</p>
+<p><strong>Calculate and Explain:</strong><br>
+1. How many pairwise comparisons exist with 6 properties?<br>
+2. If each comparison uses α = 0.05, what is the probability of at least one false positive?<br>
+3. What is the Bonferroni-adjusted α for each comparison?<br>
+4. Why is one-way ANOVA preferred over multiple t-tests?<br>
+5. If ANOVA gives F(5, 594) = 3.42, p = 0.005, what should they do next?</p>
+</section>
+<section id="problem-set-4-interaction-effects" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-4-interaction-effects">Problem Set 4: Interaction Effects</h3>
+<p>DesertVine analyzes satisfaction by Property and Season (Summer vs Winter).</p>
+<p>Summer Data:<br>
+- El Paso: 8.3, Tucson: 7.9, Santa Fe: 8.5, Albuquerque: 8.0</p>
+<p>Winter Data:<br>
+- El Paso: 7.6, Tucson: 8.4, Santa Fe: 7.7, Albuquerque: 8.3</p>
+<p><strong>Analyze:</strong><br>
+1. Does there appear to be a main effect of Property (averaging across seasons)?<br>
+2. Does there appear to be a main effect of Season (averaging across properties)?<br>
+3. Describe the interaction pattern you observe<br>
+4. Which property benefits most from winter? Which suffers most?<br>
+5. What business strategy might this interaction suggest?</p>
+</section>
+<section id="problem-set-5-anova-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-5-anova-assumptions">Problem Set 5: ANOVA Assumptions</h3>
+<p>Review this scenario:<br>
+- El Paso: n = 95, mean = 7.93, SD = 1.38<br>
+- Tucson: n = 88, mean = 8.15, SD = 1.41<br>
+- Santa Fe: n = 82, mean = 8.07, SD = 3.85<br>
+- Albuquerque: n = 47, mean = 8.16, SD = 1.14</p>
+<p><strong>Answer:</strong><br>
+1. Check the homogeneity of variance assumption (ratio test)<br>
+2. Is the equal variance assumption violated?<br>
+3. What would you recommend: proceed with regular ANOVA, use Welch’s ANOVA, or transform data?<br>
+4. How might the violation affect the F-test results?<br>
+5. What is the minimum sample size generally recommended for ANOVA when assumption violations exist?</p>
+</section>
+</section>
+<section id="excel-functions-quick-reference" class="level2" data-number="5.17">
+<h2 data-number="5.17" class="anchored" data-anchor-id="excel-functions-quick-reference"><span class="header-section-number">5.17</span> Excel Functions Quick Reference</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Complete Excel ANOVA Guide
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>One-Way ANOVA:</strong></p>
+<pre class="excel"><code>Data → Data Analysis → ANOVA: Single Factor</code></pre>
+<p><strong>Two-Way ANOVA:</strong></p>
+<pre class="excel"><code>Data → Data Analysis → ANOVA: Two-Factor With Replication</code></pre>
+<p><strong>Manual Calculations (if needed):</strong></p>
+<pre class="excel"><code>' Overall Mean
+=AVERAGE(all_data)
+
+' Group Mean  
+=AVERAGE(IF(Property=A2, Satisfaction))  (Array formula: Ctrl+Shift+Enter)
+
+' Sum of Squares Between
+=SUMPRODUCT(n_array, (group_means - grand_mean)^2)
+
+' Sum of Squares Total
+=DEVSQ(all_satisfaction_data)
+
+' F-statistic
+=MSB/MSW
+
+' F-critical value
+=F.INV.RT(alpha, df_between, df_within)
+
+' p-value
+=F.DIST.RT(F_calculated, df_between, df_within)</code></pre>
+<p><strong>Post-Hoc t-tests (Bonferroni):</strong></p>
+<pre class="excel"><code>' Two-sample t-test p-value
+=T.TEST(group1_range, group2_range, 2, 2)
+
+' Compare to Bonferroni-adjusted alpha
+=0.05 / number_of_comparisons</code></pre>
+<p><strong>Checking Assumptions:</strong></p>
+<pre class="excel"><code>' Standard deviation per group
+=STDEV.S(IF(Property=A2, Satisfaction))
+
+' Ratio of variances
+=MAX(SD_array) / MIN(SD_array)</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Glossary
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Analysis of Variance (ANOVA)</strong>: Statistical test comparing means across three or more groups simultaneously</p>
+<p><strong>Between-Group Variation (SSB)</strong>: Variation in means between different groups; measures how much groups differ from overall mean</p>
+<p><strong>Bonferroni Correction</strong>: Conservative adjustment to significance level when conducting multiple comparisons; divides α by number of tests</p>
+<p><strong>Degrees of Freedom (df)</strong>: Number of independent pieces of information; for ANOVA: df_between = k-1, df_within = N-k</p>
+<p><strong>F-Distribution</strong>: Probability distribution of F-statistic under null hypothesis; determined by two degrees of freedom parameters</p>
+<p><strong>F-Statistic</strong>: Ratio of between-group variance to within-group variance; large values suggest groups differ</p>
+<p><strong>Homogeneity of Variance</strong>: ANOVA assumption that all groups have equal population variances (also called homoscedasticity)</p>
+<p><strong>Interaction Effect</strong>: Occurs when effect of one factor depends on level of another factor; unique to multi-way ANOVA</p>
+<p><strong>Kruskal-Wallis Test</strong>: Non-parametric alternative to one-way ANOVA; doesn’t assume normality</p>
+<p><strong>Main Effect</strong>: In two-way ANOVA, the effect of one factor averaging across levels of the other factor</p>
+<p><strong>Mean Square Between (MSB)</strong>: Between-group variance; SSB divided by df_between</p>
+<p><strong>Mean Square Within (MSW)</strong>: Within-group variance; SSW divided by df_within; estimates error variance</p>
+<p><strong>Multiple Comparisons Problem</strong>: Increased probability of false positives when conducting many hypothesis tests</p>
+<p><strong>One-Way ANOVA</strong>: Compares means across levels of a single categorical factor</p>
+<p><strong>Omnibus Test</strong>: Single test examining overall null hypothesis before specific comparisons; ANOVA is omnibus test for group differences</p>
+<p><strong>Post-Hoc Tests</strong>: Follow-up pairwise comparisons conducted after significant ANOVA result; e.g., Tukey’s HSD</p>
+<p><strong>Sum of Squares Between (SSB)</strong>: Total squared deviations of group means from grand mean, weighted by sample sizes</p>
+<p><strong>Sum of Squares Total (SST)</strong>: Total squared deviations of all observations from grand mean</p>
+<p><strong>Sum of Squares Within (SSW)</strong>: Total squared deviations of observations from their group means; measures within-group variability</p>
+<p><strong>Tukey’s Honestly Significant Difference (HSD)</strong>: Post-hoc test controlling family-wise error rate; less conservative than Bonferroni</p>
+<p><strong>Two-Way ANOVA</strong>: Analyzes effects of two categorical factors and their interaction on a continuous outcome</p>
+<p><strong>Welch’s ANOVA</strong>: Alternative to standard ANOVA that doesn’t assume equal variances across groups</p>
+<p><strong>Within-Group Variation (SSW)</strong>: Variation within each group; measures how much individual observations differ from their group mean</p>
+</div>
+</div>
+</div>
+<hr>
+<p><em>When comparing multiple groups, use ANOVA. When “roughly the same” might cost millions, use statistics. When decisions require evidence, not hunches, use the tools that distinguish signal from noise.</em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ncachanosky\.github\.io\/XQMB-5311");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter_03.html" class="pagination-link" aria-label="Interval Estimation and Hypothesis Testing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interval Estimation and Hypothesis Testing</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter_05.html" class="pagination-link" aria-label="Categorical Data Analysis">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical Data Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Nicolas Cachanosky, The University of Texas at El Paso, Center for Free Enterprise</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ncachanosky/XQMB-5311/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://github.com/ncachanosky/XQMB-5311" aria-current="page">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/ncachanosky">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/n_cachanosky">
+      <i class="bi bi-twitter-x" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

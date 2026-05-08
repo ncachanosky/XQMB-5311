@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Course readings for XQMB 5311 – Statistics for Business – The University of Texas at El Paso.">
+
+<title>8&nbsp; Regression Analysis: Introduction to Econometrics – The Precision Advantage: Statistics for Business</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter_06.html" rel="prev">
+<link href="./favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-224b48a91c0f626bf087add3423f4096.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-8fba65ec5d79e9223d5579f32ee5f772.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-224b48a91c0f626bf087add3423f4096.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="https://raw.github.com/ncachanosky/EO-styles/main/styles.css">
+<meta property="og:title" content="The Precision Advantage: Statistics for Business">
+<meta property="og:description" content="Course readings for XQMB 5311 – Quantitative Methods for Business – The University of Texas at El Paso. An institutions-first treatment of monetary and financial economics.">
+<meta property="og:image" content="https://ncachanosky.github.io/XQMB-5311/assets/logo.png">
+<meta property="og:site_name" content="The Precision Advantage: Statistics for Business">
+<meta property="og:image:height" content="1687">
+<meta property="og:image:width" content="1687">
+<meta name="twitter:title" content="Money, The Precision Advantage: Statistics for Business">
+<meta name="twitter:description" content="Course readings for ECON 3320 – Quantitative Methods for Business – The University of Texas at El Paso. An institutions-first treatment of monetary and financial economics.">
+<meta name="twitter:image" content="https://ncachanosky.github.io/XQMB-5311/assets/logo.png">
+<meta name="twitter:creator" content="@n_cachanosky">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="1687">
+<meta name="twitter:image-width" content="1687">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_07.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Regression Analysis: Introduction to Econometrics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./assets/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./assets/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Precision Advantage: Statistics for Business</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ncachanosky/XQMB-5311" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interval Estimation and Hypothesis Testing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ANOVA: Analysis of Variance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical Data Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistical Foundations Review: From Description to Decision</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_07.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Regression Analysis: Introduction to Econometrics</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#introduction-the-4.2-million-question" id="toc-introduction-the-4.2-million-question" class="nav-link" data-scroll-target="#introduction-the-4.2-million-question"><span class="header-section-number">8.1</span> Introduction: The $4.2 Million Question</a></li>
+  <li><a href="#from-description-to-explanation-what-makes-regression-different" id="toc-from-description-to-explanation-what-makes-regression-different" class="nav-link" data-scroll-target="#from-description-to-explanation-what-makes-regression-different"><span class="header-section-number">8.2</span> From Description to Explanation: What Makes Regression Different?</a>
+  <ul class="collapse">
+  <li><a href="#what-weve-learned-so-far" id="toc-what-weve-learned-so-far" class="nav-link" data-scroll-target="#what-weve-learned-so-far">What We’ve Learned So Far</a></li>
+  <li><a href="#what-regression-adds-the-holding-all-else-constant-framework" id="toc-what-regression-adds-the-holding-all-else-constant-framework" class="nav-link" data-scroll-target="#what-regression-adds-the-holding-all-else-constant-framework">What Regression Adds: The “Holding All Else Constant” Framework</a></li>
+  <li><a href="#the-econometric-challenge-observational-data" id="toc-the-econometric-challenge-observational-data" class="nav-link" data-scroll-target="#the-econometric-challenge-observational-data">The Econometric Challenge: Observational Data</a></li>
+  </ul></li>
+  <li><a href="#what-is-regression-actually-doing-the-mechanics" id="toc-what-is-regression-actually-doing-the-mechanics" class="nav-link" data-scroll-target="#what-is-regression-actually-doing-the-mechanics"><span class="header-section-number">8.3</span> What Is Regression Actually Doing? The Mechanics</a>
+  <ul class="collapse">
+  <li><a href="#the-goal-minimizing-squared-prediction-errors" id="toc-the-goal-minimizing-squared-prediction-errors" class="nav-link" data-scroll-target="#the-goal-minimizing-squared-prediction-errors">The Goal: Minimizing Squared Prediction Errors</a></li>
+  <li><a href="#visualizing-the-fit-predicted-values-and-residuals" id="toc-visualizing-the-fit-predicted-values-and-residuals" class="nav-link" data-scroll-target="#visualizing-the-fit-predicted-values-and-residuals">Visualizing the Fit: Predicted Values and Residuals</a></li>
+  <li><a href="#multiple-regression-the-all-else-equal-interpretation" id="toc-multiple-regression-the-all-else-equal-interpretation" class="nav-link" data-scroll-target="#multiple-regression-the-all-else-equal-interpretation">Multiple Regression: The “All Else Equal” Interpretation</a></li>
+  </ul></li>
+  <li><a href="#reading-regression-output-coefficients-and-hypothesis-tests" id="toc-reading-regression-output-coefficients-and-hypothesis-tests" class="nav-link" data-scroll-target="#reading-regression-output-coefficients-and-hypothesis-tests"><span class="header-section-number">8.4</span> Reading Regression Output: Coefficients and Hypothesis Tests</a>
+  <ul class="collapse">
+  <li><a href="#the-regression-table" id="toc-the-regression-table" class="nav-link" data-scroll-target="#the-regression-table">The Regression Table</a></li>
+  <li><a href="#interpreting-coefficients" id="toc-interpreting-coefficients" class="nav-link" data-scroll-target="#interpreting-coefficients">Interpreting Coefficients</a></li>
+  <li><a href="#standard-errors-and-t-statistics" id="toc-standard-errors-and-t-statistics" class="nav-link" data-scroll-target="#standard-errors-and-t-statistics">Standard Errors and t-statistics</a></li>
+  <li><a href="#the-p-value-what-it-actually-means" id="toc-the-p-value-what-it-actually-means" class="nav-link" data-scroll-target="#the-p-value-what-it-actually-means">The p-value: What It Actually Means</a></li>
+  <li><a href="#confidence-intervals-quantifying-uncertainty" id="toc-confidence-intervals-quantifying-uncertainty" class="nav-link" data-scroll-target="#confidence-intervals-quantifying-uncertainty">Confidence Intervals: Quantifying Uncertainty</a></li>
+  </ul></li>
+  <li><a href="#regression-assumptions-what-could-go-wrong" id="toc-regression-assumptions-what-could-go-wrong" class="nav-link" data-scroll-target="#regression-assumptions-what-could-go-wrong"><span class="header-section-number">8.5</span> Regression Assumptions: What Could Go Wrong?</a>
+  <ul class="collapse">
+  <li><a href="#the-classical-linear-regression-assumptions" id="toc-the-classical-linear-regression-assumptions" class="nav-link" data-scroll-target="#the-classical-linear-regression-assumptions">The Classical Linear Regression Assumptions</a></li>
+  </ul></li>
+  <li><a href="#problem-1-multicollinearity" id="toc-problem-1-multicollinearity" class="nav-link" data-scroll-target="#problem-1-multicollinearity"><span class="header-section-number">8.6</span> Problem #1: Multicollinearity</a>
+  <ul class="collapse">
+  <li><a href="#what-is-multicollinearity" id="toc-what-is-multicollinearity" class="nav-link" data-scroll-target="#what-is-multicollinearity">What Is Multicollinearity?</a></li>
+  <li><a href="#multicollinearity-in-the-sunburst-data" id="toc-multicollinearity-in-the-sunburst-data" class="nav-link" data-scroll-target="#multicollinearity-in-the-sunburst-data">Multicollinearity in the Sunburst Data</a></li>
+  <li><a href="#what-to-do-about-multicollinearity" id="toc-what-to-do-about-multicollinearity" class="nav-link" data-scroll-target="#what-to-do-about-multicollinearity">What to Do About Multicollinearity</a></li>
+  </ul></li>
+  <li><a href="#problem-2-heteroskedasticity" id="toc-problem-2-heteroskedasticity" class="nav-link" data-scroll-target="#problem-2-heteroskedasticity"><span class="header-section-number">8.7</span> Problem #2: Heteroskedasticity</a>
+  <ul class="collapse">
+  <li><a href="#what-is-heteroskedasticity" id="toc-what-is-heteroskedasticity" class="nav-link" data-scroll-target="#what-is-heteroskedasticity">What Is Heteroskedasticity?</a></li>
+  <li><a href="#heteroskedasticity-in-the-sunburst-data" id="toc-heteroskedasticity-in-the-sunburst-data" class="nav-link" data-scroll-target="#heteroskedasticity-in-the-sunburst-data">Heteroskedasticity in the Sunburst Data</a></li>
+  <li><a href="#remedies-for-heteroskedasticity" id="toc-remedies-for-heteroskedasticity" class="nav-link" data-scroll-target="#remedies-for-heteroskedasticity">Remedies for Heteroskedasticity</a></li>
+  </ul></li>
+  <li><a href="#problem-3-endogeneitythe-most-serious-issue" id="toc-problem-3-endogeneitythe-most-serious-issue" class="nav-link" data-scroll-target="#problem-3-endogeneitythe-most-serious-issue"><span class="header-section-number">8.8</span> Problem #3: Endogeneity—The Most Serious Issue</a>
+  <ul class="collapse">
+  <li><a href="#what-is-endogeneity" id="toc-what-is-endogeneity" class="nav-link" data-scroll-target="#what-is-endogeneity">What Is Endogeneity?</a></li>
+  <li><a href="#endogeneity-in-the-renovation-variable" id="toc-endogeneity-in-the-renovation-variable" class="nav-link" data-scroll-target="#endogeneity-in-the-renovation-variable">Endogeneity in the Renovation Variable</a></li>
+  <li><a href="#why-this-matters-for-business-decisions" id="toc-why-this-matters-for-business-decisions" class="nav-link" data-scroll-target="#why-this-matters-for-business-decisions">Why This Matters for Business Decisions</a></li>
+  <li><a href="#can-we-fix-endogeneity" id="toc-can-we-fix-endogeneity" class="nav-link" data-scroll-target="#can-we-fix-endogeneity">Can We Fix Endogeneity?</a></li>
+  </ul></li>
+  <li><a href="#a-brief-note-on-panel-data" id="toc-a-brief-note-on-panel-data" class="nav-link" data-scroll-target="#a-brief-note-on-panel-data"><span class="header-section-number">8.9</span> A Brief Note on Panel Data</a>
+  <ul class="collapse">
+  <li><a href="#what-is-panel-data" id="toc-what-is-panel-data" class="nav-link" data-scroll-target="#what-is-panel-data">What Is Panel Data?</a></li>
+  <li><a href="#other-advanced-methods" id="toc-other-advanced-methods" class="nav-link" data-scroll-target="#other-advanced-methods">Other Advanced Methods</a></li>
+  </ul></li>
+  <li><a href="#the-corrected-analysis-david-and-marias-report" id="toc-the-corrected-analysis-david-and-marias-report" class="nav-link" data-scroll-target="#the-corrected-analysis-david-and-marias-report"><span class="header-section-number">8.10</span> The Corrected Analysis: David and Maria’s Report</a>
+  <ul class="collapse">
+  <li><a href="#key-corrections-and-recommendations" id="toc-key-corrections-and-recommendations" class="nav-link" data-scroll-target="#key-corrections-and-recommendations">Key Corrections and Recommendations</a></li>
+  <li><a href="#the-correct-interpretation-of-r²" id="toc-the-correct-interpretation-of-r²" class="nav-link" data-scroll-target="#the-correct-interpretation-of-r²">The Correct Interpretation of R²</a></li>
+  </ul></li>
+  <li><a href="#putting-it-all-together-regression-in-business-context" id="toc-putting-it-all-together-regression-in-business-context" class="nav-link" data-scroll-target="#putting-it-all-together-regression-in-business-context"><span class="header-section-number">8.11</span> Putting It All Together: Regression in Business Context</a>
+  <ul class="collapse">
+  <li><a href="#what-regression-can-do" id="toc-what-regression-can-do" class="nav-link" data-scroll-target="#what-regression-can-do">What Regression Can Do</a></li>
+  <li><a href="#what-regression-cannot-do-without-strong-assumptions" id="toc-what-regression-cannot-do-without-strong-assumptions" class="nav-link" data-scroll-target="#what-regression-cannot-do-without-strong-assumptions">What Regression Cannot Do (Without Strong Assumptions)</a></li>
+  <li><a href="#the-econometricians-mindset" id="toc-the-econometricians-mindset" class="nav-link" data-scroll-target="#the-econometricians-mindset">The Econometrician’s Mindset</a></li>
+  </ul></li>
+  <li><a href="#wrapping-up-the-path-forward" id="toc-wrapping-up-the-path-forward" class="nav-link" data-scroll-target="#wrapping-up-the-path-forward"><span class="header-section-number">8.12</span> Wrapping Up: The Path Forward</a></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems"><span class="header-section-number">8.13</span> Practice Problems</a></li>
+  <li><a href="#excel-functions-quick-reference" id="toc-excel-functions-quick-reference" class="nav-link" data-scroll-target="#excel-functions-quick-reference"><span class="header-section-number">8.14</span> Excel Functions Quick Reference</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ncachanosky/XQMB-5311/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Regression Analysis: Introduction to Econometrics</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Regression is powerful — and easily misused. This chapter introduces ordinary least squares regression, coefficient interpretation, hypothesis testing in a multivariate context, and the key assumptions that must hold for results to be trustworthy. Working through Sunburst Homes Construction’s pricing analysis, where a statistically significant coefficient masks confounding, multicollinearity, and heteroskedasticity, students learn not just how to run a regression but how to interrogate one — and when not to act on it.</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ol type="1">
+<li>✅ Distinguish between descriptive statistics and econometric analysis</li>
+<li>✅ Understand how regression fits a line by minimizing squared residuals</li>
+<li>✅ Interpret regression coefficients and conduct hypothesis tests</li>
+<li>✅ Identify and understand key regression assumptions</li>
+<li>✅ Recognize problems from heteroskedasticity and multicollinearity</li>
+<li>✅ Apply cross-sectional regression analysis to business decisions</li>
+<li>✅ Understand when panel data methods are needed</li>
+</ol>
+</section>
+<section id="introduction-the-4.2-million-question" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="introduction-the-4.2-million-question"><span class="header-section-number">8.1</span> Introduction: The $4.2 Million Question</h2>
+<p>It’s 8:45 AM on December 16, 2024. Jennifer Walsh, CEO of Sunburst Homes Construction, stands in her conference room reviewing twelve completed spec homes spread across El Paso. Her VP of Development, Michael Torres, has just presented his pricing analysis recommending they list the homes for a combined $6.1 million.</p>
+<p>Torres’s report is confident: “Our regression analysis <strong>proves</strong> which features drive value. Each renovation adds $47,830 to sale price. Each bedroom adds $22,450. The model is 84.7% accurate. We should renovate all twelve homes before listing.”</p>
+<p>Jennifer’s CFO, Margaret Chen, looks skeptical. “Michael, you’re recommending we spend $180,000 on renovations across all properties. You’re saying we’ll get back $574,000 in additional sale price. That’s a $394,000 net gain. Are you certain?”</p>
+<p>Torres taps his report. “The regression coefficient is statistically significant at p &lt; 0.001. The evidence is clear.”</p>
+<p>Margaret turns to Jennifer. “I don’t buy it. Renovated homes might sell for more because they’re in better neighborhoods, not because of the renovation itself. His bedroom coefficient seems inflated—bigger homes naturally have more bedrooms, so how can we separate the effect? And his model assumes prediction accuracy is the same for a $250,000 home and a $400,000 home. That doesn’t make sense.”</p>
+<p>Jennifer sets down the report. “Michael, I appreciate the analysis, but I’m not spending $180,000 based on a regression coefficient that might be confounded with neighborhood quality. Margaret’s right—we need to think more carefully about what this model actually tells us.”</p>
+<p>She pauses. “I remember hearing about two EMBA students who helped TechFlow, PrecisionCast, BorderMed, DesertVine, and PixelPerfect with their statistical challenges. They’re supposed to be excellent at untangling these issues. Let’s get them to review this analysis.”</p>
+<p>The quality control team reaches out to The University of Texas at El Paso EMBA program. Within hours, David Martinez and Maria Rodriguez are reviewing Torres’s report.</p>
+<p>David reads through it carefully. “This is actually good news. Torres collected solid data—500 home sales with detailed characteristics. His regression model structure is sound. But he’s making classic interpretation errors that could cost Sunburst hundreds of thousands.”</p>
+<p>Maria nods. “He’s treating associations as if they’re causal effects. He’s ignoring multicollinearity between square footage and bedrooms. He’s not accounting for heteroskedasticity in the luxury segment. And that renovation coefficient? Almost certainly biased upward by omitted variables.”</p>
+<p>“Remember,” David says, “we’ve done descriptive statistics with TechFlow, probability with PrecisionCast, inference with BorderMed, ANOVA with DesertVine, and categorical analysis with PixelPerfect. But this is our first full econometric analysis. This is different. Regression isn’t just about fitting a line to data—it’s about understanding what we can and cannot conclude from observational data.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The Cost of Causal Confusion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When TechFlow said “around $767,000,” they couldn’t set precise budgets.</p>
+<p>When PrecisionCast said “tests are pretty good,” they risked shipping defective parts.</p>
+<p>When Sunburst treats regression associations as causal effects and ignores endogeneity, they might waste $180,000 on renovations that don’t generate the expected returns—or miss the real drivers of home value.</p>
+<p><strong>In regression analysis, the difference between association and causation isn’t just academic. It’s the difference between good decisions and expensive mistakes.</strong></p>
+<p><strong>The fix</strong>: Understand what regression can and cannot tell you. Test assumptions. Acknowledge limitations. Separate prediction from causation.</p>
+</div>
+</div>
+<p>This chapter is about that difference. Between correlation and causation. Between fitting a model and making causal inferences. Between statistical significance and practical decision-making.</p>
+<p>Welcome to econometrics. The art and science of learning from observational data while respecting its limitations.</p>
+</section>
+<section id="from-description-to-explanation-what-makes-regression-different" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="from-description-to-explanation-what-makes-regression-different"><span class="header-section-number">8.2</span> From Description to Explanation: What Makes Regression Different?</h2>
+<p>Before David and Maria dive into Sunburst’s pricing challenge, they review how regression analysis differs from everything they’ve done before.</p>
+<section id="what-weve-learned-so-far" class="level3">
+<h3 class="anchored" data-anchor-id="what-weve-learned-so-far">What We’ve Learned So Far</h3>
+<p>Over the past nine months, they’ve built a statistical toolkit:</p>
+<p><strong>Descriptive Statistics (TechFlow):</strong><br>
+- Calculated means, medians, standard deviations<br>
+- Identified outliers and distribution shapes<br>
+- Measured correlation between variables<br>
+- <em>Purpose</em>: Summarize what happened in the data</p>
+<p><strong>Probability (PrecisionCast):</strong><br>
+- Modeled defect rates and expected values<br>
+- Applied conditional probability and Bayes’ theorem<br>
+- Used distributions to predict future outcomes<br>
+- <em>Purpose</em>: Predict what might happen next</p>
+<p><strong>Statistical Inference (BorderMed):</strong><br>
+- Tested hypotheses about population parameters<br>
+- Constructed confidence intervals<br>
+- Distinguished between statistical and practical significance<br>
+- <em>Purpose</em>: Make statements about populations from samples</p>
+<p><strong>ANOVA (DesertVine):</strong><br>
+- Compared means across multiple groups<br>
+- Identified which factors matter<br>
+- Controlled for multiple testing<br>
+- <em>Purpose</em>: Determine if group differences are real</p>
+<p><strong>Categorical Data Analysis (PixelPerfect):</strong><br>
+- Tested independence between categorical variables<br>
+- Analyzed contingency tables<br>
+- Understood Simpson’s paradox<br>
+- <em>Purpose</em>: Understand relationships in categorical data</p>
+</section>
+<section id="what-regression-adds-the-holding-all-else-constant-framework" class="level3">
+<h3 class="anchored" data-anchor-id="what-regression-adds-the-holding-all-else-constant-framework">What Regression Adds: The “Holding All Else Constant” Framework</h3>
+<p>Maria pulls up the Sunburst dataset on her laptop. “All these previous analyses asked ‘Are these variables related?’ or ‘Do these groups differ?’ Regression asks something more ambitious: ‘How much does X affect Y, controlling for everything else we can measure?’”</p>
+<p>David continues, “When Torres says ‘each bedroom adds $22,450,’ he means: compare two homes that are identical in square footage, age, lot size, garage spaces, pool status, renovation status, and neighborhood—but one has an extra bedroom. On average, that home sells for $22,450 more.”</p>
+<p>“That’s the key phrase,” Maria emphasizes. “‘<strong>Holding all else constant.</strong>’ We’re trying to isolate the independent effect of bedrooms by statistically controlling for other factors. This is fundamentally different from simple correlation.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Key Distinction: Correlation vs.&nbsp;Regression
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Correlation (from Lecture 1):</strong></p>
+<p><span class="math display">\[r = \frac{\text{Cov}(X,Y)}{s_X \cdot s_Y}\]</span></p>
+<ul>
+<li>Measures strength of linear association<br>
+</li>
+<li>Symmetric: Cor(X,Y) = Cor(Y,X)<br>
+</li>
+<li>No “controlling for” other variables<br>
+</li>
+<li><strong>Example</strong>: r = 0.76 between square footage and bedrooms<br>
+</li>
+<li><strong>Interpretation</strong>: Larger homes tend to have more bedrooms</li>
+</ul>
+<p><strong>Regression (Lecture 7):</strong></p>
+<p><span class="math display">\[\text{Price} = \beta_0 + \beta_1(\text{sqft}) + \beta_2(\text{bedrooms}) + \cdots + \varepsilon\]</span></p>
+<ul>
+<li>Measures effect of X on Y holding other variables constant<br>
+</li>
+<li>Asymmetric: We specify Y (dependent) and X (independent)<br>
+</li>
+<li><strong>Controls for</strong> correlation between predictors<br>
+</li>
+<li><strong>Example</strong>: β₂ = $22,450 (bedroom coefficient with sqft in model)<br>
+</li>
+<li><strong>Interpretation</strong>: Adding a bedroom is associated with $22,450 higher price, <em>comparing homes with the same square footage</em></li>
+</ul>
+<p><strong>The Critical Difference</strong>: Correlation can’t separate effects of correlated variables. Regression attempts to—but success depends on having good controls and meeting key assumptions.</p>
+</div>
+</div>
+</section>
+<section id="the-econometric-challenge-observational-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-econometric-challenge-observational-data">The Econometric Challenge: Observational Data</h3>
+<p>“Here’s what makes this hard,” David says. “In a controlled experiment, BorderMed could randomly assign patients to treatment and control groups. Randomization ensures the groups are identical except for the treatment, so any difference in outcomes must be due to the treatment.”</p>
+<p>“But Sunburst can’t randomly assign renovations to homes,” Maria continues. “Homeowners choose which homes to renovate. Those choices aren’t random—they renovate homes in up-and-coming neighborhoods, homes with good bones, homes where the investment will pay off. So when we see renovated homes selling for more, is it because of the renovation, or because those homes were already more valuable in ways we can’t measure?”</p>
+<p>David nods. “That’s the fundamental challenge of econometrics. We’re trying to make causal inferences from observational data. Unlike an experiment where we control the treatment assignment, we’re working with data where decisions were made by people pursuing their own objectives. Those decisions create selection bias and endogeneity problems that correlation and simple regression can’t solve.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Controlled Experiments vs.&nbsp;Observational Studies
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Controlled Experiment (BorderMed’s Drug Trial):</strong></p>
+<ul>
+<li>Researchers randomly assign treatment<br>
+</li>
+<li>Randomization ensures groups are comparable<br>
+</li>
+<li>Can make strong causal inferences<br>
+</li>
+<li><strong>“This drug causes blood pressure to decrease”</strong></li>
+</ul>
+<p><strong>Observational Study (Sunburst’s Housing Data):</strong></p>
+<ul>
+<li>People choose actions based on unobserved factors<br>
+</li>
+<li>Groups may differ in unmeasured ways<br>
+</li>
+<li>Must carefully interpret associations<br>
+</li>
+<li><strong>“Renovated homes are associated with higher prices, but this association may partly reflect unobserved neighborhood quality”</strong></li>
+</ul>
+<p><strong>Regression with observational data</strong> can control for <em>measured</em> confounders but can’t account for <em>unmeasured</em> ones. This is why we must be cautious about causal language.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="what-is-regression-actually-doing-the-mechanics" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="what-is-regression-actually-doing-the-mechanics"><span class="header-section-number">8.3</span> What Is Regression Actually Doing? The Mechanics</h2>
+<p>Before evaluating Torres’s analysis, David and Maria want to make sure they understand exactly what regression does mathematically.</p>
+<section id="the-goal-minimizing-squared-prediction-errors" class="level3">
+<h3 class="anchored" data-anchor-id="the-goal-minimizing-squared-prediction-errors">The Goal: Minimizing Squared Prediction Errors</h3>
+<p>Maria draws a scatter plot of home prices vs.&nbsp;square footage on the whiteboard.</p>
+<p>“Regression draws a line through this cloud of points. But what makes one line better than another?”</p>
+<p>David points to several homes above and below any potential line. “For each home, we can calculate the prediction error—the vertical distance between the actual price and the predicted price from our line. Regression finds the line that makes these errors as small as possible.”</p>
+<p>“More precisely,” Maria adds, “it minimizes the <em>sum of squared errors</em>. We square the errors so positive and negative errors don’t cancel out, and squaring penalizes large errors more than small ones.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Ordinary Least Squares (OLS) Regression
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The Model:</strong></p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_k X_{ki} + \varepsilon_i\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(Y_i\)</span> = outcome for observation i (e.g., home price)<br>
+</li>
+<li><span class="math inline">\(X_{1i}, X_{2i}, \ldots, X_{ki}\)</span> = predictor variables for observation i<br>
+</li>
+<li><span class="math inline">\(\beta_0\)</span> = intercept (predicted Y when all X’s = 0)<br>
+</li>
+<li><span class="math inline">\(\beta_1, \beta_2, \ldots, \beta_k\)</span> = coefficients (slopes)<br>
+</li>
+<li><span class="math inline">\(\varepsilon_i\)</span> = error term (residual)</li>
+</ul>
+<p><strong>What OLS Does:</strong></p>
+<p>Chooses coefficient estimates <span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1, \ldots, \hat{\beta}_k\)</span> that minimize:</p>
+<p><span class="math display">\[\text{SSE} = \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2 = \sum_{i=1}^{n} (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_{1i} - \cdots - \hat{\beta}_k X_{ki})^2\]</span></p>
+<p>where <span class="math inline">\(\hat{Y}_i\)</span> is the predicted value for observation i.</p>
+<p><strong>In Plain English</strong>:</p>
+<p>Find the line (or hyperplane in multiple dimensions) that makes predictions as close as possible to actual values, where “close” means minimizing squared vertical distances.</p>
+<hr>
+<p><strong>Excel</strong>:</p>
+<p>Data Analysis → Regression, or use <code>=LINEST()</code> function</p>
+</div>
+</div>
+</section>
+<section id="visualizing-the-fit-predicted-values-and-residuals" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-the-fit-predicted-values-and-residuals">Visualizing the Fit: Predicted Values and Residuals</h3>
+<p>David sketches a simple example with just one predictor (square footage):</p>
+<p>“Say our regression line is: Price = $52,840 + $125.40 × sqft”</p>
+<p>“For a 2,000 sqft home:<br>
+Predicted price = $52,840 + $125.40(2,000) = $303,640”</p>
+<p>“If the actual sale price was $315,000:<br>
+Residual = $315,000 - $303,640 = $11,360”</p>
+<p>“The home sold for $11,360 more than our model predicted. That $11,360 is the part of the price our model can’t explain with square footage alone. It might be due to other factors: great location within the neighborhood, recent updates, nice views, or just randomness in negotiations.”</p>
+<p>Maria adds, “OLS finds coefficients that make the sum of all these squared residuals as small as possible across all 500 homes. That’s why it’s called ‘least squares’—it minimizes the squares of the residuals.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Key Terms: Fitted Values, Residuals, and R²
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Fitted (Predicted) Value:</strong></p>
+<p><span class="math display">\[\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_{1i} + \cdots + \hat{\beta}_k X_{ki}\]</span></p>
+<p>What our model predicts for observation i based on its X values.</p>
+<p><strong>Residual:</strong></p>
+<p><span class="math display">\[e_i = Y_i - \hat{Y}_i\]</span></p>
+<p>The prediction error. How far off our prediction was for observation i.</p>
+<p><strong>R-Squared (R²):</strong></p>
+<p><span class="math display">\[R^2 = 1 - \frac{\sum e_i^2}{\sum (Y_i - \bar{Y})^2} = 1 - \frac{\text{SSE}}{\text{SST}}\]</span></p>
+<ul>
+<li><strong>Interpretation</strong>: Proportion of variance in Y explained by the model<br>
+</li>
+<li><strong>Range</strong>: 0 to 1 (or 0% to 100%)<br>
+</li>
+<li><strong>Common misinterpretation</strong>: Torres claims R² = 0.847 means “84.7% prediction accuracy.” <strong>Wrong.</strong> It means the model explains 84.7% of the variance in prices. Individual predictions can still have large errors.</li>
+</ul>
+<p><strong>The Correct Interpretation</strong>: Our model reduces prediction error by 84.7% compared to just predicting the mean price for every home. But for any individual home, the prediction interval is still quite wide (roughly ±$37,000).</p>
+</div>
+</div>
+</section>
+<section id="multiple-regression-the-all-else-equal-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-regression-the-all-else-equal-interpretation">Multiple Regression: The “All Else Equal” Interpretation</h3>
+<p>“Here’s where it gets interesting,” David says. “With one predictor, the slope just tells us how Y changes with X. But with multiple predictors, each coefficient represents the change in Y for a one-unit change in that X, <em>holding all other X’s constant</em>.”</p>
+<p>Maria pulls up Torres’s model:</p>
+<p><span class="math display">\[\begin{aligned}
+\text{Price} = \beta_0 &amp;+ \beta_1(\text{sqft}) + \beta_2(\text{bedrooms}) + \beta_3(\text{bathrooms}) \\
+&amp;+ \beta_4(\text{age}) + \beta_5(\text{lot\_size}) + \beta_6(\text{garage}) \\
+&amp;+ \beta_7(\text{pool}) + \beta_8(\text{renovated}) + \sum \beta_i(\text{neighborhood}_i) + \varepsilon
+\end{aligned}\]</span></p>
+<p>“The bedroom coefficient (β₂ = $22,450) means: compare two homes with the same square footage, same age, same lot size, same number of bathrooms, same garage, same pool status, same renovation status, in the same neighborhood—but one has an extra bedroom. On average, that home sells for $22,450 more.”</p>
+<p>“That ‘holding all else constant’ interpretation is powerful,” David emphasizes. “It lets us isolate effects. But—and this is crucial—it only works if we’ve measured all the important confounding variables and if our model meets certain assumptions. If we’ve missed something important, our coefficient estimates will be biased.”</p>
+</section>
+</section>
+<section id="reading-regression-output-coefficients-and-hypothesis-tests" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="reading-regression-output-coefficients-and-hypothesis-tests"><span class="header-section-number">8.4</span> Reading Regression Output: Coefficients and Hypothesis Tests</h2>
+<p>David pulls up Torres’s regression output. “Let’s make sure we can read this correctly before we critique it.”</p>
+<section id="the-regression-table" class="level3">
+<h3 class="anchored" data-anchor-id="the-regression-table">The Regression Table</h3>
+<p>Maria projects Torres’s results:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 16%">
+<col style="width: 20%">
+<col style="width: 13%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std Error</th>
+<th>t-statistic</th>
+<th>p-value</th>
+<th>95% CI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td>$52,840</td>
+<td>$18,420</td>
+<td>2.87</td>
+<td>0.004</td>
+<td>[$16,620, $89,060]</td>
+</tr>
+<tr class="even">
+<td>Square Feet</td>
+<td>$125.40</td>
+<td>$8.60</td>
+<td>14.58</td>
+<td>&lt;0.001</td>
+<td>[$108.50, $142.30]</td>
+</tr>
+<tr class="odd">
+<td>Bedrooms</td>
+<td>$22,450</td>
+<td>$7,630</td>
+<td>2.94</td>
+<td>0.003</td>
+<td>[$7,470, $37,430]</td>
+</tr>
+<tr class="even">
+<td>Bathrooms</td>
+<td>$8,220</td>
+<td>$4,480</td>
+<td>1.83</td>
+<td>0.067</td>
+<td>[-$580, $17,020]</td>
+</tr>
+<tr class="odd">
+<td>Age (years)</td>
+<td>-$2,180</td>
+<td>$320</td>
+<td>-6.81</td>
+<td>&lt;0.001</td>
+<td>[-$2,810, -$1,550]</td>
+</tr>
+<tr class="even">
+<td>Lot Size</td>
+<td>$1.85</td>
+<td>$0.73</td>
+<td>2.53</td>
+<td>0.012</td>
+<td>[$0.41, $3.29]</td>
+</tr>
+<tr class="odd">
+<td>Garage Spaces</td>
+<td>$6,840</td>
+<td>$2,990</td>
+<td>2.29</td>
+<td>0.023</td>
+<td>[$960, $12,720]</td>
+</tr>
+<tr class="even">
+<td>Pool (yes=1)</td>
+<td>$18,900</td>
+<td>$9,210</td>
+<td>2.05</td>
+<td>0.041</td>
+<td>[$680, $37,120]</td>
+</tr>
+<tr class="odd">
+<td>Renovated (yes=1)</td>
+<td>$47,830</td>
+<td>$8,940</td>
+<td>5.35</td>
+<td>&lt;0.001</td>
+<td>[$30,270, $65,390]</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="interpreting-coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-coefficients">Interpreting Coefficients</h3>
+<p>“Let’s take square footage,” David says. “The coefficient is $125.40. This means that, holding all other variables constant, a home with one additional square foot is associated with a sale price that is, on average, $125.40 higher.”</p>
+<p>“Note the language,” Maria emphasizes. “‘Is associated with,’ not ‘causes.’ We’re describing a pattern in the data, not making a causal claim. For square footage, the causal interpretation is probably reasonable—it’s hard to imagine major confounding. But for other variables, we need to be more careful.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How to Read Regression Coefficients
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Generic Form</strong>: “A one-unit increase in X is associated with a β change in Y, holding all other variables constant.”</p>
+<p><strong>For Continuous Variables</strong>:</p>
+<ul>
+<li><strong>Sqft coefficient ($125.40)</strong>: A 1 sqft larger home is associated with $125.40 higher price, all else equal<br>
+</li>
+<li><strong>Age coefficient (-$2,180)</strong>: Each additional year of age is associated with $2,180 lower price, all else equal<br>
+</li>
+<li><em>Useful transformation</em>: Multiply by meaningful unit change<br>
+</li>
+<li>“A 100 sqft larger home → +$12,540”<br>
+</li>
+<li>“A 10-year-older home → -$21,800”</li>
+</ul>
+<p><strong>For Binary Variables (0/1)</strong>:</p>
+<ul>
+<li><strong>Pool coefficient ($18,900)</strong>: Homes with pools sell for $18,900 more on average than homes without pools, holding other characteristics constant<br>
+</li>
+<li><strong>Renovated coefficient ($47,830)</strong>: Renovated homes sell for $47,830 more than non-renovated homes, all else equal (but see endogeneity discussion later!)</li>
+</ul>
+<p><strong>For The Intercept</strong>:</p>
+<ul>
+<li><strong>$52,840</strong>: Predicted price for a home with all X variables = 0<br>
+</li>
+<li><em>Usually not meaningful</em> (what’s a zero sqft home in the base neighborhood?)<br>
+</li>
+<li>Important for predictions, but don’t over-interpret</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="standard-errors-and-t-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="standard-errors-and-t-statistics">Standard Errors and t-statistics</h3>
+<p>“The standard error tells us how precise our estimate is,” David explains. “For square footage, the standard error is $8.60. This means if we took many samples and estimated this coefficient each time, the estimates would typically vary by about $8.60 around the true value.”</p>
+<p>“The t-statistic is just the coefficient divided by its standard error,” Maria adds. “For square footage: t = $125.40 / $8.60 = 14.58. Large t-statistics (typically |t| &gt; 2) indicate the coefficient is statistically significantly different from zero.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The Standard Hypothesis Test for Regression Coefficients
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Null Hypothesis</strong>: <span class="math inline">\(H_0: \beta_j = 0\)</span> (the variable has no effect)</p>
+<p><strong>Alternative Hypothesis</strong>: <span class="math inline">\(H_A: \beta_j \neq 0\)</span> (the variable has an effect)</p>
+<p><strong>Test Statistic</strong>:</p>
+<p><span class="math display">\[t = \frac{\hat{\beta}_j - 0}{SE(\hat{\beta}_j)}\]</span></p>
+<p><strong>Decision Rule</strong>: Reject <span class="math inline">\(H_0\)</span> if |t| &gt; t-critical or if p-value &lt; α</p>
+<p><strong>Interpretation</strong>:</p>
+<ul>
+<li><strong>Reject <span class="math inline">\(H_0\)</span></strong>: We have evidence that this variable is associated with the outcome<br>
+</li>
+<li><strong>Fail to reject <span class="math inline">\(H_0\)</span></strong>: Insufficient evidence that this variable matters (after controlling for other variables)</li>
+</ul>
+<p><strong>Critical Note from BorderMed Chapter</strong>: “Failing to reject <span class="math inline">\(H_0\)</span>” does not mean “accepting” that β = 0. It means we don’t have enough evidence to conclude β ≠ 0. The true effect could be zero, or it could be small and we lack power to detect it, or it could be confounded with other variables.</p>
+</div>
+</div>
+</section>
+<section id="the-p-value-what-it-actually-means" class="level3">
+<h3 class="anchored" data-anchor-id="the-p-value-what-it-actually-means">The p-value: What It Actually Means</h3>
+<p>Maria points to the p-values in Torres’s output.</p>
+<p>“Square footage has p &lt; 0.001. This means: <em>if</em> the true coefficient were actually zero (i.e., if square footage had no effect on price), the probability of observing a coefficient as large as $125.40 (or larger) purely by chance would be less than 0.1%. Since that’s very unlikely, we conclude square footage is statistically significantly associated with price.”</p>
+<p>“But look at bathrooms,” David adds. “The coefficient is $8,220 with p = 0.067. Using the conventional α = 0.05 threshold, this is not statistically significant. We cannot confidently conclude that bathrooms have an independent effect on price after controlling for square footage and bedrooms.”</p>
+<p>“This doesn’t necessarily mean bathrooms don’t matter,” Maria clarifies. “It means we can’t distinguish their effect from zero with this data. Maybe they do matter but the effect is small. Or maybe their effect is confounded with square footage—bigger homes have more bathrooms, so it’s hard to separate the effects.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Common p-value Misinterpretations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Wrong</strong>: “p = 0.003 means there’s a 99.7% chance the effect is real”</p>
+<p><strong>Right</strong>: “p = 0.003 means that if there were no true effect, we’d see a coefficient this large or larger by chance only 0.3% of the time”</p>
+<p><strong>Wrong</strong>: “p &lt; 0.05 means the effect is large enough to matter for business decisions”</p>
+<p><strong>Right</strong>: “p &lt; 0.05 means we have statistical evidence of an effect, but we must separately assess whether the magnitude is practically significant”</p>
+<p><strong>Wrong</strong>: “p = 0.067 means there’s no effect”</p>
+<p><strong>Right</strong>: “p = 0.067 means we lack sufficient evidence to conclude there’s an effect with 95% confidence. The true effect might be zero, small, or confounded.”</p>
+<p><strong>Remember from the BorderMed chapter</strong>: Statistical significance ≠ practical significance. A tiny effect can be statistically significant with large samples. A large effect can fail significance with small samples.</p>
+</div>
+</div>
+</section>
+<section id="confidence-intervals-quantifying-uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-intervals-quantifying-uncertainty">Confidence Intervals: Quantifying Uncertainty</h3>
+<p>“I actually prefer confidence intervals to p-values,” Maria says. “They give you the same information but also show the range of plausible values.”</p>
+<p>“Look at the pool coefficient,” David points out. “It’s $18,900 with a 95% CI of [$680, $37,120]. Yes, it’s statistically significant (p = 0.041), but look at that range! The true effect could be as small as $680 or as large as $37,120. That’s massive uncertainty.”</p>
+<p>“For business decisions,” Maria emphasizes, “we need to know both that an effect exists <em>and</em> how large it might be. The confidence interval tells us: we’re 95% confident the true effect of having a pool is somewhere between $680 and $37,120, holding everything else constant.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Confidence Intervals for Regression Coefficients
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Formula</strong>:</p>
+<p><span class="math display">\[CI_{95\%} = \hat{\beta}_j \pm t_{critical} \times SE(\hat{\beta}_j)\]</span></p>
+<p>where <span class="math inline">\(t_{critical}\)</span> is from the t-distribution with (n - k - 1) degrees of freedom.</p>
+<p><strong>Interpretation</strong>: We are 95% confident that the true coefficient lies within this interval.</p>
+<p><strong>Connection to Hypothesis Test</strong>: If the 95% CI excludes zero, then p &lt; 0.05 (reject <span class="math inline">\(H_0: \beta = 0\)</span>)</p>
+<p><strong>For Decision-Making</strong>:</p>
+<ul>
+<li><strong>Narrow CI</strong>: Precise estimate, more confidence in the magnitude<br>
+</li>
+<li><strong>Wide CI</strong>: Imprecise estimate, less useful for planning<br>
+</li>
+<li><strong>Example</strong>: Pool CI [$680, $37,120] is very wide—high uncertainty about true effect size</li>
+</ul>
+<p><strong>Better Than p-values?</strong>: Many statisticians prefer CIs because they convey both: 1. Whether the effect is statistically significant (does CI exclude 0?)<br>
+2. What range of effect sizes is plausible (business relevance)</p>
+</div>
+</div>
+</section>
+</section>
+<section id="regression-assumptions-what-could-go-wrong" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="regression-assumptions-what-could-go-wrong"><span class="header-section-number">8.5</span> Regression Assumptions: What Could Go Wrong?</h2>
+<p>“Torres’s regression output looks technically correct,” David says. “Excel did the calculations right. But a regression model only gives reliable results if certain assumptions hold. Let’s check them.”</p>
+<section id="the-classical-linear-regression-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="the-classical-linear-regression-assumptions">The Classical Linear Regression Assumptions</h3>
+<p>Maria writes out the key assumptions on the whiteboard:</p>
+<ol type="1">
+<li><strong>Linearity</strong>: The relationship between X and Y is linear</li>
+<li><strong>Independence</strong>: Observations are independent of each other</li>
+<li><strong>Homoskedasticity</strong>: Constant error variance across all levels of X</li>
+<li><strong>Normality</strong>: Errors are normally distributed (mainly matters for small samples)</li>
+<li><strong>No perfect multicollinearity</strong>: Predictors are not perfectly correlated</li>
+<li><strong>Exogeneity</strong>: Predictors are not correlated with the error term (no omitted variable bias)</li>
+</ol>
+<p>“The first four are technical assumptions about the model structure,” David explains. “They affect our standard errors and hypothesis tests. But they’re usually not fatal—we have remedies and robustness.”</p>
+<p>“The last two are more serious,” Maria emphasizes. “Multicollinearity makes it hard to separate effects of correlated predictors. Endogeneity (violation of exogeneity) means our coefficient estimates are biased—they’re systematically wrong, not just imprecise. No amount of additional data will fix bias from endogeneity.”</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The Big Three Problems in Torres’s Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Based on our review of the data and Torres’s approach, we’ve identified three major issues:</p>
+<p><strong>1. Multicollinearity</strong>: Square footage and bedrooms are highly correlated (r = 0.76), making it difficult to separately identify their effects. The bedroom coefficient is unstable.</p>
+<p><strong>2. Heteroskedasticity</strong>: Price variance increases with home size. Small homes show tight clustering around predictions; luxury homes show much greater variability. This affects our confidence intervals and prediction intervals, especially for high-end properties.</p>
+<p><strong>3. Endogeneity</strong>: The renovation variable is correlated with unobserved neighborhood quality factors. Homeowners selectively renovate certain homes, creating omitted variable bias. The $47,830 coefficient overstates the causal effect of renovation.</p>
+<p>We’ll examine each problem in detail.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="problem-1-multicollinearity" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="problem-1-multicollinearity"><span class="header-section-number">8.6</span> Problem #1: Multicollinearity</h2>
+<section id="what-is-multicollinearity" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-multicollinearity">What Is Multicollinearity?</h3>
+<p>David pulls up a scatter plot showing square footage vs.&nbsp;bedrooms.</p>
+<p>“Look at this. Homes with 1,500 sqft have 2-3 bedrooms. Homes with 3,000 sqft have 4-5 bedrooms. The correlation is 0.76. They move together.”</p>
+<p>“When predictors are highly correlated,” Maria explains, “regression struggles to figure out which one is really driving the outcome. Is price going up because of more bedrooms, or because of the larger square footage that comes with more bedrooms? The math can’t easily untangle them.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Multicollinearity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>What It Is</strong>: High correlation among predictor variables in a regression model.</p>
+<p><strong>Why It’s a Problem</strong>:</p>
+<ul>
+<li>Coefficient estimates become unstable (sensitive to small data changes)<br>
+</li>
+<li>Standard errors inflate (reducing t-statistics and widening CIs)<br>
+</li>
+<li>Difficult to determine individual effects of correlated predictors<br>
+</li>
+<li>Model predictions are still reliable, but individual coefficient interpretation becomes questionable</li>
+</ul>
+<p><strong>How to Detect</strong>:</p>
+<ol type="1">
+<li><strong>Correlation Matrix</strong>: Look for high correlations among predictors (|r| &gt; 0.7 is concerning)</li>
+<li><strong>Variance Inflation Factor (VIF)</strong>:</li>
+</ol>
+<p><span class="math display">\[VIF_j = \frac{1}{1 - R^2_j}\]</span></p>
+<p>where <span class="math inline">\(R^2_j\)</span> is the R² from regressing predictor j on all other predictors.</p>
+<p><strong>VIF Interpretation</strong>:<br>
+- VIF = 1: No correlation with other predictors<br>
+- VIF = 1-4: Mild multicollinearity (usually acceptable)<br>
+- VIF = 4-10: Moderate multicollinearity (concerning)<br>
+- VIF &gt; 10: Severe multicollinearity (problematic)</p>
+<hr>
+<p><strong>Excel</strong>: Use <code>=CORREL()</code> for correlation matrix; VIF requires running auxiliary regressions</p>
+</div>
+</div>
+</section>
+<section id="multicollinearity-in-the-sunburst-data" class="level3">
+<h3 class="anchored" data-anchor-id="multicollinearity-in-the-sunburst-data">Multicollinearity in the Sunburst Data</h3>
+<p>Maria runs the diagnostics:</p>
+<p><strong>Correlation Matrix (Selected Variables)</strong>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">Sqft</th>
+<th style="text-align: right;">Bedrooms</th>
+<th style="text-align: right;">Bathrooms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sqft</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.759</td>
+<td style="text-align: right;">0.879</td>
+</tr>
+<tr class="even">
+<td>Bedrooms</td>
+<td style="text-align: right;">0.759</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.642</td>
+</tr>
+<tr class="odd">
+<td>Bathrooms</td>
+<td style="text-align: right;">0.879</td>
+<td style="text-align: right;">0.642</td>
+<td style="text-align: right;">1.000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VIF Values</strong>:</p>
+<ul>
+<li>Square footage: VIF = 4.8</li>
+<li>Bedrooms: VIF = 4.2</li>
+<li>Bathrooms: VIF = 3.1</li>
+</ul>
+<p>“Both square footage and bedrooms have VIFs above 4,” David observes. “That’s moderate multicollinearity. Not severe enough to break the model, but enough to make us question the bedroom coefficient.”</p>
+<p>“Look at what happens,” Maria demonstrates. She removes bedrooms from the model and re-runs the regression. The square footage coefficient changes from $125.40 to $147.20. “See? When we remove bedrooms, square footage picks up part of the bedroom effect because they’re correlated. The coefficient is unstable.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The Bedroom Coefficient: Proceed with Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Torres reports bedrooms add $22,450 to home value. But:</p>
+<p><strong>Evidence of Multicollinearity</strong>: - Correlation with sqft: r = 0.759<br>
+- VIF = 4.2 (moderate multicollinearity)<br>
+- Coefficient sensitivity: Changes substantially when model specification changes</p>
+<p><strong>What This Means</strong>: - We cannot reliably separate the “bedroom effect” from the “square footage effect”<br>
+- The $22,450 estimate is imprecise (partly capturing correlated sqft)<br>
+- Small changes in sample or specification could change this coefficient substantially</p>
+<p><strong>For Decision-Making</strong>: - Focus on square footage as the primary size metric (VIF still elevated but more stable)<br>
+- Don’t make investment decisions based on bedroom count alone<br>
+- Recognize that “4 bedrooms” and “3,000 sqft” are closely related—you usually get both or neither</p>
+<p><strong>Torres’s Mistake</strong>: He recommends “maximizing bedroom count” based on the $22,450 coefficient. But that coefficient is confounded with square footage. Adding a bedroom without adding square footage (e.g., subdividing existing space) might not generate anywhere near $22,450 in value.</p>
+</div>
+</div>
+</section>
+<section id="what-to-do-about-multicollinearity" class="level3">
+<h3 class="anchored" data-anchor-id="what-to-do-about-multicollinearity">What to Do About Multicollinearity</h3>
+<p>“So how do we handle this?” David asks.</p>
+<p>Maria thinks carefully. “A few options, none perfect:”</p>
+<p><strong>Option 1: Accept It and Be Careful</strong><br>
+“Acknowledge the multicollinearity in interpretation. Say ‘We can’t reliably separate bedroom and square footage effects, but we know size matters.’ Don’t make strong claims about bedroom coefficients.”</p>
+<p><strong>Option 2: Drop One of the Correlated Variables</strong><br>
+“If bedrooms and square footage are highly correlated, keep the one that’s more reliable or more actionable. In this case, keep square footage—it’s more precisely measured and more stable.”</p>
+<p><strong>Option 3: Combine Variables</strong><br>
+“Create a ‘home size’ index that combines square footage and bedrooms. This recognizes they’re measuring similar underlying constructs.”</p>
+<p><strong>Option 4: Collect More Data or Use Different Methods</strong><br>
+“With panel data or instrumental variables, we might be able to better separate effects. But that’s beyond the scope of this project.”</p>
+<p>“For Sunburst,” David concludes, “we’ll recommend Option 1 and Option 2. Acknowledge the multicollinearity, emphasize square footage over bedroom count, and avoid strong causal claims about bedrooms.”</p>
+</section>
+</section>
+<section id="problem-2-heteroskedasticity" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="problem-2-heteroskedasticity"><span class="header-section-number">8.7</span> Problem #2: Heteroskedasticity</h2>
+<section id="what-is-heteroskedasticity" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-heteroskedasticity">What Is Heteroskedasticity?</h3>
+<p>“Homo-ske-das-ti-city,” David sounds out slowly. “That’s a mouthful. It means ‘equal variance.’ Hetero-skedasticity means ‘unequal variance.’”</p>
+<p>Maria draws a diagram showing residuals vs.&nbsp;fitted values. “Homoskedasticity means the spread of residuals is constant across all levels of our predictor. Heteroskedasticity means the spread changes—often getting wider for larger predicted values.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Heteroskedasticity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Homoskedasticity (The Assumption)</strong>:<br>
+Error variance is constant: <span class="math inline">\(\text{Var}(\varepsilon_i) = \sigma^2\)</span> for all i</p>
+<p><strong>Heteroskedasticity (The Violation)</strong>:<br>
+Error variance changes: <span class="math inline">\(\text{Var}(\varepsilon_i) = \sigma^2_i\)</span> varies with X or predicted Y</p>
+<p><strong>Why It Matters</strong>:</p>
+<ul>
+<li>Standard errors are incorrect (usually too small)<br>
+</li>
+<li>Confidence intervals are wrong (usually too narrow)<br>
+</li>
+<li>Hypothesis tests can be misleading (may overstate significance)<br>
+</li>
+<li>Coefficient estimates remain unbiased, but we lose efficiency<br>
+</li>
+<li>Prediction intervals are more problematic for some observations than others</li>
+</ul>
+<p><strong>How to Detect</strong>:</p>
+<ol type="1">
+<li><strong>Visual</strong>: Plot residuals vs.&nbsp;fitted values; look for “fan shape”<br>
+</li>
+<li><strong>Breusch-Pagan Test</strong>: Formal test of constant variance
+<ul>
+<li><span class="math inline">\(H_0\)</span>: Homoskedasticity (constant variance)<br>
+</li>
+<li><span class="math inline">\(H_A\)</span>: Heteroskedasticity<br>
+</li>
+</ul></li>
+<li><strong>White Test</strong>: More general test allowing non-linear forms</li>
+</ol>
+<p><strong>Common Patterns in Business Data</strong>: - Larger firms have more variable performance<br>
+- Wealthier customers show more diverse spending patterns<br>
+- Luxury goods show more price variation than commodities<br>
+- <strong>Real estate</strong>: Expensive homes show more price variance than modest homes</p>
+</div>
+</div>
+</section>
+<section id="heteroskedasticity-in-the-sunburst-data" class="level3">
+<h3 class="anchored" data-anchor-id="heteroskedasticity-in-the-sunburst-data">Heteroskedasticity in the Sunburst Data</h3>
+<p>Maria shows David the residual plot. “Look at this. For homes with fitted values around $220,000, the residuals are tightly clustered—most within ±$15,000 of the prediction. But for homes with fitted values around $350,000, the residuals are all over the place—some ±$40,000 or more.”</p>
+<p>David runs the Breusch-Pagan test:<br>
+- Test statistic: χ² = 28.4<br>
+- P-value = 0.002<br>
+- Conclusion: Reject null hypothesis of constant variance</p>
+<p>“This makes sense intuitively,” Maria notes. “In the modest home market ($200k-$250k), homes are relatively standardized. Buyers care mainly about size and condition. In the luxury market ($350k+), buyers are more heterogeneous. Some value pools, others value lot size, others value specific neighborhoods. More buyer preference diversity means more price variability.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Implications of Heteroskedasticity for Sunburst
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Problem</strong>: Torres’s model assumes prediction uncertainty is the same for all homes. But our analysis shows:</p>
+<ul>
+<li>Homes &lt; $250k: Residual SD ≈ $12,000<br>
+</li>
+<li>Homes $250k-$325k: Residual SD ≈ $18,000<br>
+</li>
+<li>Homes &gt; $325k: Residual SD ≈ $28,000</li>
+</ul>
+<p><strong>Torres’s Mistake</strong>: He reports a single “margin of error of ±$8,500” for all predictions. This dramatically understates uncertainty for luxury homes.</p>
+<p><strong>Correct Approach</strong>: - Small homes ($220k predicted): 95% prediction interval ≈ ±$24,000<br>
+- Medium homes ($280k predicted): 95% prediction interval ≈ ±$35,000<br>
+- Large homes ($360k predicted): 95% prediction interval ≈ ±$55,000</p>
+<p><strong>For Decision-Making</strong>: - Pricing luxury homes requires more judgment and wider ranges<br>
+- Don’t over-rely on point predictions for high-end properties<br>
+- The regression model is most useful for mid-market homes<br>
+- For luxury properties, comparable sales analysis (non-regression) may be more informative</p>
+</div>
+</div>
+</section>
+<section id="remedies-for-heteroskedasticity" class="level3">
+<h3 class="anchored" data-anchor-id="remedies-for-heteroskedasticity">Remedies for Heteroskedasticity</h3>
+<p>“So what do we do?” David asks.</p>
+<p>Maria lists the options:</p>
+<p><strong>Option 1: Use Robust Standard Errors</strong><br>
+“We can calculate ‘heteroskedasticity-robust’ standard errors (White standard errors) that remain valid even with non-constant variance. This fixes hypothesis tests and confidence intervals. Excel doesn’t do this automatically, but statistical software does.”</p>
+<p><strong>Option 2: Transform the Dependent Variable</strong><br>
+“Taking logs often helps. Instead of regressing Price on X, regress log(Price) on X. This can stabilize variance because percentage changes are more constant than absolute dollar changes. But interpretation becomes more complex—coefficients represent percentage effects.”</p>
+<p><strong>Option 3: Weighted Least Squares</strong><br>
+“If we know how variance changes with X, we can weight observations inversely to their variance. This gives more weight to precise observations (small homes) and less weight to noisy ones (luxury homes).”</p>
+<p><strong>Option 4: Acknowledge It in Interpretation</strong><br>
+“Be honest about prediction intervals varying across the range. Don’t report a single ±$8,500 margin—report different intervals for different home types.”</p>
+<p>“For Sunburst,” David decides, “we’ll go with Option 4. We’ll explain that prediction uncertainty increases with home value and provide separate confidence ranges for different market segments. That’s transparent and actionable.”</p>
+</section>
+</section>
+<section id="problem-3-endogeneitythe-most-serious-issue" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="problem-3-endogeneitythe-most-serious-issue"><span class="header-section-number">8.8</span> Problem #3: Endogeneity—The Most Serious Issue</h2>
+<section id="what-is-endogeneity" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-endogeneity">What Is Endogeneity?</h3>
+<p>“This is the big one,” Maria says seriously. “Multicollinearity makes coefficients imprecise. Heteroskedasticity makes standard errors wrong. But endogeneity makes coefficient estimates biased—systematically wrong. And it’s often unfixable without better data or different methods.”</p>
+<p>David nods. “One of our key regression assumptions is exogeneity: the predictors are uncorrelated with the error term. Formally: <span class="math inline">\(E(\varepsilon | X) = 0\)</span>. This means that conditional on our measured X variables, there are no systematic patterns in what’s left over.”</p>
+<p>“When this assumption is violated,” Maria continues, “we have endogeneity. This happens when:</p>
+<ol type="1">
+<li><strong>Omitted variable bias</strong>: An important variable is missing from the model, and it’s correlated with both an included predictor and the outcome<br>
+</li>
+<li><strong>Simultaneity</strong>: Y affects X while X affects Y (supply and demand is the classic example)<br>
+</li>
+<li><strong>Measurement error</strong>: X is measured with error, and that error is related to the outcome”</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Endogeneity and Omitted Variable Bias
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exogeneity (The Assumption)</strong>:<br>
+<span class="math inline">\(E(\varepsilon | X_1, X_2, \ldots, X_k) = 0\)</span></p>
+<p>In words: Conditional on our observed predictors, there are no other factors systematically affecting Y.</p>
+<p><strong>Endogeneity (The Violation)</strong>:<br>
+<span class="math inline">\(E(\varepsilon | X_1, X_2, \ldots, X_k) \neq 0\)</span></p>
+<p>Some predictor is correlated with unobserved factors in the error term.</p>
+<p><strong>Most Common Source: Omitted Variable Bias</strong></p>
+<p>Suppose the true model is: <span class="math display">\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \varepsilon\]</span></p>
+<p>But we only observe <span class="math inline">\(X_1\)</span> and estimate: <span class="math display">\[Y = \beta_0 + \beta_1 X_1 + u\]</span></p>
+<p>where <span class="math inline">\(u = \beta_2 X_2 + \varepsilon\)</span>.</p>
+<p><strong>If <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are correlated</strong>, then <span class="math inline">\(X_1\)</span> is correlated with <span class="math inline">\(u\)</span>, violating exogeneity.</p>
+<p><strong>Result</strong>: Our estimate <span class="math inline">\(\hat{\beta}_1\)</span> is biased. Even with infinite data, it won’t converge to the true <span class="math inline">\(\beta_1\)</span>. The bias is:</p>
+<p><span class="math display">\[\text{Bias}(\hat{\beta}_1) = \beta_2 \cdot \frac{\text{Cov}(X_1, X_2)}{\text{Var}(X_1)}\]</span></p>
+<p><strong>Direction of Bias</strong>:<br>
+- If <span class="math inline">\(X_2\)</span> positively affects Y and is positively correlated with <span class="math inline">\(X_1\)</span>: upward bias<br>
+- If <span class="math inline">\(X_2\)</span> positively affects Y but negatively correlated with <span class="math inline">\(X_1\)</span>: downward bias</p>
+</div>
+</div>
+</section>
+<section id="endogeneity-in-the-renovation-variable" class="level3">
+<h3 class="anchored" data-anchor-id="endogeneity-in-the-renovation-variable">Endogeneity in the Renovation Variable</h3>
+<p>Maria pulls up the summary statistics. “Look at this breakdown:</p>
+<p><strong>Renovation Rates by Neighborhood</strong>: - East Side: 12% of homes renovated<br>
+- West Side: 17%<br>
+- Central: 20%<br>
+- Mission Valley: 16%<br>
+- Northeast: 35%<br>
+- Kern Place: 39%</p>
+<p><strong>Average Prices</strong>: - Renovated homes: $291,000<br>
+- Non-renovated homes: $265,000<br>
+- Difference: $26,000”</p>
+<p>“Torres claims renovated homes sell for $47,830 more, controlling for neighborhood. But I’m skeptical,” David says. “Think about the decision process: when does a homeowner renovate?”</p>
+<p>Maria lists the factors:</p>
+<p>“They renovate when: 1. The home is in a good micro-location within the neighborhood (specific street, view, proximity to parks)<br>
+2. The home has good ‘bones’—solid structure, good layout<br>
+3. The neighborhood is improving, so the investment will pay off<br>
+4. The owner has high income and good taste<br>
+5. The home is older and needed updates”</p>
+<p>“Our model controls for neighborhood at a coarse level—East Side, Northeast, etc.,” David points out. “But within Northeast, there’s huge variation. Some blocks are near UTEP with student apartments; others are quiet residential streets with mountain views. Those micro-location factors affect both prices AND renovation decisions, but they’re not in our model.”</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The Endogeneity Problem with Renovation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Torres’s Coefficient</strong>: Renovated = +$47,830 (p &lt; 0.001)</p>
+<p><strong>Torres’s Interpretation</strong>: “Renovating a home causes a $47,830 increase in sale price”</p>
+<p><strong>The Problem</strong>: This assumes renovations are randomly assigned. They’re not. Owners selectively renovate homes that: - Are in better micro-locations (not captured by our coarse neighborhood dummies)<br>
+- Have better underlying quality (not captured by age, sqft, bedrooms)<br>
+- Are in improving sub-markets (not captured by time-constant neighborhood dummies)</p>
+<p><strong>The Result</strong>: The renovation coefficient is biased upward. It captures: 1. True causal effect of renovation (what we want)<br>
+2. Unobserved micro-location quality (bias)<br>
+3. Unobserved home quality (bias)<br>
+4. Unobserved neighborhood trends (bias)</p>
+<p><strong>Evidence of Bias</strong>: - Renovated homes are larger (2,487 sqft) than non-renovated (2,144 sqft)—even after controlling for size, renovated homes differ systematically<br>
+- Renovation rates vary 3x across neighborhoods (12% to 39%)—not random<br>
+- Simple difference ($26,000) is much smaller than regression coefficient ($47,830)—suggests confounding</p>
+<p><strong>What Torres Should Say</strong>:<br>
+“Renovated homes are associated with $47,830 higher prices, but this association likely reflects both the renovation itself AND unobserved quality factors that led to the renovation decision. We cannot interpret this as the causal effect of renovation.”</p>
+</div>
+</div>
+</section>
+<section id="why-this-matters-for-business-decisions" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-matters-for-business-decisions">Why This Matters for Business Decisions</h3>
+<p>“Here’s why this is critical,” Maria emphasizes. “Torres recommends Sunburst spend $15,000 renovating each spec home, expecting to recoup $47,830 in higher sale price—a $32,830 net gain per home, or $394,000 total across 12 homes.”</p>
+<p>“But that $47,830 coefficient is biased,” David responds. “It’s mixing the true renovation effect with unobserved location and quality factors. If Sunburst renovates a randomly selected spec home, they won’t get $47,830. They’ll get something less—maybe much less.”</p>
+<p>“How much less?” Maria asks.</p>
+<p>“Hard to say precisely without better data, but let’s think about it. The raw difference between renovated and non-renovated home prices is $26,000. That’s before controlling for anything. The regression coefficient is $47,830 after controlling for measured characteristics. The fact that the regression coefficient is HIGHER than the raw difference suggests the controls are picking up negative confounding—renovated homes are systematically different in ways that would otherwise push prices down (e.g., older, in less desirable sub-locations). But we know that’s not the whole story.”</p>
+<p>“Looking at within-neighborhood patterns,” Maria suggests, “in Northeast, renovated homes average $291k vs.&nbsp;$273k for non-renovated—difference of $18k. In Kern Place, $342k vs.&nbsp;$315k—difference of $27k. These are more plausible estimates of the true effect because we’re comparing more similar homes.”</p>
+<p>“So the true causal effect is probably in the $15,000-$25,000 range, not $47,830,” David concludes. “If renovations cost $15,000, the net benefit might be $0 to $10,000, not $32,830. Across 12 homes, that’s the difference between a $394,000 profit and maybe a $60,000 profit—or even a loss if renovation costs run over budget.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Torres’s $394,000 Mistake
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Torres’s Recommendation</strong>:<br>
+Renovate all 12 spec homes at $15,000 each = $180,000 total investment<br>
+Expected return: $47,830 × 12 = $573,960<br>
+Net profit: $393,960</p>
+<p><strong>Why It’s Wrong</strong>:<br>
+The $47,830 coefficient is biased upward by omitted variables. True causal effect is likely $15,000-$25,000.</p>
+<p><strong>More Realistic Scenario</strong>:<br>
+True renovation effect: ~$20,000<br>
+Expected return: $20,000 × 12 = $240,000<br>
+Net profit: $60,000</p>
+<p><strong>Worst Case</strong>:<br>
+True renovation effect: ~$15,000<br>
+Renovations cost more than expected: $18,000 each<br>
+Expected return: $15,000 × 12 = $180,000<br>
+Actual cost: $216,000<br>
+Net loss: -$36,000</p>
+<p><strong>Better Approach</strong>:<br>
+Use actual comparable sales of renovated vs.&nbsp;non-renovated homes in the specific neighborhoods where spec homes are located, rather than regression coefficients from observational data with endogeneity problems.</p>
+</div>
+</div>
+</section>
+<section id="can-we-fix-endogeneity" class="level3">
+<h3 class="anchored" data-anchor-id="can-we-fix-endogeneity">Can We Fix Endogeneity?</h3>
+<p>“So what do we do?” David asks.</p>
+<p>Maria sighs. “Endogeneity is hard to fix. Really hard. Here are the standard approaches, but none are perfect:”</p>
+<p><strong>Approach 1: Measure the Omitted Variables</strong><br>
+“If we could measure micro-location quality, school ratings, exact lot characteristics, etc., we could include them in the model. But that data isn’t available, or is expensive to collect.”</p>
+<p><strong>Approach 2: Instrumental Variables (IV)</strong><br>
+“Find a variable that affects renovation decisions but doesn’t directly affect home prices (except through renovation). This is the gold standard in econometrics, but good instruments are rare. For Sunburst, we can’t identify one with the available data.”</p>
+<p><strong>Approach 3: Natural Experiments</strong><br>
+“Find a setting where renovations were assigned for reasons unrelated to home quality—maybe a city program that randomly selected homes for renovation subsidies. Obviously not available here.”</p>
+<p><strong>Approach 4: Difference-in-Differences or Fixed Effects</strong><br>
+“With panel data—observing the same homes over time—we could compare price changes for homes that got renovated vs.&nbsp;those that didn’t. This controls for time-invariant unobserved quality. But we only have cross-sectional data.”</p>
+<p><strong>Approach 5: Be Honest About Limitations</strong><br>
+“Acknowledge the endogeneity, explain why the coefficient is likely biased, and recommend alternative evidence (comparable sales) for the decision.”</p>
+<p>“For Sunburst,” David decides, “we go with Approach 5. We can’t fix the endogeneity with this data, so we need to be transparent about limitations and recommend they don’t rely on the regression coefficient for renovation ROI calculations.”</p>
+</section>
+</section>
+<section id="a-brief-note-on-panel-data" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="a-brief-note-on-panel-data"><span class="header-section-number">8.9</span> A Brief Note on Panel Data</h2>
+<p>Maria pauses the analysis. “Before we finish with Sunburst, I want to touch on something we keep mentioning: panel data. We have cross-sectional data—500 homes, each observed once. But many econometric applications use panel data—multiple entities observed over time.”</p>
+<section id="what-is-panel-data" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-panel-data">What Is Panel Data?</h3>
+<p>David explains: “Remember from Lecture 1, we talked about three types of data structures:</p>
+<p><strong>Cross-Sectional</strong> (what we have): Different homes, one time point<br>
+<strong>Time Series</strong>: One entity, many time points<br>
+<strong>Panel</strong>: Multiple entities, multiple time points”</p>
+<p>“Panel data is incredibly powerful,” Maria adds, “because it lets you control for unobserved time-invariant characteristics. For example, if we observed each home multiple times over the years—maybe some got renovated mid-period—we could use ‘fixed effects’ models to control for all permanent home characteristics (location, lot quality, floor plan, etc.) and isolate the renovation effect.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Panel Data and Fixed Effects: A Preview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Cross-Sectional Model (What We Used)</strong>:</p>
+<p><span class="math display">\[\text{Price}_i = \beta_0 + \beta_1 X_{1i} + \cdots + \beta_k X_{ki} + \varepsilon_i\]</span></p>
+<p>where i indexes homes.</p>
+<p><strong>Panel Data Model</strong>:</p>
+<p><span class="math display">\[\text{Price}_{it} = \beta_0 + \beta_1 X_{1it} + \cdots + \beta_k X_{kit} + \alpha_i + u_{it}\]</span></p>
+<p>where: - i indexes homes<br>
+- t indexes time periods<br>
+- <span class="math inline">\(\alpha_i\)</span> is a home-specific fixed effect (captures all time-invariant characteristics)<br>
+- <span class="math inline">\(u_{it}\)</span> is the remaining error</p>
+<p><strong>Key Advantage</strong>: The fixed effect <span class="math inline">\(\alpha_i\)</span> absorbs all permanent differences between homes—location quality, lot characteristics, architectural features, etc. This eliminates omitted variable bias from these factors.</p>
+<p><strong>Example</strong>: Suppose Home A is renovated between 2022 and 2023. We compare: - Home A’s price in 2023 (post-renovation) to its own 2022 price (pre-renovation)<br>
+- Difference out the <span class="math inline">\(\alpha_i\)</span> (all permanent quality factors)<br>
+- What’s left is the renovation effect, free of bias from time-invariant omitted variables</p>
+<p><strong>Limitations</strong>:<br>
+- Need data on same homes over time (often unavailable for real estate)<br>
+- Can only identify effects of time-varying variables<br>
+- Doesn’t help with omitted variables that change over time<br>
+- More complex to implement and interpret</p>
+<p><strong>When to Use</strong>: Panel data methods are standard in labor economics (following workers over time), health economics (patients across periods), development economics (countries over years), and any setting where you observe the same entities repeatedly.</p>
+<p><strong>For This Course</strong>: Full panel data econometrics is beyond our scope, but you should know it exists and when to consult experts who specialize in these methods.</p>
+</div>
+</div>
+</section>
+<section id="other-advanced-methods" class="level3">
+<h3 class="anchored" data-anchor-id="other-advanced-methods">Other Advanced Methods</h3>
+<p>“There are many other econometric techniques for dealing with observational data challenges,” David notes:</p>
+<p><strong>Difference-in-Differences (DiD)</strong>: Compare changes over time for a treatment group vs.&nbsp;control group. Used for policy evaluation.</p>
+<p><strong>Regression Discontinuity (RD)</strong>: Exploit sharp cutoffs in treatment assignment (e.g., test score thresholds for program eligibility).</p>
+<p><strong>Synthetic Controls</strong>: Create a weighted combination of control units that mimics the treatment unit pre-intervention, then compare post-intervention.</p>
+<p><strong>Matching Methods</strong>: Find comparable treatment and control observations based on measured characteristics.</p>
+<p><strong>Time Series Econometrics</strong>: Models for data with serial correlation and trends (ARIMA, VAR, cointegration).</p>
+<p>“These are all tools for trying to make causal inferences from observational data,” Maria summarizes. “They’re not magic—they all require assumptions—but they’re often more credible than naive regression with endogeneity problems.”</p>
+<p>“For your careers,” David adds, “you don’t need to implement these yourself, but you should know they exist. When you face a business question with observational data and potential confounding, consider consulting an econometrician who can help you choose the right method.”</p>
+</section>
+</section>
+<section id="the-corrected-analysis-david-and-marias-report" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="the-corrected-analysis-david-and-marias-report"><span class="header-section-number">8.10</span> The Corrected Analysis: David and Maria’s Report</h2>
+<p>After thorough review, David and Maria prepare their consulting report for Sunburst Homes. Their report acknowledges the challenges with Torres’s analysis while providing actionable guidance.</p>
+<section id="key-corrections-and-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="key-corrections-and-recommendations">Key Corrections and Recommendations</h3>
+<p><strong>1. On Multicollinearity</strong></p>
+<p>“We cannot reliably separate the effects of square footage and bedroom count due to high correlation (r = 0.76, VIF &gt; 4 for both). The bedroom coefficient of $22,450 is imprecise and should not be used for investment decisions. Focus on total square footage as the primary size metric.”</p>
+<p><strong>2. On Heteroskedasticity</strong></p>
+<p>“Prediction uncertainty is not constant. Small homes (&lt;$250k) can be priced with ±$24,000 prediction intervals. Luxury homes (&gt;$325k) require ±$55,000 intervals. Don’t rely on a single ‘margin of error’ figure.”</p>
+<p><strong>3. On Endogeneity</strong></p>
+<p>“The renovation coefficient of $47,830 is likely biased upward by omitted variables. Homeowners selectively renovate homes in better micro-locations and with better underlying quality. We estimate the true causal effect at $15,000-$25,000 based on within-neighborhood comparables. Do not use the regression coefficient for ROI calculations.”</p>
+<p><strong>4. On Pricing Strategy</strong></p>
+<p>“Use regression to identify comparable homes with similar characteristics, then examine actual sales prices of those comparables. Apply qualitative adjustments for features the regression cannot capture. Construct prediction intervals that acknowledge uncertainty, particularly for higher-priced homes.”</p>
+<p><strong>5. On Renovation Decisions</strong></p>
+<p>“For spec homes in Northeast and Kern Place neighborhoods, comparable sales analysis suggests renovated homes sell for $18,000-$27,000 more than non-renovated comparables. If cosmetic renovations cost less than $15,000, they may generate positive ROI. For homes in other neighborhoods, the market evidence is weaker. In all cases, base decisions on comparable sales, not regression coefficients.”</p>
+</section>
+<section id="the-correct-interpretation-of-r²" class="level3">
+<h3 class="anchored" data-anchor-id="the-correct-interpretation-of-r²">The Correct Interpretation of R²</h3>
+<p>Maria addresses a final misconception: “Torres claimed R² = 0.847 means ‘84.7% accuracy.’ That’s incorrect. R² means the model explains 84.7% of the variance in home prices. For any individual home, prediction error can still be large.”</p>
+<p>“Think of it this way,” David adds. “If we just predicted every home would sell for the average price ($269,552), we’d have huge prediction errors. The regression reduces those errors by 84.7% by incorporating home characteristics. But that still leaves substantial unexplained variance—about 15% of the total, which translates to roughly ±$37,000 prediction intervals for typical homes.”</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>R²: What It Is and Isn’t
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>What R² Measures</strong>:<br>
+Proportion of variance in Y explained by the model: <span class="math inline">\(R^2 = 1 - \frac{SSE}{SST}\)</span></p>
+<p><strong>What R² = 0.847 Means</strong>:<br>
+- The model reduces prediction error by 84.7% compared to just predicting the mean<br>
+- 84.7% of the variance in home prices is associated with variation in our predictors<br>
+- 15.3% of the variance remains unexplained</p>
+<p><strong>What R² = 0.847 Does NOT Mean</strong>:<br>
+- ❌ “84.7% of individual predictions are accurate”<br>
+- ❌ “Prediction error is only 15.3%”<br>
+- ❌ “We can predict prices with 84.7% confidence”</p>
+<p><strong>Why This Matters</strong>:<br>
+Even with high R², individual predictions can have substantial error. For business decisions, examine: - Standard error of the regression (typical prediction error)<br>
+- Prediction intervals for specific cases (accounting for both coefficient uncertainty and residual variation)<br>
+- Whether R² is high enough for your application (depends on context—predicting human behavior may only achieve R² = 0.30, which could still be valuable)</p>
+<p><strong>Better Metrics for Prediction Quality</strong>:<br>
+- Root Mean Squared Error (RMSE): Average prediction error in outcome units<br>
+- Mean Absolute Error (MAE): Average absolute prediction error<br>
+- Prediction intervals: Range that will contain true value X% of the time</p>
+</div>
+</div>
+</section>
+</section>
+<section id="putting-it-all-together-regression-in-business-context" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="putting-it-all-together-regression-in-business-context"><span class="header-section-number">8.11</span> Putting It All Together: Regression in Business Context</h2>
+<p>As David and Maria finalize their report, they reflect on the broader lessons.</p>
+<section id="what-regression-can-do" class="level3">
+<h3 class="anchored" data-anchor-id="what-regression-can-do">What Regression Can Do</h3>
+<p>“Regression is incredibly useful,” Maria emphasizes. “It lets us:</p>
+<ul>
+<li>Quantify associations between variables while controlling for confounders<br>
+</li>
+<li>Make predictions about outcomes based on observable characteristics<br>
+</li>
+<li>Identify which factors matter most (through coefficient magnitudes and significance)<br>
+</li>
+<li>Provide probabilistic ranges for uncertain outcomes<br>
+</li>
+<li>Test hypotheses about relationships in data”</li>
+</ul>
+</section>
+<section id="what-regression-cannot-do-without-strong-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="what-regression-cannot-do-without-strong-assumptions">What Regression Cannot Do (Without Strong Assumptions)</h3>
+<p>“But regression is not magic,” David cautions. “With observational data, it cannot:</p>
+<ul>
+<li>Prove causation (only association)<br>
+</li>
+<li>Control for unmeasured confounders (endogeneity remains)<br>
+</li>
+<li>Solve selection bias or omitted variable bias without additional methods<br>
+</li>
+<li>Tell us what would happen under counterfactual interventions<br>
+</li>
+<li>Eliminate uncertainty or make decisions for us”</li>
+</ul>
+</section>
+<section id="the-econometricians-mindset" class="level3">
+<h3 class="anchored" data-anchor-id="the-econometricians-mindset">The Econometrician’s Mindset</h3>
+<p>“The biggest lesson,” Maria reflects, “is humility. Torres was too confident. He said the model ‘proves’ relationships, gives ‘84.7% accuracy,’ and provides ‘definitive guidance.’ Those claims are overreach.”</p>
+<p>“Good econometric analysis,” David adds, “requires acknowledging limitations, testing assumptions, being transparent about what we can and cannot conclude, and recognizing that statistical models inform decisions but don’t make them.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Principles for Applied Regression Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1. Be Clear About Your Goal</strong>:<br>
+- Description? Prediction? Causal inference?<br>
+- Different goals require different approaches and different standards of evidence</p>
+<p><strong>2. Understand Your Data</strong>:<br>
+- Observational or experimental?<br>
+- Cross-sectional, time series, or panel?<br>
+- What variables are measured? What’s missing?</p>
+<p><strong>3. Test Assumptions</strong>:<br>
+- Check for multicollinearity (VIF)<br>
+- Test for heteroskedasticity (Breusch-Pagan)<br>
+- Think hard about endogeneity (likely omitted variables?)<br>
+- Examine residual plots</p>
+<p><strong>4. Use Careful Language</strong>:<br>
+- “Associated with” not “causes”<br>
+- “Holding other measured factors constant”<br>
+- “In this sample” or “Based on this model”<br>
+- Acknowledge limitations explicitly</p>
+<p><strong>5. Assess Practical Significance</strong>:<br>
+- Statistical significance ≠ business relevance<br>
+- Examine coefficient magnitudes and confidence intervals<br>
+- Consider effect sizes relative to decision thresholds</p>
+<p><strong>6. Validate Predictions</strong>:<br>
+- Check predictions against holdout data when possible<br>
+- Provide prediction intervals, not just point estimates<br>
+- Acknowledge where uncertainty is greatest</p>
+<p><strong>7. Know When to Get Help</strong>:<br>
+- Severe endogeneity? Consider IV, RD, DiD<br>
+- Panel data? Consider fixed effects<br>
+- Time series? Consider ARIMA, VAR<br>
+- Complex selection? Consider matching, propensity scores<br>
+- Don’t force simple regression to answer causal questions it can’t handle</p>
+</div>
+</div>
+</section>
+</section>
+<section id="wrapping-up-the-path-forward" class="level2" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="wrapping-up-the-path-forward"><span class="header-section-number">8.12</span> Wrapping Up: The Path Forward</h2>
+<p>Jennifer Walsh reads David and Maria’s report carefully. “This is helpful. You’ve shown me that Michael’s analysis had the right data and the right model structure, but drew conclusions that were too strong.”</p>
+<p>“So what should we do?” asks Margaret Chen, the CFO.</p>
+<p>“Three things,” Jennifer decides. “First, price the spec homes using the comparable sales approach David and Maria recommended, not Michael’s regression formula. Second, skip the across-the-board renovations. Instead, let’s do modest cosmetic updates on the two Northeast homes and the one Kern Place home where comparable sales suggest it might pay off. Third, and most important—let’s bring David and Maria in for ongoing consulting on future projects. We need this kind of careful statistical thinking.”</p>
+<p>Michael Torres looks chastened but appreciative. “I learned something important today. I thought I was being rigorous by running a regression and testing significance. But rigor means more than calculating p-values—it means thinking carefully about what the model can and cannot tell us.”</p>
+<p>David and Maria pack up their materials. “Every company we’ve worked with—TechFlow, PrecisionCast, BorderMed, DesertVine, PixelPerfect, and now Sunburst—has taught us something about the gap between statistical analysis and business decision-making.”</p>
+<p>“The statistics are important,” Maria adds. “But so is judgment, domain knowledge, humility about limitations, and honest communication about uncertainty. That’s what separates good quantitative analysis from merely technically correct analysis.”</p>
+<p>As they leave Sunburst’s offices, David reflects: “You know what? This has been an incredible journey. We’ve gone from calculating means and standard deviations for TechFlow to conducting econometric analysis with discussions of endogeneity and panel data methods. We’ve learned not just the formulas, but how to think statistically.”</p>
+<p>“And more importantly,” Maria adds, “we’ve learned that good statistical practice isn’t about impressing people with fancy methods. It’s about being clear, honest, and helpful. It’s about acknowledging what we don’t know as carefully as we present what we do know.”</p>
+<p>“Statistics,” David concludes, “is ultimately about making better decisions under uncertainty. Not eliminating uncertainty—that’s impossible—but navigating it thoughtfully.”</p>
+<p>They smile. After seven companies and seven statistical challenges, they’re ready for whatever quantitative problems their careers throw at them next.</p>
+</section>
+<section id="practice-problems" class="level2" data-number="8.13">
+<h2 data-number="8.13" class="anchored" data-anchor-id="practice-problems"><span class="header-section-number">8.13</span> Practice Problems</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 1: Interpreting Coefficients
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A regression of employee salary on years of experience, education level (1-5 scale), and department (using dummies) yields:</p>
+<p><span class="math display">\[\text{Salary} = 35{,}000 + 2{,}800(\text{Experience}) + 4{,}200(\text{Education}) + 8{,}500(\text{Dept\_Tech}) + \varepsilon\]</span></p>
+<p>All coefficients are statistically significant at p &lt; 0.01.</p>
+<p><strong>Questions</strong>:<br>
+1. Interpret the experience coefficient in plain English<br>
+2. How much more does a Tech department employee earn than a baseline department employee, holding experience and education constant?<br>
+3. Can you conclude that getting more education causes higher salary? Why or why not?<br>
+4. What are potential sources of omitted variable bias in this model?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 2: Multicollinearity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You run a regression predicting house prices with: square footage, number of rooms, lot size, and age. The VIF values are:</p>
+<ul>
+<li>Square footage: VIF = 8.2<br>
+</li>
+<li>Number of rooms: VIF = 7.8<br>
+</li>
+<li>Lot size: VIF = 1.4<br>
+</li>
+<li>Age: VIF = 1.2</li>
+</ul>
+<p><strong>Questions</strong>:<br>
+1. Which variables show problematic multicollinearity?<br>
+2. Why might square footage and number of rooms be highly correlated?<br>
+3. What would you recommend to address this issue?<br>
+4. Can you still use this model for price prediction? Why or why not?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 3: Heteroskedasticity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You estimate a model of restaurant daily revenue as a function of weather, day of week, and local events. You plot residuals vs.&nbsp;fitted values and see a clear “fan shape”—residuals are tightly clustered for low predicted revenues but widely dispersed for high predicted revenues.</p>
+<p><strong>Questions</strong>:<br>
+1. What does this pattern indicate?<br>
+2. Why might restaurant revenue show this pattern?<br>
+3. How does heteroskedasticity affect your coefficient estimates?<br>
+4. How does it affect your hypothesis tests?<br>
+5. What would you recommend to address this issue?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 4: Endogeneity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A consulting firm regresses client satisfaction on: project cost, project duration, consultant experience, and whether the client received a “premium service package” (a binary variable). The premium package coefficient is <span class="math inline">\(+15,000\)</span> (meaning clients who bought the premium package reported $15,000 higher satisfaction scores, on a 0-100 scale… wait, that doesn’t make sense…).</p>
+<p>Let’s revise: The premium package coefficient is +12.5 points (on a 0-100 satisfaction scale) and is statistically significant (p &lt; 0.001).</p>
+<p><strong>Questions</strong>:<br>
+1. Can you interpret this as “the premium package causes 12.5 points higher satisfaction”?<br>
+2. What is the likely source of endogeneity here?<br>
+3. In what direction would this bias the coefficient? (upward or downward?)<br>
+4. How would you design a study to get an unbiased estimate of the premium package effect?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 5: Prediction vs.&nbsp;Causation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A company uses regression to predict customer churn based on: usage frequency, customer service calls, contract length, and payment history. The model has R² = 0.73.</p>
+<p>Management wants to reduce churn and asks: “Which variable should we intervene on? The model shows customer service calls have the strongest association with churn (coefficient = 0.28, p &lt; 0.001). Should we reduce customer service call volume?”</p>
+<p><strong>Questions</strong>:<br>
+1. What’s wrong with this interpretation?<br>
+2. Explain why reducing customer service calls might not reduce churn<br>
+3. Distinguish between this model’s usefulness for prediction vs.&nbsp;for causal decision-making<br>
+4. What additional information would you need to make causal recommendations?</p>
+</div>
+</div>
+</section>
+<section id="excel-functions-quick-reference" class="level2" data-number="8.14">
+<h2 data-number="8.14" class="anchored" data-anchor-id="excel-functions-quick-reference"><span class="header-section-number">8.14</span> Excel Functions Quick Reference</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Regression in Excel
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Running Regression</strong>:</p>
+<ol type="1">
+<li>Data → Data Analysis → Regression (requires Analysis ToolPak add-in)</li>
+<li>Input Y Range: Your dependent variable<br>
+</li>
+<li>Input X Range: Your independent variable(s)<br>
+</li>
+<li>Select output location<br>
+</li>
+<li>Check boxes for: Confidence Interval, Residuals, Residual Plots</li>
+</ol>
+<p><strong>Reading Output</strong>:</p>
+<ul>
+<li><strong>Regression Statistics</strong>: R², Adjusted R², Standard Error<br>
+</li>
+<li><strong>ANOVA Table</strong>: Overall F-test of model significance<br>
+</li>
+<li><strong>Coefficients Table</strong>: β estimates, standard errors, t-statistics, p-values, confidence intervals<br>
+</li>
+<li><strong>Residual Output</strong>: Predicted values, residuals for each observation</li>
+</ul>
+<p><strong>Alternative: LINEST Function</strong>:</p>
+<pre class="excel"><code>=LINEST(Y_range, X_range, TRUE, TRUE)</code></pre>
+<p>Returns coefficients, standard errors, R², F-statistic in an array. More flexible but less user-friendly.</p>
+<p><strong>Diagnostics</strong>:</p>
+<p>Correlation Matrix:</p>
+<pre class="excel"><code>=CORREL(range1, range2)</code></pre>
+<p>Or use Data → Data Analysis → Correlation</p>
+<p>For VIF, need to run auxiliary regressions (each X on all other X’s) and calculate: VIF = 1/(1-R²)</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Glossary
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Coefficient (β)</strong>: Estimated effect of a one-unit change in X on Y, holding other variables constant</p>
+<p><strong>Confidence Interval</strong>: Range of plausible values for a parameter; quantifies uncertainty</p>
+<p><strong>Cross-Sectional Data</strong>: Multiple entities observed at one point in time</p>
+<p><strong>Endogeneity</strong>: Violation of exogeneity assumption; predictor correlated with error term, causing bias</p>
+<p><strong>Exogeneity</strong>: Assumption that predictors are uncorrelated with error term; required for unbiased estimates</p>
+<p><strong>Fitted Value</strong>: Predicted outcome from regression model for a given observation</p>
+<p><strong>Heteroskedasticity</strong>: Non-constant error variance; affects standard errors and inference</p>
+<p><strong>Homoskedasticity</strong>: Constant error variance across all levels of predictors; a key assumption</p>
+<p><strong>Instrumental Variable (IV)</strong>: Variable used to identify causal effects when endogeneity is present</p>
+<p><strong>Multicollinearity</strong>: High correlation among predictors; makes it difficult to separate their effects</p>
+<p><strong>Observational Study</strong>: Data where treatment/exposure is not randomly assigned</p>
+<p><strong>Omitted Variable Bias</strong>: Bias in coefficient estimates due to excluding a relevant variable correlated with included predictors</p>
+<p><strong>Ordinary Least Squares (OLS)</strong>: Method that minimizes sum of squared residuals</p>
+<p><strong>Panel Data</strong>: Multiple entities observed over multiple time periods</p>
+<p><strong>Prediction Interval</strong>: Range for a new observation’s outcome; wider than confidence interval</p>
+<p><strong>R-Squared (R²)</strong>: Proportion of variance in Y explained by the model; ranges from 0 to 1</p>
+<p><strong>Residual</strong>: Difference between observed and predicted values; prediction error</p>
+<p><strong>Standard Error</strong>: Measure of uncertainty in coefficient estimate</p>
+<p><strong>t-statistic</strong>: Coefficient divided by its standard error; used for hypothesis testing</p>
+<p><strong>Time Series Data</strong>: One entity observed over multiple time periods</p>
+<p><strong>VIF (Variance Inflation Factor)</strong>: Measure of multicollinearity; VIF &gt; 4 indicates concern</p>
+</div>
+</div>
+</div>
+<hr>
+<p><em>In econometrics, the most important skill isn’t mastering complex techniques. It’s knowing what you can and cannot conclude from your data—and communicating that honestly.</em></p>
+<p><em>Every coefficient tells a story. Make sure you’re telling the right one.</em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ncachanosky\.github\.io\/XQMB-5311");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter_06.html" class="pagination-link" aria-label="Statistical Foundations Review: From Description to Decision">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistical Foundations Review: From Description to Decision</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Nicolas Cachanosky, The University of Texas at El Paso, Center for Free Enterprise</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ncachanosky/XQMB-5311/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://github.com/ncachanosky/XQMB-5311" aria-current="page">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/ncachanosky">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/n_cachanosky">
+      <i class="bi bi-twitter-x" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

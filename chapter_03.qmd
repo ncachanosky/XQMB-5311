@@ -1,15 +1,13 @@
 ---
 title: "Interval Estimation and Hypothesis Testing"
-subtitle: "Lecture 3"
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: true
-    code-tools: true
-    fig-width: 10
-    fig-height: 6
+abstract: |
+  Correct calculations with incorrect interpretation can be just as dangerous as wrong 
+  numbers. This chapter develops the logic of statistical inference — confidence intervals, 
+  hypothesis testing, and the proper meaning of p-values — through BorderMed 
+  Pharmaceuticals' Phase II clinical trial, where a $500 million Phase III commitment 
+  hangs on whether the analysis team understands what their results actually say. Students 
+  learn to quantify uncertainty honestly, avoid common inference errors, and communicate 
+  statistical findings with appropriate precision.
 ---
 
 ## Learning Objectives {.unnumbered}

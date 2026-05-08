@@ -1,0 +1,3064 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Course readings for XQMB 5311 – Statistics for Business – The University of Texas at El Paso.">
+
+<title>3&nbsp; Probability – The Precision Advantage: Statistics for Business</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter_03.html" rel="next">
+<link href="./chapter_01.html" rel="prev">
+<link href="./favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-224b48a91c0f626bf087add3423f4096.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-8fba65ec5d79e9223d5579f32ee5f772.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-224b48a91c0f626bf087add3423f4096.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="https://raw.github.com/ncachanosky/EO-styles/main/styles.css">
+<meta property="og:title" content="The Precision Advantage: Statistics for Business">
+<meta property="og:description" content="Course readings for XQMB 5311 – Quantitative Methods for Business – The University of Texas at El Paso. An institutions-first treatment of monetary and financial economics.">
+<meta property="og:image" content="https://ncachanosky.github.io/XQMB-5311/assets/logo.png">
+<meta property="og:site_name" content="The Precision Advantage: Statistics for Business">
+<meta property="og:image:height" content="1687">
+<meta property="og:image:width" content="1687">
+<meta name="twitter:title" content="Money, The Precision Advantage: Statistics for Business">
+<meta name="twitter:description" content="Course readings for ECON 3320 – Quantitative Methods for Business – The University of Texas at El Paso. An institutions-first treatment of monetary and financial economics.">
+<meta name="twitter:image" content="https://ncachanosky.github.io/XQMB-5311/assets/logo.png">
+<meta name="twitter:creator" content="@n_cachanosky">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="1687">
+<meta name="twitter:image-width" content="1687">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_02.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./assets/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./assets/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Precision Advantage: Statistics for Business</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ncachanosky/XQMB-5311" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_02.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interval Estimation and Hypothesis Testing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ANOVA: Analysis of Variance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical Data Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistical Foundations Review: From Description to Decision</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Regression Analysis: Introduction to Econometrics</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#introduction-the-2-million-question" id="toc-introduction-the-2-million-question" class="nav-link" data-scroll-target="#introduction-the-2-million-question"><span class="header-section-number">3.1</span> Introduction: The $2 Million Question</a></li>
+  <li><a href="#from-descriptive-statistics-to-probability" id="toc-from-descriptive-statistics-to-probability" class="nav-link" data-scroll-target="#from-descriptive-statistics-to-probability"><span class="header-section-number">3.2</span> From Descriptive Statistics to Probability</a>
+  <ul class="collapse">
+  <li><a href="#what-we-learned-from-techflow-descriptive-statistics" id="toc-what-we-learned-from-techflow-descriptive-statistics" class="nav-link" data-scroll-target="#what-we-learned-from-techflow-descriptive-statistics">What We Learned from TechFlow (Descriptive Statistics)</a></li>
+  <li><a href="#what-precisioncast-needs-probability" id="toc-what-precisioncast-needs-probability" class="nav-link" data-scroll-target="#what-precisioncast-needs-probability">What PrecisionCast Needs (Probability)</a></li>
+  </ul></li>
+  <li><a href="#basic-probability-building-the-foundation" id="toc-basic-probability-building-the-foundation" class="nav-link" data-scroll-target="#basic-probability-building-the-foundation"><span class="header-section-number">3.3</span> Basic Probability: Building the Foundation</a>
+  <ul class="collapse">
+  <li><a href="#probability-as-relative-frequency" id="toc-probability-as-relative-frequency" class="nav-link" data-scroll-target="#probability-as-relative-frequency">Probability as Relative Frequency</a></li>
+  <li><a href="#the-business-context-gap" id="toc-the-business-context-gap" class="nav-link" data-scroll-target="#the-business-context-gap">The Business Context Gap</a></li>
+  </ul></li>
+  <li><a href="#conditional-probability-finding-the-root-cause" id="toc-conditional-probability-finding-the-root-cause" class="nav-link" data-scroll-target="#conditional-probability-finding-the-root-cause"><span class="header-section-number">3.4</span> Conditional Probability: Finding the Root Cause</a>
+  <ul class="collapse">
+  <li><a href="#machine-specific-defect-rates" id="toc-machine-specific-defect-rates" class="nav-link" data-scroll-target="#machine-specific-defect-rates">Machine-Specific Defect Rates</a></li>
+  <li><a href="#the-reverse-question-where-do-defects-come-from" id="toc-the-reverse-question-where-do-defects-come-from" class="nav-link" data-scroll-target="#the-reverse-question-where-do-defects-come-from">The Reverse Question: Where Do Defects Come From?</a></li>
+  <li><a href="#the-business-decision" id="toc-the-business-decision" class="nav-link" data-scroll-target="#the-business-decision">The Business Decision</a></li>
+  </ul></li>
+  <li><a href="#bayes-theorem-when-tests-arent-what-they-seem" id="toc-bayes-theorem-when-tests-arent-what-they-seem" class="nav-link" data-scroll-target="#bayes-theorem-when-tests-arent-what-they-seem"><span class="header-section-number">3.5</span> Bayes’ Theorem: When Tests Aren’t What They Seem</a>
+  <ul class="collapse">
+  <li><a href="#understanding-test-characteristics" id="toc-understanding-test-characteristics" class="nav-link" data-scroll-target="#understanding-test-characteristics">Understanding Test Characteristics</a></li>
+  <li><a href="#the-critical-question-what-does-a-positive-test-mean" id="toc-the-critical-question-what-does-a-positive-test-mean" class="nav-link" data-scroll-target="#the-critical-question-what-does-a-positive-test-mean">The Critical Question: What Does a Positive Test Mean?</a></li>
+  <li><a href="#bayes-theorem-the-formula" id="toc-bayes-theorem-the-formula" class="nav-link" data-scroll-target="#bayes-theorem-the-formula">Bayes’ Theorem: The Formula</a></li>
+  <li><a href="#why-is-ppv-so-low-the-base-rate-problem" id="toc-why-is-ppv-so-low-the-base-rate-problem" class="nav-link" data-scroll-target="#why-is-ppv-so-low-the-base-rate-problem">Why Is PPV So Low? The Base Rate Problem</a></li>
+  <li><a href="#the-negative-test-much-more-reliable" id="toc-the-negative-test-much-more-reliable" class="nav-link" data-scroll-target="#the-negative-test-much-more-reliable">The Negative Test: Much More Reliable</a></li>
+  <li><a href="#business-implications" id="toc-business-implications" class="nav-link" data-scroll-target="#business-implications">Business Implications</a></li>
+  </ul></li>
+  <li><a href="#expected-value-planning-under-uncertainty" id="toc-expected-value-planning-under-uncertainty" class="nav-link" data-scroll-target="#expected-value-planning-under-uncertainty"><span class="header-section-number">3.6</span> Expected Value: Planning Under Uncertainty</a>
+  <ul class="collapse">
+  <li><a href="#expected-defects" id="toc-expected-defects" class="nav-link" data-scroll-target="#expected-defects">Expected Defects</a></li>
+  <li><a href="#expected-cost" id="toc-expected-cost" class="nav-link" data-scroll-target="#expected-cost">Expected Cost</a></li>
+  </ul></li>
+  <li><a href="#capacity-planning" id="toc-capacity-planning" class="nav-link" data-scroll-target="#capacity-planning"><span class="header-section-number">3.7</span> Capacity Planning</a></li>
+  <li><a href="#binomial-distribution-batch-quality-control" id="toc-binomial-distribution-batch-quality-control" class="nav-link" data-scroll-target="#binomial-distribution-batch-quality-control"><span class="header-section-number">3.8</span> Binomial Distribution: Batch Quality Control</a>
+  <ul class="collapse">
+  <li><a href="#understanding-the-binomial" id="toc-understanding-the-binomial" class="nav-link" data-scroll-target="#understanding-the-binomial">Understanding the Binomial</a></li>
+  <li><a href="#expected-defects-per-batch" id="toc-expected-defects-per-batch" class="nav-link" data-scroll-target="#expected-defects-per-batch">Expected Defects per Batch</a></li>
+  <li><a href="#probability-of-passing" id="toc-probability-of-passing" class="nav-link" data-scroll-target="#probability-of-passing">Probability of Passing</a></li>
+  </ul></li>
+  <li><a href="#comparing-to-observed-data" id="toc-comparing-to-observed-data" class="nav-link" data-scroll-target="#comparing-to-observed-data"><span class="header-section-number">3.9</span> Comparing to Observed Data</a>
+  <ul class="collapse">
+  <li><a href="#threshold-sensitivity-analysis" id="toc-threshold-sensitivity-analysis" class="nav-link" data-scroll-target="#threshold-sensitivity-analysis">Threshold Sensitivity Analysis</a></li>
+  </ul></li>
+  <li><a href="#normal-distribution-dimensional-quality" id="toc-normal-distribution-dimensional-quality" class="nav-link" data-scroll-target="#normal-distribution-dimensional-quality"><span class="header-section-number">3.10</span> Normal Distribution: Dimensional Quality</a>
+  <ul class="collapse">
+  <li><a href="#the-normal-distribution-setup" id="toc-the-normal-distribution-setup" class="nav-link" data-scroll-target="#the-normal-distribution-setup">The Normal Distribution Setup</a></li>
+  <li><a href="#calculating-probability-within-specification" id="toc-calculating-probability-within-specification" class="nav-link" data-scroll-target="#calculating-probability-within-specification">Calculating Probability Within Specification</a></li>
+  </ul></li>
+  <li><a href="#process-capability-analysis" id="toc-process-capability-analysis" class="nav-link" data-scroll-target="#process-capability-analysis"><span class="header-section-number">3.11</span> Process Capability Analysis</a>
+  <ul class="collapse">
+  <li><a href="#tail-probabilities" id="toc-tail-probabilities" class="nav-link" data-scroll-target="#tail-probabilities">Tail Probabilities</a></li>
+  </ul></li>
+  <li><a href="#the-investment-decision-bringing-it-all-together" id="toc-the-investment-decision-bringing-it-all-together" class="nav-link" data-scroll-target="#the-investment-decision-bringing-it-all-together"><span class="header-section-number">3.12</span> The Investment Decision: Bringing It All Together</a>
+  <ul class="collapse">
+  <li><a href="#calculate-expected-savings" id="toc-calculate-expected-savings" class="nav-link" data-scroll-target="#calculate-expected-savings">Calculate Expected Savings</a></li>
+  <li><a href="#expected-value-of-investment" id="toc-expected-value-of-investment" class="nav-link" data-scroll-target="#expected-value-of-investment">Expected Value of Investment</a></li>
+  </ul></li>
+  <li><a href="#from-description-to-prediction-the-full-journey" id="toc-from-description-to-prediction-the-full-journey" class="nav-link" data-scroll-target="#from-description-to-prediction-the-full-journey"><span class="header-section-number">3.13</span> From Description to Prediction: The Full Journey</a></li>
+  <li><a href="#chapter-summary-the-probability-toolkit" id="toc-chapter-summary-the-probability-toolkit" class="nav-link" data-scroll-target="#chapter-summary-the-probability-toolkit"><span class="header-section-number">3.14</span> Chapter Summary: The Probability Toolkit</a></li>
+  <li><a href="#connecting-the-lectures-a-students-journey" id="toc-connecting-the-lectures-a-students-journey" class="nav-link" data-scroll-target="#connecting-the-lectures-a-students-journey"><span class="header-section-number">3.15</span> Connecting the Lectures: A Student’s Journey</a></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems"><span class="header-section-number">3.16</span> Practice Problems</a>
+  <ul class="collapse">
+  <li><a href="#problem-set-1-basic-and-conditional-probability" id="toc-problem-set-1-basic-and-conditional-probability" class="nav-link" data-scroll-target="#problem-set-1-basic-and-conditional-probability">Problem Set 1: Basic and Conditional Probability</a></li>
+  <li><a href="#problem-set-2-bayes-theorem-and-test-reliability" id="toc-problem-set-2-bayes-theorem-and-test-reliability" class="nav-link" data-scroll-target="#problem-set-2-bayes-theorem-and-test-reliability">Problem Set 2: Bayes’ Theorem and Test Reliability</a></li>
+  <li><a href="#problem-set-3-expected-value-analysis" id="toc-problem-set-3-expected-value-analysis" class="nav-link" data-scroll-target="#problem-set-3-expected-value-analysis">Problem Set 3: Expected Value Analysis</a></li>
+  <li><a href="#problem-set-4-binomial-distribution" id="toc-problem-set-4-binomial-distribution" class="nav-link" data-scroll-target="#problem-set-4-binomial-distribution">Problem Set 4: Binomial Distribution</a></li>
+  <li><a href="#problem-set-5-normal-distribution-and-process-capability" id="toc-problem-set-5-normal-distribution-and-process-capability" class="nav-link" data-scroll-target="#problem-set-5-normal-distribution-and-process-capability">Problem Set 5: Normal Distribution and Process Capability</a></li>
+  <li><a href="#problem-set-6-investment-decision-analysis" id="toc-problem-set-6-investment-decision-analysis" class="nav-link" data-scroll-target="#problem-set-6-investment-decision-analysis">Problem Set 6: Investment Decision Analysis</a></li>
+  <li><a href="#problem-set-7-comprehensive-analysis-challenge" id="toc-problem-set-7-comprehensive-analysis-challenge" class="nav-link" data-scroll-target="#problem-set-7-comprehensive-analysis-challenge">Problem Set 7: Comprehensive Analysis Challenge</a></li>
+  </ul></li>
+  <li><a href="#excel-functions-quick-reference" id="toc-excel-functions-quick-reference" class="nav-link" data-scroll-target="#excel-functions-quick-reference"><span class="header-section-number">3.17</span> Excel Functions Quick Reference</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ncachanosky/XQMB-5311/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Descriptive statistics tell you what happened. Probability tells you what is likely to happen next — and at what cost. This chapter builds a probability toolkit for business decision-making, covering conditional probability, Bayes’ theorem, expected value, and the binomial and normal distributions. Working through PrecisionCast Industries’ $2 million equipment decision, students learn to quantify uncertainty, evaluate diagnostic tests, and turn “roughly 2% defects” into a rigorous, defensible investment analysis.</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ol type="1">
+<li>✅ Calculate and interpret basic and conditional probabilities<br>
+</li>
+<li>✅ Apply Bayes’ theorem to evaluate test reliability and diagnostic accuracy<br>
+</li>
+<li>✅ Use expected value for decision-making under uncertainty<br>
+</li>
+<li>✅ Apply binomial distribution for discrete event modeling<br>
+</li>
+<li>✅ Apply normal distribution for continuous variable analysis and process capability assessment<br>
+</li>
+<li>✅ Make data-driven investment decisions using probability analysis</li>
+</ol>
+</section>
+<section id="introduction-the-2-million-question" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introduction-the-2-million-question"><span class="header-section-number">3.1</span> Introduction: The $2 Million Question</h2>
+<p>It’s 9:15 AM on April 2, 2025. Robert Martinez, CEO of PrecisionCast Industries, sits across from his quality control director in the executive conference room. On the table between them lies a Q1 2025 quality report and a vendor proposal for a <strong>$2 million</strong> casting machine.</p>
+<p>The vendor’s pitch is compelling: “Our new Mark VII system will reduce your defect rate by up to 40%.”</p>
+<p>Robert flips through the quality report. His company produces precision metal castings for aerospace and automotive clients, industries where defects aren’t just expensive, they’re catastrophic. Aerospace customers require 99.5% defect-free parts. His company is close, but not quite there.</p>
+<blockquote class="blockquote">
+<p>“We produced around 50,000 units this quarter. We had roughly 1,000 defects, maybe a bit more. That’s about 2% or so. Machine M3 seems to produce more defects than the others, but we haven’t really quantified it. Our inspection tests are pretty good at catching problems, though they’re not perfect…”</p>
+</blockquote>
+<p>Robert sets down the report. “So should I write a $2 million check?”</p>
+<p>His CFO speaks up. “The vendor says ‘<strong>up to</strong> 40% reduction.’ What if it’s only 20%? What’s the expected return? How long to break even?”</p>
+<p>His quality director adds, “And what about Machine M3? If it’s really the problem, maybe we just need $15,000 in maintenance instead of $2 million in new equipment.”</p>
+<p>Robert looks at his VP of Operations. “Can you answer any of these questions from this report?”</p>
+<p>Silence.</p>
+<p>“I need numbers. Probabilities. Expected values. I need to know: if we produce 55,000 units next quarter, how many defects should we expect? What’s the probability our inspection system catches them? What’s the expected savings from different scenarios?”</p>
+<p>He slides the report back across the table. “Get me answers by end of week. Real answers, not ‘around’ and ‘roughly’ and ‘pretty good.’”</p>
+<p>The quality control team realizes they lack the statistical expertise to transform their observations into actionable probability analysis. Following the success story they’d heard about TechFlow Solutions, they reach out to the EMBA program at The University of Texas at El Paso.</p>
+<p>Enter David and Maria, the same EMBA students who transformed TechFlow’s vague Q4 report into statistical precision just three months ago. But this time, the challenge is different. TechFlow needed to understand <em>what happened</em>. PrecisionCast needs to predict <em>what will happen</em>.</p>
+<p>“Last time,” David says, reviewing the PrecisionCast report, “we used descriptive statistics to look backward. We calculated means and standard deviations to describe Q4 performance. This time, we need probability to look forward, to predict Q2 defects, evaluate test reliability, and analyze investment decisions.”</p>
+<p>Maria nods. “Same data, different questions. Instead of ‘Product D <em>was</em> 1.2 standard deviations below mean,’ now it’s ‘What’s the <em>probability</em> Machine M3 produces a defect?’ Instead of ‘we <em>had</em> 993 defects,’ it’s ‘how many defects should we <em>expect</em> next quarter?’”</p>
+<p>This chapter is about that transformation. From description to prediction. From past to future. From “what happened” to “what will happen.”</p>
+<p>Welcome to probability. The mathematics of the future.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The Cost of “Pretty Good”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When TechFlow said “around $767,000,” they couldn’t set precise budgets. That’s expensive.</p>
+<p>When PrecisionCast says “tests are pretty good,” they might ship defective parts to aerospace customers. That’s not just expensive, it’s potentially catastrophic.</p>
+<p>In quality control, vague probability statements don’t just cost money. They cost lives.</p>
+<p><strong>The fix</strong>: Calculate exact probabilities. Quantify test reliability. Model expected outcomes.</p>
+</div>
+</div>
+</section>
+<section id="from-descriptive-statistics-to-probability" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="from-descriptive-statistics-to-probability"><span class="header-section-number">3.2</span> From Descriptive Statistics to Probability</h2>
+<p>Before diving into PrecisionCast’s challenges, David and Maria review what they learned from TechFlow.</p>
+<section id="what-we-learned-from-techflow-descriptive-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="what-we-learned-from-techflow-descriptive-statistics">What We Learned from TechFlow (Descriptive Statistics)</h3>
+<p>Three months ago, they transformed TechFlow’s vague Q4 report by calculating:</p>
+<p><strong>Measures of Location:</strong><br>
+- Mean monthly revenue: $766,667 (not “around $767,000”)<br>
+- Median customer satisfaction: 4.3/5<br>
+- 90th percentile order value: $425 (VIP threshold)</p>
+<p><strong>Measures of Variability:</strong><br>
+- Product CV: 46.6%<br>
+- Regional CV: 76.8% (the bigger problem)<br>
+- IQR for customer orders: $135</p>
+<p><strong>Measures of Distribution:</strong><br>
+- Product D z-score: -1.21 (monitor zone)<br>
+- Left-skewed satisfaction (most customers happy, few unhappy)<br>
+- 6 high-value customer outliers (B2B opportunity)</p>
+<p>“These statistics described what happened in Q4,” Maria explains. “They were backward-looking. Historical. They told Sarah Chen where her business <em>was</em>, not where it’s <em>going</em>.”</p>
+</section>
+<section id="what-precisioncast-needs-probability" class="level3">
+<h3 class="anchored" data-anchor-id="what-precisioncast-needs-probability">What PrecisionCast Needs (Probability)</h3>
+<p>Robert Martinez has different questions:</p>
+<p><strong>Instead of:</strong> “We had 993 defects in Q1”<br>
+<strong>He needs:</strong> “How many defects should we expect in Q2?”</p>
+<p><strong>Instead of:</strong> “Machine M3 seems worse”<br>
+<strong>He needs:</strong> “What’s the probability a unit from M3 is defective?”</p>
+<p><strong>Instead of:</strong> “Tests are pretty good”<br>
+<strong>He needs:</strong> “If a test says ‘defective,’ what’s the probability it really is?”</p>
+<p><strong>Instead of:</strong> “We had some variation”<br>
+<strong>He needs:</strong> “What’s the probability a batch exceeds our quality threshold?”</p>
+<p>“This is probability,” David says. “We’re converting historical frequencies into future predictions. The past becomes a model for the future.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Key Distinction: Descriptive Statistics vs.&nbsp;Probability
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Descriptive Statistics (Lecture 1):</strong><br>
+<em>Past-focused</em>. “What happened?”</p>
+<ul>
+<li>We had 993 defects<br>
+</li>
+<li>Mean was $575,000<br>
+</li>
+<li>Product D was 1.2 SD below mean</li>
+</ul>
+<p><strong>Probability (Lecture 2):</strong><br>
+<em>Future-focused</em>. “What will happen?”</p>
+<ul>
+<li>We expect 1,117 defects (±66)<br>
+</li>
+<li>P(Defect) = 0.0203<br>
+</li>
+<li>P(Product D &lt; $300k) = 0.19</li>
+</ul>
+<p><strong>The Bridge:</strong> Historical data (statistics) provides the foundation for probability models. We calculate past frequencies, then use them to predict future outcomes.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="basic-probability-building-the-foundation" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="basic-probability-building-the-foundation"><span class="header-section-number">3.3</span> Basic Probability: Building the Foundation</h2>
+<p>David pulls up PrecisionCast’s Q1 2025 production data:</p>
+<ul>
+<li>Total units produced: 48,865<br>
+</li>
+<li>Defective units: 993<br>
+</li>
+<li>Good units: 47,872</li>
+</ul>
+<p>“Let’s start with the most basic question,” he says. “What’s the probability that a randomly selected unit is defective?”</p>
+<section id="probability-as-relative-frequency" class="level3">
+<h3 class="anchored" data-anchor-id="probability-as-relative-frequency">Probability as Relative Frequency</h3>
+<p>Maria calculates:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{P(Defect)} &amp;= \frac{\text{Number of defective units}}{\text{Total units}} \\[10pt]
+\text{P(Defect)} &amp;= \frac{993}{48,865} \\[10pt]
+\text{P(Defect)} &amp;= 0.0203
+\end{aligned}
+\]</span></p>
+<p>“So there’s a 0.0203 probability (or 2.03%) that any randomly selected unit is defective.”</p>
+<p>David adds the interpretation: “If we pick one unit at random from the production floor, there’s a 2.03% chance it’s defective. Or thinking about it differently: out of every 100 units produced, we expect about 2 to be defective.”</p>
+<p><strong>The complement:</strong> <span class="math display">\[
+\begin{aligned}
+\text{P(Good)} &amp;= 1 - \text{P(Defect)} \\[10pt]
+\text{P(Good)} &amp;= 1 - 0.0203 \\[10pt]
+\text{P(Good)} &amp;= 0.9797
+\end{aligned}
+\]</span></p>
+<p>“97.97% of units are good,” Maria notes.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Probability as Relative Frequency
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For an event A:</p>
+<p><span class="math display">\[P(A) = \frac{\text{Number of times A occurred}}{\text{Total number of observations}}\]</span></p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><span class="math inline">\(0 \leq P(A) \leq 1\)</span> (probabilities range from 0 to 1)<br>
+</li>
+<li><span class="math inline">\(P(A) + P(\bar{A}) = 1\)</span> (complement rule, where <span class="math inline">\(\bar{A}\)</span> means “not A”)<br>
+</li>
+<li>P(A) = 0 means impossible<br>
+</li>
+<li>P(A) = 1 means certain</li>
+</ul>
+<p><strong>Interpretation:</strong> P(A) represents the long-run relative frequency. If P(Defect) = 0.0203, and we produce 100,000 units, we expect about 2,030 defects.</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>=COUNTIF(Status,"Defective")/COUNT(Status)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="the-business-context-gap" class="level3">
+<h3 class="anchored" data-anchor-id="the-business-context-gap">The Business Context Gap</h3>
+<p>Robert reviews the calculation. “So we’re at 97.97% defect-free. How does that compare to requirements?” Maria pulls up the aerospace specifications: “Aerospace customers require P(Good) ≥ 0.995, or 99.5% defect-free.” David does the math:</p>
+<ul>
+<li>Our rate: 97.97%<br>
+</li>
+<li>Required: 99.5%<br>
+</li>
+<li>Gap: 1.53 percentage points</li>
+</ul>
+<p>“At our annual production of 200,000 units,” he explains, “that 1.53% gap represents about 3,000 additional defects compared to the aerospace standard. At $180 average rework cost, that’s $540,000 in annual excess rework costs.” Robert leans back. “Now we’re talking business impact. That’s the kind of number that justifies investment.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Common Mistake: “Pretty Close” Isn’t Close Enough
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Wrong thinking:</strong> “97.97% vs.&nbsp;99.5%, we’re only 1.5 points off. Pretty close.”</p>
+<p><strong>Reality:</strong> That 1.5 percentage points represents:</p>
+<ul>
+<li>3,000 additional defects per year</li>
+<li>$540,000 in excess rework costs</li>
+<li>Potential loss of aerospace certifications</li>
+<li>Risk of catastrophic failures in safety-critical applications</li>
+</ul>
+<p><strong>In quality control:</strong> Small probability differences have massive business consequences.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="conditional-probability-finding-the-root-cause" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="conditional-probability-finding-the-root-cause"><span class="header-section-number">3.4</span> Conditional Probability: Finding the Root Cause</h2>
+<p>“Now the harder question,” Robert says. “You said Machine M3 ‘seems worse.’ Prove it.” This requires conditional probability, the probability of an event given that another event has occurred.</p>
+<section id="machine-specific-defect-rates" class="level3">
+<h3 class="anchored" data-anchor-id="machine-specific-defect-rates">Machine-Specific Defect Rates</h3>
+<p>David analyzes each of PrecisionCast’s five casting machines:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Machine</th>
+<th style="text-align: center;">Units Produced</th>
+<th style="text-align: center;">Defects</th>
+<th style="text-align: right;">P(Defect | Machine)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">M1</td>
+<td style="text-align: center;">9,733</td>
+<td style="text-align: center;">189</td>
+<td style="text-align: right;">0.0194</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M2</td>
+<td style="text-align: center;">9,733</td>
+<td style="text-align: center;">197</td>
+<td style="text-align: right;">0.0202</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>M3</strong></td>
+<td style="text-align: center;"><strong>9,733</strong></td>
+<td style="text-align: center;"><strong>227</strong></td>
+<td style="text-align: right;"><strong>0.0233</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M4</td>
+<td style="text-align: center;">9,733</td>
+<td style="text-align: center;">194</td>
+<td style="text-align: right;">0.0199</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M5</td>
+<td style="text-align: center;">9,733</td>
+<td style="text-align: center;">186</td>
+<td style="text-align: right;">0.0191</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Machine M3:</strong> P(Defect | M3) = 227 / 9,733 = 0.0233 (2.33%)</p>
+<p>“Machine M3’s defect rate is 2.33%,” Maria explains. “Compare that to machines M1 and M5, which are around 1.9%. M3 is about 20% higher.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Conditional Probability
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The probability of event <span class="math inline">\(A\)</span> given that event <span class="math inline">\(B\)</span> has occurred:</p>
+<p><span class="math display">\[P(A∣B)=\frac{P(A∩B)}{P(B)} = \frac{\text{Number&nbsp;where&nbsp;both&nbsp;A&nbsp;and&nbsp;B&nbsp;occur}}{\text{Number&nbsp;where&nbsp;B&nbsp;occurs}}\]</span></p>
+<p><strong>Read as:</strong> “Probability of A given B”</p>
+<p><strong>Interpretation:</strong> We restrict our attention only to cases where <span class="math inline">\(B\)</span> occurred, then calculate the proportion where <span class="math inline">\(A\)</span> also occurs.</p>
+<p><strong>For PrecisionCast:</strong></p>
+<p><span class="math display">\[P(\text{Defect | M3}) = \frac{\text{Defects from M3}}{\text{Total units from M3}} = \frac{227}{9,733} = 0.0233\]</span></p>
+<hr>
+<p>Excel</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>=COUNTIFS(Machine,"M3",Status,"Defective")/COUNTIF(Machine,"M3")</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="the-reverse-question-where-do-defects-come-from" class="level3">
+<h3 class="anchored" data-anchor-id="the-reverse-question-where-do-defects-come-from">The Reverse Question: Where Do Defects Come From?</h3>
+<p>Robert asks a different question: “If quality control finds a defect, what’s the probability it came from Machine M3?”</p>
+<p>“That’s the reverse conditional probability,” David explains. “We’re asking: P(M3 | Defect), not P(Defect | M3).”</p>
+<p>Maria calculates:</p>
+<p><span class="math display">\[
+\begin{align}
+\text{P(M3 | Defect)} &amp;= \frac{\text{Defects from M3}}{\text{Total defects}} \\[10pt]
+\text{P(M3 | Defect)} &amp;= 227 / 993 \\[10pt]
+\text{P(M3 | Defect)} &amp;= 0.229 (22.9\%)
+\end{align}
+\]</span></p>
+<p>“So if we find a defect, there’s a 22.9% probability it came from Machine M3.” David creates a comparison:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 32%">
+<col style="width: 25%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Machine</th>
+<th style="text-align: center;">P(Machine | Defect)</th>
+<th style="text-align: center;">% of Production</th>
+<th style="text-align: right;">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">M1</td>
+<td style="text-align: center;">19.0%</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: right;">Proportional</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M2</td>
+<td style="text-align: center;">19.8%</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: right;">Proportional</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>M3</strong></td>
+<td style="text-align: center;"><strong>22.9%</strong></td>
+<td style="text-align: center;"><strong>20%</strong></td>
+<td style="text-align: right;"><strong>Overepresented</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M4</td>
+<td style="text-align: center;">19.5%</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: right;">Proportional</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M5</td>
+<td style="text-align: center;">18.7%</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: right;">Underepresented</td>
+</tr>
+</tbody>
+</table>
+<p>“Machine M3 produces 20% of units but contributes 22.9% of defects. It’s punching above its weight, in the wrong direction.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Critical Distinction: P(A|B) ≠ P(B|A)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>These are DIFFERENT questions with DIFFERENT answers:</strong></p>
+<p><strong>Forward conditional:</strong> P(Defect | M3) = 0.0233 “What’s the defect rate for M3?”</p>
+<p><strong>Reverse conditional:</strong> P(M3 | Defect) = 0.2290 “Where do defects come from?”</p>
+<p><strong>Why different?</strong> The first asks about M3’s output (9,733 units). The second asks about all defects (993 total). Different denominators → Different probabilities.</p>
+<p><strong>Classic example:</strong></p>
+<ul>
+<li>P(Clouds | Rain) ≈ 0.95 (if it’s raining, clouds are very likely)<br>
+</li>
+<li>P(Rain | Clouds) ≈ 0.20 (if there are clouds, rain is less certain)</li>
+</ul>
+<p>These are obviously different!</p>
+</div>
+</div>
+</section>
+<section id="the-business-decision" class="level3">
+<h3 class="anchored" data-anchor-id="the-business-decision">The Business Decision</h3>
+<p>“What should we do about M3?” Robert asks.</p>
+<p>David provides the analysis:</p>
+<p><strong>Statistical evidence:</strong></p>
+<ul>
+<li>P(Defect | M3) = 0.0233 vs.&nbsp;peer average = 0.0193</li>
+<li>20% higher defect rate than comparable machines</li>
+<li>Contributes 22.9% of defects from 20% of production</li>
+</ul>
+<p><strong>Business impact:</strong></p>
+<ul>
+<li>Excess defects from M3: ~40 per quarter</li>
+<li>Cost per defect: $180 average rework<br>
+</li>
+<li>Quarterly excess cost: $7,200</li>
+<li>Annual excess cost: $28,800</li>
+</ul>
+<p><strong>Recommendation:</strong> “Schedule diagnostic maintenance on M3. Cost: $15,000. If we reduce M3’s defect rate to peer average (0.0193), we eliminate $28,800 in annual rework costs. Payback period: 6.3 months.”</p>
+<p>Robert makes a note: “Schedule M3 maintenance next week. This is the kind of targeted action I needed.”</p>
+<p>Maria adds: “And this shows why conditional probability matters. Overall defect rate of 2.03% hides the fact that one machine is worse than the others. Without calculating P(Defect | Machine), we wouldn’t know where to focus our efforts.”</p>
+</section>
+</section>
+<section id="bayes-theorem-when-tests-arent-what-they-seem" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="bayes-theorem-when-tests-arent-what-they-seem"><span class="header-section-number">3.5</span> Bayes’ Theorem: When Tests Aren’t What They Seem</h2>
+<p>Robert’s next question hits harder: “Our inspection system has 95% sensitivity. If it says a part is defective, it is, right?”</p>
+<p>David and Maria exchange glances. This is where most people, including experienced managers, get probability wrong.</p>
+<p>“Let’s find out,” Maria says.</p>
+<section id="understanding-test-characteristics" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-test-characteristics">Understanding Test Characteristics</h3>
+<p>PrecisionCast’s inspection process has been evaluated on 2,000 units with known true status:</p>
+<p>Test Performance Metrics:</p>
+<ul>
+<li>Sensitivity: 95% (If truly defective, 95% chance test detects it)</li>
+<li>Specificity: 98% (If truly good, 98% chance test confirms it)</li>
+</ul>
+<p>“Those sound excellent,” Robert says. “95% and 98%, both very high.”</p>
+<p>“They are,” David agrees. “But watch what happens.”</p>
+<p>He creates a confusion matrix on the whiteboard:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: right;"><strong>Test Positive</strong></th>
+<th style="text-align: right;"><strong>Test Negative</strong></th>
+<th style="text-align: right;"><strong>Totals</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><strong>Defective</strong></td>
+<td style="text-align: right;">38 (TP)</td>
+<td style="text-align: right;">2 (FN)</td>
+<td style="text-align: right;"><strong>40</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>Good</strong></td>
+<td style="text-align: right;">40 (FP)</td>
+<td style="text-align: right;">1,920 (TN)</td>
+<td style="text-align: right;"><strong>1,960</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><strong>Totals</strong></td>
+<td style="text-align: right;"><strong>78</strong></td>
+<td style="text-align: right;"><strong>1,922</strong></td>
+<td style="text-align: right;"><strong>2,000</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Definitions:</p>
+<ul>
+<li>True Positive (TP): Test says defective <span class="math inline">\(\rightarrow\)</span> truly is defective</li>
+<li>False Negative (FN): Test says good <span class="math inline">\(\rightarrow\)</span> actually defective</li>
+<li>False Positive (FP): Test says defective <span class="math inline">\(\rightarrow\)</span> actually good</li>
+<li>True Negative (TN): Test says good <span class="math inline">\(\rightarrow\)</span> truly is good</li>
+</ul>
+<p>Calculate sensitivity and specificity:</p>
+<p><span class="math display">\[
+\begin{align}
+\text{Sensitivity} &amp;= \text{P(Test+ | Defective)} = \frac{\text{TP}}{\text{TP + FN}} = \frac{38}{40} = 0.95 \\[10pt]
+\text{Specifity} &amp;= \text{P(Test- | Good)} = \frac{\text{TN}}{\text{FP + TN}} = \frac{1,920}{1,960} = 0.98
+\end{align}
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Test Performance Metrics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Sensitivity (True Positive Rate):</strong></p>
+<p>Probability that test detects the condition when it’s truly present.</p>
+<blockquote class="blockquote">
+<p>“<em>If someone has the disease, what’s the probability the test catches it?</em>”</p>
+</blockquote>
+<p><strong>Specificity (True Negative Rate):</strong></p>
+<p>Probability that test confirms absence when condition is truly absent.</p>
+<blockquote class="blockquote">
+<p>“<em>If someone doesn’t have the disease, what’s the probability the test confirms they’re healthy?</em>”</p>
+</blockquote>
+<p><strong>False Positive Rate:</strong> 1 - Specificity<br>
+<strong>False Negative Rate:</strong> 1 - Sensitivity</p>
+</div>
+</div>
+</section>
+<section id="the-critical-question-what-does-a-positive-test-mean" class="level3">
+<h3 class="anchored" data-anchor-id="the-critical-question-what-does-a-positive-test-mean">The Critical Question: What Does a Positive Test Mean?</h3>
+<p>“Here’s the question that matters,” David says. “A unit tests positive. What’s the probability it’s actually defective?”</p>
+<p>Robert thinks. “Well, sensitivity is 95%, so… 95%?”</p>
+<p>“That’s what everyone thinks,” Maria says. “But watch.”</p>
+<p>She writes on the board:</p>
+<ul>
+<li>What we want: P(Defective | Test+)</li>
+<li>What we know: P(Test+ | Defective) = 0.95</li>
+</ul>
+<p>“These are different,” David emphasizes. “One is the reverse of the other.”</p>
+<p><strong>Direct calculation from the confusion matrix:</strong></p>
+<ul>
+<li>P(Defective | Test+) = TP / (TP + FP)<br>
+</li>
+<li>P(Defective | Test+) = 38 / (38 + 40)<br>
+</li>
+<li>P(Defective | Test+) = 38 / 78<br>
+</li>
+<li>P(Defective | Test+) = 0.487</li>
+</ul>
+<p>Robert stares at the number. “48.7%? You’re telling me when the test says ‘defective,’ there’s less than a 50% chance it’s actually defective?”</p>
+<p>“Exactly,” Maria confirms.</p>
+</section>
+<section id="bayes-theorem-the-formula" class="level3">
+<h3 class="anchored" data-anchor-id="bayes-theorem-the-formula">Bayes’ Theorem: The Formula</h3>
+<p>“Let me show you the general formula,” David says. “This is Bayes’ Theorem, one of the most important formulas in probability.”</p>
+<p><span class="math display">\[
+\text{P(Defective | Test+)} = \frac{\text{P(Test+ | Defective)}\times \text{P(Defective)}}{\text{P(Test+)}}
+\]</span></p>
+<p>“Where P(Test+) is the total probability of getting a positive test from anyone, defective or good.” Maria calculates the denominator:</p>
+<ul>
+<li>P(Test+) = P(Test+ ∩ Defective) + P(Test+ ∩ Good)<br>
+</li>
+<li>P(Test+) = P(Test+ | Defective) × P(Defective) + P(Test+ | Good) × P(Good)<br>
+</li>
+<li>P(Test+) = 0.95 × 0.0203 + 0.02 × 0.9797<br>
+</li>
+<li>P(Test+) = 0.0193 + 0.0196<br>
+</li>
+<li>P(Test+) = 0.0389</li>
+</ul>
+<p>“So 3.89% of all units test positive.”</p>
+<p>Now the full calculation:</p>
+<ul>
+<li>P(Defective | Test+) = (0.95 × 0.0203) / 0.0389<br>
+</li>
+<li>P(Defective | Test+) = 0.0193 / 0.0389<br>
+</li>
+<li>P(Defective | Test+) = 0.496</li>
+</ul>
+<p>“49.6%, essentially a coin flip.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Bayes’ Theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align}
+P(A|B)\times P(B) &amp;= P(B|A)\times P(A) \\[10pt]
+P(A|B) &amp;= \frac{P(B|A\times P(A))}{P(B)}
+\end{align}
+\]</span></p>
+<p><strong>Components:</strong></p>
+<ul>
+<li>P(A∣B): Posterior probability (what we want)</li>
+<li>P(B∣A): Likelihood (test performance)</li>
+<li>P(A): Prior probability (base rate)</li>
+<li>P(B): Total probability (normalizing constant)</li>
+</ul>
+<p><strong>What it does:</strong> Converts P(B|A) into P(A|B), reverses the conditional probability.</p>
+</div>
+</div>
+</section>
+<section id="why-is-ppv-so-low-the-base-rate-problem" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-ppv-so-low-the-base-rate-problem">Why Is PPV So Low? The Base Rate Problem</h3>
+<p>“This seems wrong,” Robert says. “95% sensitivity, 98% specificity, how do we get only 49.6% reliability?”</p>
+<p>David draws a tree diagram for 10,000 units:</p>
+<div class="cell" data-fig-width="12" data-fig-height="5" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    A["10,000 units"] --&gt; B["203 Defective&lt;br/&gt;(2.03%)"]
+    A --&gt; C["9,797 Good&lt;br/&gt;(97.97%)"]
+    
+    B --&gt; D["193 Test+&lt;br/&gt;(TP: 95%)"]
+    B --&gt; E["10 Test-&lt;br/&gt;(FN: 5%)"]
+    
+    C --&gt; F["196 Test+&lt;br/&gt;(FP: 2%)"]
+    C --&gt; G["9,601 Test-&lt;br/&gt;(TN: 98%)"]
+    
+    style A fill:#2c5f8d,stroke:#1a3a5c,stroke-width:3px,color:#fff
+    style B fill:#c0392b,stroke:#7f1d1d,stroke-width:2px,color:#fff
+    style C fill:#27ae60,stroke:#1e7e43,stroke-width:2px,color:#fff
+    style D fill:#d35400,stroke:#8b3a00,stroke-width:2px,color:#fff
+    style E fill:#e67e22,stroke:#b35c14,stroke-width:2px,color:#fff
+    style F fill:#f39c12,stroke:#c07c0a,stroke-width:2px,color:#000
+    style G fill:#229954,stroke:#196f3d,stroke-width:2px,color:#fff
+
+    D["193 Test+&lt;br/&gt;(95% sensitivity)&lt;br/&gt;✓ Correct Detection"]
+    F["196 Test+&lt;br/&gt;(2% false positive)&lt;br/&gt;⚠️ False Alarm"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>“Look at the positive tests,” Maria points. “We get 193 true positives from defective units. But we also get 196 false positives from good units. The test generates nearly as many false alarms as real detections.”</p>
+<p>“Why?” David explains. “Because defects are rare, only 2.03% of units. Even though the false positive rate is only 2%, there are so many good units (9,797) that 2% of them (196) is almost equal to 95% of the defective units (193).”</p>
+<p>Robert works through it: “So out of 389 positive tests, only 193 are true positives. That’s 193/389 = 49.6%.”</p>
+<p>“Exactly,” Maria confirms. “This is called the base rate problem. When the condition is rare, even very accurate tests generate lots of false positives.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The Base Rate Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The paradox:</strong> High test accuracy ≠ High result reliability</p>
+<p><strong>Why:</strong> When testing for rare conditions:</p>
+<ul>
+<li>Small false positive rate × Large healthy population = Many false positives</li>
+<li>High sensitivity × Small diseased population = Fewer true positives</li>
+<li>Result: More false positives than true positives</li>
+</ul>
+<p><strong>PrecisionCast example:</strong></p>
+<ul>
+<li>Only 2.03% defect rate (rare condition)</li>
+<li>2% false positive rate seems low</li>
+<li>But 2% of 9,797 good units = 196 false alarms</li>
+<li>95% of 203 defective units = 193 true detections</li>
+<li>196 ≈ 193 → PPV ≈ 50%</li>
+</ul>
+<p><strong>Medical parallel:</strong> Mammogram screening</p>
+<ul>
+<li>Sensitivity: ~85%</li>
+<li>Specificity: ~90%</li>
+<li>Breast cancer prevalence: ~1%</li>
+<li>PPV: Only ~8%</li>
+<li>Most positive mammograms are false alarms</li>
+</ul>
+<p><strong>Key insight:</strong> Test accuracy must be evaluated in context of base rate.</p>
+</div>
+</div>
+</section>
+<section id="the-negative-test-much-more-reliable" class="level3">
+<h3 class="anchored" data-anchor-id="the-negative-test-much-more-reliable">The Negative Test: Much More Reliable</h3>
+<p>“What about negative tests?” Robert asks. “If a unit tests negative, how confident can we be it’s actually good?”</p>
+<p>Maria calculates:</p>
+<ul>
+<li>NPV = TN / (TN + FN)<br>
+</li>
+<li>NPV = 1,920 / (1,920 + 2)<br>
+</li>
+<li>NPV = 0.998</li>
+</ul>
+<p>“99.8% confident,” she says. “Negative tests are highly reliable. If it passes, you can trust it.”</p>
+<p>David explains the asymmetry: “Negative tests are reliable because there are so few false negatives (10 out of 10,000) compared to true negatives (9,601 out of 10,000). When the test says ‘good,’ it’s almost certainly right.”</p>
+</section>
+<section id="business-implications" class="level3">
+<h3 class="anchored" data-anchor-id="business-implications">Business Implications</h3>
+<p>Robert absorbs this. “So every positive test needs secondary verification?”</p>
+<p>“Exactly,” David confirms. “Your current process probably scraps or reworks everything that tests positive. But half of those are false alarms, good parts being wasted.”</p>
+<p>Maria adds the cost: “If you scrap 40 good parts per quarter at $150 each, that’s $6,000 quarterly waste, or $24,000 annually.”</p>
+<p>“What’s the solution?” Robert asks.</p>
+<p>David provides three options:</p>
+<p><strong>Option 1: Two-stage testing</strong></p>
+<ul>
+<li>Any positive test gets re-tested with a different method.<br>
+</li>
+<li>Cost: $10 per re-test × ~196 false positives/quarter = $1,960/quarter<br>
+</li>
+<li>Savings: Reduces scrapping of good parts by 90%<br>
+</li>
+<li>Net benefit: ~$20,000 annually</li>
+</ul>
+<p><strong>Option 2: Improve specificity</strong></p>
+<ul>
+<li>Invest in higher-precision inspection equipment.<br>
+</li>
+<li>Target: Increase specificity from 98% to 99.5%<br>
+</li>
+<li>Result: PPV improves from 49.6% to 79.2%<br>
+</li>
+<li>Cost: $150,000 in new equipment<br>
+</li>
+<li>Payback: ~6 years</li>
+</ul>
+<p><strong>Option 3: Accept and adjust</strong></p>
+<ul>
+<li>Keep current system but change decision rule.<br>
+</li>
+<li>Instead of: Positive test → Automatic scrap<br>
+</li>
+<li>Use: Positive test → Manual expert inspection<br>
+</li>
+<li>Cost: Minimal<br>
+</li>
+<li>Result: Eliminates waste from false positives</li>
+</ul>
+<p>“Option 1 or 3,” Robert decides immediately. “Two-stage testing or expert review. Both are no-brainers compared to $150k in new equipment.”</p>
+<p>Maria makes a note: “And this is why Bayes’ theorem matters. Without it, you’d never realize that 95% sensitivity doesn’t mean 95% reliability. You’d keep wasting money on false positives without knowing it.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Business Applications of Bayes’ Theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Quality Control:</strong></p>
+<ul>
+<li>Evaluate reliability of inspection systems</li>
+<li>Determine when secondary testing is cost-effective</li>
+<li>Optimize balance between false positives and false negatives</li>
+</ul>
+<p><strong>Medical Testing:</strong></p>
+<ul>
+<li>Interpret diagnostic test results</li>
+<li>Decide when to order confirmatory tests</li>
+<li>Communicate risk to patients accurately</li>
+</ul>
+<p><strong>Fraud Detection:</strong></p>
+<ul>
+<li>When fraud flag triggers, probability it’s real fraud</li>
+<li>Balance between catching fraud and annoying legitimate customers</li>
+<li>Optimize investigation resources</li>
+</ul>
+<p><strong>Security Screening:</strong></p>
+<ul>
+<li>Airport security: When alarm sounds, probability of actual threat</li>
+<li>Network intrusion: When alert fires, probability of real attack</li>
+<li>Spam filtering: When email flagged, probability it’s actually spam</li>
+</ul>
+<p><strong>Key principle:</strong> Test accuracy (sensitivity/specificity) ≠ Result reliability (PPV/NPV). Always consider base rates.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="expected-value-planning-under-uncertainty" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="expected-value-planning-under-uncertainty"><span class="header-section-number">3.6</span> Expected Value: Planning Under Uncertainty</h2>
+<p>“Alright,” Robert says, “now let’s talk about Q2. We’re planning to produce 55,000 good units. How many defects should we expect?”</p>
+<p>“This is where probability becomes forecasting,” David says. “We use expected value.”</p>
+<section id="expected-defects" class="level3">
+<h3 class="anchored" data-anchor-id="expected-defects">Expected Defects</h3>
+<p>Maria starts with the basic formula:</p>
+<p><span class="math display">\[E(X) = n \times p\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(n\)</span> = number of trials (units produced)<br>
+</li>
+<li><span class="math inline">\(p\)</span> = probability of detect<br>
+</li>
+<li><span class="math inline">\(E(X)\)</span> = Expected number of defects</li>
+</ul>
+<p>For Q2:</p>
+<ul>
+<li>E(Defects) = 55,000 × 0.0203<br>
+</li>
+<li>E(Defects) = 1,117 defects</li>
+</ul>
+<p>“So we should expect about 1,117 defective units in Q2.”</p>
+<p>“But there’s variability around that,” David adds. “The actual number won’t be exactly 1,117.”</p>
+<p>He calculates the standard deviation:</p>
+<ul>
+<li>Variance = n × p × (1-p)<br>
+</li>
+<li>Variance = 55,000 × 0.0203 × 0.9797<br>
+</li>
+<li>Variance = 1,094</li>
+</ul>
+<p>SD = √1,094 = 33 defects</p>
+<p>“So 1,117 ± 66 defects (±2 SD) gives us a realistic range: [1,051, 1,183].”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Expected Value and Variance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>For Binomial (counting successes in n trials):</strong></p>
+<p><strong>Expected value:</strong> <span class="math display">\[E(X)=n \times p\]</span></p>
+<p><strong>Variance:</strong> <span class="math display">\[Var(X) = n \times p \times (1−p)\]</span></p>
+<p>Standard deviation:</p>
+<p><span class="math display">\[SD(X) = \sqrt{n \times p \times (1-p)}\]</span></p>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>E(X): The long-run average</li>
+<li>SD(X): Typical deviation from expected value</li>
+<li>Range E(X) ± 2SD covers ~95% of possible outcomes</li>
+</ul>
+<p><strong>Connection to Lecture 1:</strong> This is the same standard deviation concept, now applied to future predictions instead of past data.</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>=n*p              ' Expected value</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>=SQRT(n*p*(1-p))  ' Standard deviation</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="expected-cost" class="level3">
+<h3 class="anchored" data-anchor-id="expected-cost">Expected Cost</h3>
+<p>“How much should we budget for rework?” Robert asks.</p>
+<p>“Different defect types have different costs,” Maria notes. She pulls up the breakdown:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Defect Type</strong></th>
+<th style="text-align: right;"><strong>Probability</strong></th>
+<th style="text-align: right;"><strong>Cost per Unit</strong></th>
+<th style="text-align: right;"><strong>Weighted Cost</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Porosity</td>
+<td style="text-align: right;">0.401</td>
+<td style="text-align: right;">$180</td>
+<td style="text-align: right;">$72.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cracks</td>
+<td style="text-align: right;">0.250</td>
+<td style="text-align: right;">$250</td>
+<td style="text-align: right;">$62.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dimensional</td>
+<td style="text-align: right;">0.200</td>
+<td style="text-align: right;">$150</td>
+<td style="text-align: right;">$30.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Surface</td>
+<td style="text-align: right;">0.149</td>
+<td style="text-align: right;">$120</td>
+<td style="text-align: right;">$17.88</td>
+</tr>
+</tbody>
+</table>
+<p>“Expected cost per defect is the weighted average:”</p>
+<ul>
+<li>E(Cost per Defect) = Σ [P(Type) × Cost]<br>
+</li>
+<li>E(Cost per Defect) = 0.401×$180 + 0.250×$250 + 0.200×$150 + 0.149×$120<br>
+</li>
+<li>E(Cost per Defect) = $72.18 + $62.50 + $30.00 + $17.88<br>
+</li>
+<li>E(Cost per Defect) = $182.56</li>
+</ul>
+<p>“Now total expected cost:”</p>
+<ul>
+<li>E(Total Cost) = E(Defects) × E(Cost per Defect)<br>
+</li>
+<li>E(Total Cost) = 1,117 × $182.56<br>
+</li>
+<li>E(Total Cost) = $203,920</li>
+</ul>
+<p>David adds a safety margin: “Budget $204,000 for rework, with an additional $30,000 buffer for the ±2SD range. That gives you $234,000 total, enough to cover 95% of likely scenarios.”</p>
+<p>Robert makes a note. “This is exactly what I needed. Not ‘maybe 1,000 to 1,500 defects’, a specific number with a confidence range.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Expected Value with Different Outcomes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>General formula:</strong></p>
+<p><span class="math display">\[E(X) = \sum_{i}^{n} X_i P(X_i)\]</span></p>
+<p>Where <span class="math inline">\(X_i\)</span>​ represents each possible outcome and <span class="math inline">\(P(X_i)\)</span> its probability.</p>
+<p><strong>Application:</strong> When outcomes have different values (costs, revenues, returns), calculate weighted average using probabilities as weights.</p>
+<p><strong>PrecisionCast example:</strong></p>
+<ul>
+<li>Four defect types with different costs</li>
+<li>Each has different probability</li>
+<li>Expected cost = probability-weighted average</li>
+</ul>
+<p><strong>Business uses:</strong></p>
+<ul>
+<li>Portfolio returns (different investments, different probabilities)</li>
+<li>Project outcomes (success/failure scenarios with different payoffs)</li>
+<li>Insurance claims (different claim amounts, different frequencies)</li>
+<li>Sales forecasts (different demand levels, different probabilities)</li>
+</ul>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>=SUMPRODUCT(values_range, probabilities_range)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+</section>
+<section id="capacity-planning" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="capacity-planning"><span class="header-section-number">3.7</span> Capacity Planning</h2>
+<p>“One more thing,” Maria says. “If you need to deliver 50,000 good units, how many should you actually produce?”</p>
+<p>She sets up the equation:</p>
+<p>Good units = Total production × P(Good) 50,000 = Total production × 0.9797</p>
+<p>Total production = 50,000 / 0.9797 Total production = 51,035 units</p>
+<p>“You need to produce 51,035 units to guarantee 50,000 good ones. That’s a 2.07% buffer for defects.”</p>
+<p>Robert appreciates the precision. “So if a customer orders 50,000 units, I know to schedule 51,035 in production. This prevents shortfalls and costly rush orders.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Business Applications of Expected Value
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Production Planning:</strong></p>
+<ul>
+<li>Expected defects → Production capacity buffer</li>
+<li>Expected rework costs → Budget allocation</li>
+<li>Expected scrap → Material ordering</li>
+</ul>
+<p><strong>Inventory Management:</strong></p>
+<ul>
+<li>Expected demand → Safety stock levels</li>
+<li>Expected lead time → Reorder points</li>
+<li>Expected shortages → Service level targets</li>
+</ul>
+<p><strong>Financial Forecasting:</strong></p>
+<ul>
+<li>Expected revenue = Σ (Scenario revenue × Probability)</li>
+<li>Expected costs with probabilistic drivers</li>
+<li>Expected profit accounting for uncertainty</li>
+</ul>
+<p><strong>Risk Assessment:</strong></p>
+<ul>
+<li>Expected loss = Severity × Probability</li>
+<li>Expected insurance payout</li>
+<li>Expected value of perfect information</li>
+</ul>
+<p><strong>Key insight:</strong> Expected value converts probability distributions into single actionable numbers for planning.</p>
+</div>
+</div>
+</section>
+<section id="binomial-distribution-batch-quality-control" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="binomial-distribution-batch-quality-control"><span class="header-section-number">3.8</span> Binomial Distribution: Batch Quality Control</h2>
+<p>Robert presents a new challenge: “We inspect parts in batches of 100. Our policy is that a batch passes if it contains 3 or fewer defects. What percentage of batches should we expect to pass?”</p>
+<p>“This is a binomial distribution problem,” David says. “We’re counting the number of defects in a fixed number of trials.”</p>
+<section id="understanding-the-binomial" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-binomial">Understanding the Binomial</h3>
+<p>“The binomial distribution applies when:” Maria lists the conditions:</p>
+<ol type="1">
+<li>Fixed number of trials: n = 100 units per batch</li>
+<li>Two outcomes: Each unit is either defective or good</li>
+<li>Constant probability: p = 0.0203 for each unit</li>
+<li>Independent trials: One unit’s status doesn’t affect another</li>
+</ol>
+<p>“When these conditions hold, the number of defects follows a binomial distribution.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Binomial Distribution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Conditions:</p>
+<ol type="1">
+<li>Fixed number of trials (n)</li>
+<li>Each trial has two outcomes (success/failure)</li>
+<li>Constant probability of success (p)</li>
+<li>Trials are independent</li>
+</ol>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><span class="math inline">\(n\)</span> = number of trials</li>
+<li><span class="math inline">\(p\)</span> = probability of success on each trial</li>
+</ul>
+<p><strong>Probability mass function:</strong></p>
+<p><span class="math display">\[P(X=k) = (n k) p^k (1-p)^{n-k}\]</span></p>
+<p>Where <span class="math inline">\((n k) = \frac{n!}{k! (n-k)!}\)</span> is the binomial coefficient.</p>
+<p><strong>Expected value:</strong></p>
+<p><span class="math display">\[E(X) = n \times p\]</span></p>
+<p><strong>Variance:</strong></p>
+<p><span class="math display">\[Var(X) = n \times p \times (1-p)\]</span></p>
+<p><strong>Standard deviation:</strong></p>
+<p><span class="math display">\[SD(X) = \sqrt{n \times p \times (1-p)}​\]</span></p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>=BINOM.DIST(k, n, p, cumulative)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>k = number of successes</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>n = number of trials  </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>p = probability of success</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>cumulative = TRUE for P(X ≤ k), FALSE for P(X = k)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="expected-defects-per-batch" class="level3">
+<h3 class="anchored" data-anchor-id="expected-defects-per-batch">Expected Defects per Batch</h3>
+<p>David calculates:</p>
+<ul>
+<li>E(Defects per batch) = n × p<br>
+</li>
+<li>E(Defects per batch) = 100 × 0.0203<br>
+</li>
+<li>E(Defects per batch) = 2.03 defects</li>
+</ul>
+<p>“So on average, a batch contains about 2 defects.”</p>
+<p>The standard deviation:</p>
+<ul>
+<li>SD = √[n × p × (1-p)]<br>
+</li>
+<li>SD = √[100 × 0.0203 × 0.9797]<br>
+</li>
+<li>SD = √1.989<br>
+</li>
+<li>SD = 1.41 defects</li>
+</ul>
+<p>“Most batches will contain between 0 and 5 defects (within ±2SD of the mean).”</p>
+</section>
+<section id="probability-of-passing" class="level3">
+<h3 class="anchored" data-anchor-id="probability-of-passing">Probability of Passing</h3>
+<p>“Now for the actual question,” Maria says. “What’s P(Defects ≤ 3)?”</p>
+<p>This requires summing individual probabilities:</p>
+<p>P(Pass) = P(0 defects) + P(1 defect) + P(2 defects) + P(3 defects)</p>
+<p>Using the binomial formula (or Excel):</p>
+<p>P(0) = 0.1286 P(1) = 0.2665 P(2) = 0.2734 P(3) = 0.1850</p>
+<p>P(Pass) = 0.1286 + 0.2665 + 0.2734 + 0.1850 P(Pass) = 0.8535</p>
+<p>“85.35% of batches should pass,” David announces.</p>
+<p>“Which means 14.65% fail,” Robert notes. “That’s roughly 1 in 7 batches requiring rework or scrapping.”</p>
+</section>
+</section>
+<section id="comparing-to-observed-data" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="comparing-to-observed-data"><span class="header-section-number">3.9</span> Comparing to Observed Data</h2>
+<p>Maria pulls up actual Q1 batch data from 488 batches:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 27%">
+<col style="width: 20%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Defects in Batch</strong></th>
+<th style="text-align: center;"><strong>Observed Count</strong></th>
+<th style="text-align: center;"><strong>Obsered %</strong></th>
+<th style="text-align: right;"><strong>Expected %</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: center;">66</td>
+<td style="text-align: center;">13.5%</td>
+<td style="text-align: right;">12.9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;">133</td>
+<td style="text-align: center;">27.3%</td>
+<td style="text-align: right;">26.7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;">140</td>
+<td style="text-align: center;">28.7%</td>
+<td style="text-align: right;">27.3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">18.6%</td>
+<td style="text-align: right;">18.5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4+</td>
+<td style="text-align: center;">58</td>
+<td style="text-align: center;">11.9%</td>
+<td style="text-align: right;">14.5%</td>
+</tr>
+</tbody>
+</table>
+<p>“The observed distribution matches the theoretical model very closely,” she notes. “This validates our probability assumptions.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Business Applications of Binomial Distribution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Quality Control:</strong></p>
+<ul>
+<li>Batch acceptance/rejection decisions</li>
+<li>Sample inspection plans</li>
+<li>Process capability when counting defects</li>
+</ul>
+<p><strong>Customer Service:</strong></p>
+<ul>
+<li>Number of complaints in fixed time period</li>
+<li>Call abandonment rates</li>
+<li>Service failures per day</li>
+</ul>
+<p><strong>Sales:</strong></p>
+<ul>
+<li>Number of conversions from fixed leads</li>
+<li>Close rates from sales calls</li>
+<li>Response rates to marketing campaigns</li>
+</ul>
+<p><strong>Operations:</strong></p>
+<ul>
+<li>Equipment failures in production run</li>
+<li>Order errors per shift</li>
+<li>On-time deliveries per week</li>
+</ul>
+<p><strong>Key insight:</strong> When counting successes/failures in a fixed number of independent trials with constant probability, use binomial distribution.</p>
+</div>
+</div>
+<section id="threshold-sensitivity-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="threshold-sensitivity-analysis">Threshold Sensitivity Analysis</h3>
+<p>Robert asks: “What if we change our acceptance threshold? Say we only accept batches with 2 or fewer defects?”</p>
+<p>David recalculates:</p>
+<ul>
+<li>P(Defects ≤ 2) = P(0) + P(1) + P(2)<br>
+</li>
+<li>P(Defects ≤ 2) = 0.1286 + 0.2665 + 0.2734<br>
+</li>
+<li>P(Defects ≤ 2) = 0.6685</li>
+</ul>
+<p>“Only 66.85% of batches would pass. You’d reject a third of production.”</p>
+<p>“And if we’re more lenient—say 4 defects?”</p>
+<ul>
+<li>P(Defects ≤ 4) = 0.8535 + P(4)<br>
+</li>
+<li>P(Defects ≤ 4) = 0.8535 + 0.0947<br>
+</li>
+<li>P(Defects ≤ 4) = 0.9482</li>
+</ul>
+<p>“94.82% pass rate.”</p>
+<p>Maria creates a summary table:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Threshold</strong></th>
+<th style="text-align: right;"><strong>Pass Rate</strong></th>
+<th style="text-align: right;"><strong>Fail Rate</strong></th>
+<th style="text-align: right;"><strong>Interpretation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\leq\)</span> 2</td>
+<td style="text-align: right;">66.9%</td>
+<td style="text-align: right;">33.1%</td>
+<td style="text-align: right;">Too strict (high rejection)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\leq\)</span> 3</td>
+<td style="text-align: right;">85.4%</td>
+<td style="text-align: right;">14.6%</td>
+<td style="text-align: right;">Current policy (balanced)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\leq\)</span> 4</td>
+<td style="text-align: right;">94.8%</td>
+<td style="text-align: right;">5.3%</td>
+<td style="text-align: right;">More lenient (low rejection)</td>
+</tr>
+</tbody>
+</table>
+<p>“Current threshold of 3 seems reasonable,” Robert decides. “Catches the worst batches without excessive rejection.”</p>
+</section>
+</section>
+<section id="normal-distribution-dimensional-quality" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="normal-distribution-dimensional-quality"><span class="header-section-number">3.10</span> Normal Distribution: Dimensional Quality</h2>
+<p>“Let’s talk about dimensions,” Robert says. “Our aerospace parts must be 2.500 inches ± 0.001 inches. What percentage of our parts meet specification?”</p>
+<p>This requires the normal distribution (used for continuous measurements rather than discrete counts.)</p>
+<section id="the-normal-distribution-setup" class="level3">
+<h3 class="anchored" data-anchor-id="the-normal-distribution-setup">The Normal Distribution Setup</h3>
+<p>David explains: “When measuring continuous variables like dimensions, weights, or times, we typically use the normal distribution. It’s characterized by two parameters: mean (μ) and standard deviation (σ).”</p>
+<p>Maria pulls up the dimensional data from 500 measurements:</p>
+<ul>
+<li>Sample mean: <span class="math inline">\(\hat{\mu}\)</span> = 2.500004 inches</li>
+<li>Sample standard deviation: <span class="math inline">\(\hat{\sigma}\)</span> = 0.000401 inches</li>
+<li>Specification: 2.500 ± 0.001 inches (range: 2.499 to 2.501)</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Normal Distribution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Notation:</strong> <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><span class="math inline">\(\mu\)</span> = mean (center of distribution)</li>
+<li><span class="math inline">\(\sigma\)</span> = standard deviation (spread)</li>
+</ul>
+<p><strong>Properties:</strong></p>
+<ul>
+<li>Bell-shaped, symmetric around μ</li>
+<li>About 68% of data within μ ± σ</li>
+<li>About 95% within μ ± 2σ</li>
+<li>About 99.7% within μ ± 3σ</li>
+</ul>
+<p><strong>Probability density function:</strong></p>
+<p><span class="math display">\[f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}\]</span></p>
+<p><strong>Cumulative distribution function:</strong></p>
+<p><span class="math display">\[P(X \leq x) = \Phi\left(\frac{x-\mu}{\sigma}\right)\]</span></p>
+<p>Where Φ is the standard normal CDF.</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>=NORM.DIST(x, mean, sd, TRUE)    ' Cumulative probability  </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>=NORM.DIST(x, mean, sd, FALSE)   ' Probability density</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="calculating-probability-within-specification" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-probability-within-specification">Calculating Probability Within Specification</h3>
+<p>“We need P(2.499 &lt; X &lt; 2.501),” David says.</p>
+<p>First, standardize using z-scores:</p>
+<p><strong>Lower limit:</strong></p>
+<ul>
+<li>z_lower = (2.499 - 2.500004) / 0.000401<br>
+</li>
+<li>z_lower = -0.001004 / 0.000401<br>
+</li>
+<li>z_lower = -2.50</li>
+</ul>
+<p><strong>Upper limit:</strong></p>
+<ul>
+<li>z_upper = (2.501 - 2.500004) / 0.000401<br>
+</li>
+<li>z_upper = 0.000996 / 0.000401<br>
+</li>
+<li>z_upper = 2.48</li>
+</ul>
+<p>From standard normal table (or Excel):</p>
+<ul>
+<li>P(Z &lt; 2.48) = 0.9934<br>
+</li>
+<li>P(Z &lt; -2.50) = 0.0062</li>
+</ul>
+<p>Therefore:</p>
+<ul>
+<li>P(Within spec) = P(Z &lt; 2.48) - P(Z &lt; -2.50)<br>
+</li>
+<li>P(Within spec) = 0.9934 - 0.0062<br>
+</li>
+<li>P(Within spec) = 0.9872</li>
+</ul>
+<p>“98.72% of parts meet specification,” Maria announces.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Standard Normal Distribution and Z-Scores
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Standardization (Z-score):</p>
+<p><span class="math display">\[z = \frac{x - \mu}{\sigma}\]</span> ​ Converts any normal distribution to standard normal: <span class="math display">\[Z \sim N(0, 1)\]</span></p>
+<p>Why standardize?</p>
+<ul>
+<li>Enables use of standard normal tables</li>
+<li>Allows comparison across different scales</li>
+<li>Simplifies probability calculations</li>
+</ul>
+<p><strong>Connection to Lecture 1:</strong> Same z-score concept used to identify outliers, now used to calculate probabilities under the normal curve.</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>=NORM.S.DIST(z, TRUE)      ' Standard normal CDF  </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>=NORM.S.INV(probability)   ' Inverse: find z for given probability</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+</section>
+<section id="process-capability-analysis" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="process-capability-analysis"><span class="header-section-number">3.11</span> Process Capability Analysis</h2>
+<p>“How does 98.72% compare to what we need?” Robert asks.</p>
+<p>“Aerospace standard is 99.5%,” David reminds him. “You’re short by 0.78 percentage points.”</p>
+<p>Maria introduces Process Capability Index (Cpk):</p>
+<p><span class="math display">\[C_{pk} = \min\left[\frac{\text{USL} - \mu}{3\sigma}, \frac{\mu - \text{LSL}}{3\sigma}\right]\]</span></p>
+<p>Where:</p>
+<ul>
+<li>USL = Upper Specification Limit (2.501)</li>
+<li>LSL = Lower Specification Limit (2.499)</li>
+<li>μ = Process mean (2.500004)</li>
+<li>σ = Process standard deviation (0.000401)</li>
+</ul>
+<p>Calculate:</p>
+<p>Upper capability:</p>
+<ul>
+<li>(2.501 - 2.500004) / (3 × 0.000401) = 0.000996 / 0.001203 = 0.828</li>
+</ul>
+<p>Lower capability:</p>
+<ul>
+<li>(2.500004 - 2.499) / (3 × 0.000401) = 0.001004 / 0.001203 = 0.835</li>
+</ul>
+<p>Then:</p>
+<ul>
+<li>Cpk = min(0.828, 0.835) = 0.828</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Process Capability Index (Cpk)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Formula:</strong></p>
+<p><span class="math display">\[C_{pk} = \min\left[\frac{USL - \mu}{3\sigma}, \frac{\mu - LSL}{3\sigma}\right]\]</span></p>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>Cpk &lt; 1.0: Process not capable</li>
+<li>Cpk = 1.0-1.33: Marginally capable</li>
+<li>Cpk ≥ 1.33: Capable process (industry standard)</li>
+<li>Cpk ≥ 1.67: Good process capability</li>
+<li>Cpk ≥ 2.0: Six Sigma process</li>
+</ul>
+<p><strong>What it measures:</strong> How much room exists between process variation and specification limits, in units of standard deviations.</p>
+<p><strong>Rule of thumb:</strong> Cpk = 1.33 means process spread (6σ) uses 75% of specification width, leaving 25% safety margin.</p>
+<p><strong>For PrecisionCast:</strong></p>
+<p>Cpk = 0.828 &lt; 1.0 → Process not capable</p>
+<p>Current spread exceeds specification limits</p>
+</div>
+</div>
+<p>“Your Cpk of 0.83 is below the minimum of 1.0,” David explains. “You need process improvement.”</p>
+<p>“What would it take to achieve Cpk = 1.33?” Robert asks.</p>
+<p>Let <span class="math inline">\(\sigma_R\)</span> be the required SD. Maria calculates:</p>
+<p>Required: Cpk = 1.33</p>
+<p><span class="math display">\[
+\begin{align}
+\frac{\text{USL} - \mu}{3 \sigma_R} &amp;= 1.33 \\[10pt]
+\sigma_R &amp;= \frac{\text{USL} - \mu}{3 \times 1.33} \\[10pt]
+\sigma_R &amp;= \frac{2.501 - 2.500004}{3.99} \\[10pt]
+\sigma_R &amp;= 0.00250 \text{ inches}
+\end{align}
+\]</span></p>
+<p>“You need to reduce your standard deviation from 0.000401 to 0.000250, a 38% reduction in variability.”</p>
+<section id="tail-probabilities" class="level3">
+<h3 class="anchored" data-anchor-id="tail-probabilities">Tail Probabilities</h3>
+<p>“How many parts exceed the upper limit?” Robert asks.</p>
+<ul>
+<li>P(X &gt; 2.501) = 1 - P(Z &lt; 2.48)<br>
+</li>
+<li>P(X &gt; 2.501) = 1 - 0.9934<br>
+</li>
+<li>P(X &gt; 2.501) = 0.0066</li>
+</ul>
+<p>“About 0.66% of parts, roughly 1 in 152, exceed the upper limit.”</p>
+<p>At 200,000 annual production:</p>
+<ul>
+<li>Expected rejects = 200,000 × 0.0066 = 1,320 parts<br>
+</li>
+<li>Cost at $180/part = $237,600 annually</li>
+</ul>
+<p>“Similarly, 0.62% fall below the lower limit, costing another $223,000 annually. Total out-of-spec cost: about $460,000 per year.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Business Applications of Normal Distribution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Quality Control:</strong></p>
+<ul>
+<li>Dimensional tolerances and specifications</li>
+<li>Process capability analysis (Cpk)</li>
+<li>Control charts and variation monitoring</li>
+</ul>
+<p><strong>Operations:</strong></p>
+<ul>
+<li>Lead time variability</li>
+<li>Production time forecasting</li>
+<li>Equipment performance metrics</li>
+</ul>
+<p><strong>Financial Analysis:</strong></p>
+<ul>
+<li>Investment returns (often approximately normal)</li>
+<li>Risk assessment (Value at Risk)</li>
+<li>Revenue forecasting with uncertainty</li>
+</ul>
+<p><strong>Reliability Engineering:</strong></p>
+<ul>
+<li>Time to failure (when log-normal)</li>
+<li>Maintenance scheduling</li>
+<li>Warranty cost estimation</li>
+</ul>
+<p><strong>Key insight:</strong> Many continuous measurements in business (dimensions, times, weights, temperatures) follow approximately normal distributions, making this the most widely used distribution.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="the-investment-decision-bringing-it-all-together" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="the-investment-decision-bringing-it-all-together"><span class="header-section-number">3.12</span> The Investment Decision: Bringing It All Together</h2>
+<p>Robert returns to the original question: “Should I invest $2 million in the new casting machine?”</p>
+<p>David and Maria now have all the probability tools to answer definitively.</p>
+<p>The vendor claims “up to 40% defect reduction,” but there’s uncertainty. David constructs three scenarios:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 29%">
+<col style="width: 22%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Scenario</strong></th>
+<th style="text-align: center;"><strong>Defect Reduction</strong></th>
+<th style="text-align: center;"><strong>Probability</strong></th>
+<th><strong>New Defect Rate</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Best</td>
+<td style="text-align: center;">40%</td>
+<td style="text-align: center;">0.20</td>
+<td>0.0122 (1.22%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: center;">0.50</td>
+<td>0.0142 (1.42%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Worst</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: center;">0.30</td>
+<td>0.0162 (1.62%)</td>
+</tr>
+</tbody>
+</table>
+<p>“These probabilities come from industry data on similar equipment upgrades,” Maria explains.</p>
+<section id="calculate-expected-savings" class="level3">
+<h3 class="anchored" data-anchor-id="calculate-expected-savings">Calculate Expected Savings</h3>
+<p>For each scenario, calculate annual savings:</p>
+<p><strong>Current cost:</strong></p>
+<ul>
+<li>Annual production: 200,000 units<br>
+</li>
+<li>Defect rate: 0.0203<br>
+</li>
+<li>Expected defects: 4,060<br>
+</li>
+<li>Rework cost: $182.56 per defect<br>
+</li>
+<li>Annual rework cost: $741,194</li>
+</ul>
+<p><strong>Best case (40% reduction):</strong></p>
+<ul>
+<li>New defects: 200,000 × 0.0122 = 2,440</li>
+<li>New cost: 2,440 × $182.56 = $445,446</li>
+<li>Savings: $741,194 - $445,446 = $295,748</li>
+</ul>
+<p><strong>Expected case (30% reduction):</strong></p>
+<ul>
+<li>New defects: 200,000 × 0.0142 = 2,840</li>
+<li>New cost: 2,840 × $182.56 = $518,470</li>
+<li>Savings: $741,194 - $518,470 = $222,724</li>
+</ul>
+<p><strong>Worst case (20% reduction):</strong></p>
+<ul>
+<li>New defects: 200,000 × 0.0162 = 3,240</li>
+<li>New cost: 3,240 × $182.56 = $591,494</li>
+<li>Savings: $741,194 - $591,494 = $149,700</li>
+</ul>
+</section>
+<section id="expected-value-of-investment" class="level3">
+<h3 class="anchored" data-anchor-id="expected-value-of-investment">Expected Value of Investment</h3>
+<p>Now calculate the probability-weighted expected savings:</p>
+<ul>
+<li>E(Savings) = Σ [P(Scenario) × Savings(Scenario)]</li>
+<li>E(Savings) = 0.20 × $295,748 + 0.50 × $222,724 + 0.30 × $149,700</li>
+<li>E(Savings) = $59,150 + $111,362 + $44,910</li>
+<li>E(Savings) = $215,422</li>
+</ul>
+<p>“Expected annual savings: $215,422”</p>
+<p><strong>Payback period:</strong></p>
+<ul>
+<li>Payback = Investment / Annual Savings</li>
+<li>Payback = $2,000,000 / $215,422</li>
+<li>Payback = 9.3 years</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Investment Analysis Red Flags
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Industry benchmarks for equipment investment:</p>
+<ul>
+<li>Excellent: &lt; 3 years payback</li>
+<li>Acceptable: 3-5 years</li>
+<li>Questionable: 5-7 years</li>
+<li>Poor: 7-10 years</li>
+<li>Reject: &gt; 10 years</li>
+</ul>
+<p>Why?</p>
+<ul>
+<li>Equipment life: 10-12 years typical</li>
+<li>Technology obsolescence risk</li>
+<li>Opportunity cost of capital</li>
+<li>Maintenance and upgrade costs not included</li>
+</ul>
+<p><strong>PrecisionCast result:</strong> 9.3 years payback → <strong>REJECT</strong> ⚠️</p>
+</div>
+</div>
+<p><strong>The Recommendation</strong></p>
+<p>David presents the analysis to Robert:</p>
+<p>“Expected payback of 9.3 years far exceeds your typical 3-5 year requirement. The machine would barely pay for itself before becoming obsolete.”</p>
+<p>Maria adds the risk assessment: “And that’s assuming the expected case. There’s a 30% probability of the worst case, which extends payback to 13.4 years, longer than the equipment’s useful life.”</p>
+<p>“What about the best case?” Robert asks.</p>
+<p>“20% probability,” David responds. “Best case payback is 6.8 years, still too long by your standards.”</p>
+<p><strong>Alternative Investments</strong></p>
+<p>“Instead,” Maria suggests, “consider lower-cost improvements with better returns:”</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 16%">
+<col style="width: 25%">
+<col style="width: 16%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Investment</strong></th>
+<th style="text-align: right;"><strong>Cost</strong></th>
+<th style="text-align: right;"><strong>Annual Savings</strong></th>
+<th style="text-align: right;"><strong>Payback</strong></th>
+<th><strong>Risk</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Machine M3 maintenance</td>
+<td style="text-align: right;">$15,000</td>
+<td style="text-align: right;">$28,800</td>
+<td style="text-align: right;">0.5 years</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Process optimization</td>
+<td style="text-align: right;">$50,000</td>
+<td style="text-align: right;">$100,000</td>
+<td style="text-align: right;">0.5 years</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Two-stage testing</td>
+<td style="text-align: right;">$25,000</td>
+<td style="text-align: right;">$24,000</td>
+<td style="text-align: right;">1.0 years</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Training program</td>
+<td style="text-align: right;">$30,000</td>
+<td style="text-align: right;">$45,000</td>
+<td style="text-align: right;">7.0 years</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p>“For $120,000 (6% of the machine cost) you get $198,000 in annual savings. Payback in 7 months instead of 9 years.”</p>
+<p>Robert makes his decision: “We’re not buying the machine. Proceed with the alternative improvements. Schedule M3 maintenance next week, implement two-stage testing within 30 days, and develop the process optimization plan.”</p>
+<p>He looks at the vendor proposal and sets it aside. “This is exactly why I needed probability analysis. The vendor gave me marketing language, ‘up to 40%’, and I almost spent $2 million on a bad investment. Expected value analysis saved us from a major mistake.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Decision-Making Under Uncertainty
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Framework:</strong></p>
+<ol type="1">
+<li>Identify scenarios with different outcomes</li>
+<li>Assign probabilities to each scenario</li>
+<li>Calculate payoffs for each scenario</li>
+<li>Compute expected value = Σ [P(scenario) × Payoff(scenario)]</li>
+<li>Compare alternatives using expected values</li>
+<li>Consider risk (not just expected value)</li>
+</ol>
+<p><strong>PrecisionCast application:</strong></p>
+<ul>
+<li>Three defect reduction scenarios</li>
+<li>Probabilities from industry data</li>
+<li>Calculated savings for each</li>
+<li>Expected value: $215,422</li>
+<li>Compared to alternatives: $197,800 with lower risk</li>
+<li>Decision: Choose alternatives</li>
+</ul>
+<p><strong>Key insight:</strong> “Up to 40%” means nothing without probabilities. Expected value forces rigorous thinking about likelihoods and outcomes.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="from-description-to-prediction-the-full-journey" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="from-description-to-prediction-the-full-journey"><span class="header-section-number">3.13</span> From Description to Prediction: The Full Journey</h2>
+<p>Robert reviews both reports, the original vague analysis and David and Maria’s probability-based revision.</p>
+<p>“Three months ago,” he says, “Sarah Chen at TechFlow faced the same problem you two solved for her. Her marketing team gave her vague descriptions. You gave her statistical precision.”</p>
+<p>He holds up his original quality report. “My team gave me the same vague language. ‘Around 2%,’ ‘pretty good tests,’ ‘seems worse.’ I couldn’t make decisions with that.”</p>
+<p>Then the revised report. “Now I have probabilities, expected values, confidence intervals. I can forecast Q2 defects within ±66 units. I know Machine M3 has a 20% higher defect rate. I know my inspection system has only 50% positive predictive value. And I just avoided a $2 million mistake.”</p>
+<p>Maria summarizes the transformation: Original Report → Probability Analysis:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Vague Statement</strong></th>
+<th style="text-align: left;"><strong>Precise Probability</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">“around 2% defects”</td>
+<td style="text-align: left;">P(Defect) = 0.0203 exactly</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">“M3 seems worse”</td>
+<td style="text-align: left;">P(Defect</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">“tests are pretty good”</td>
+<td style="text-align: left;">PPV = 49.6% (coin flip reliability)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">“maybe 1,000-1,500 defects”</td>
+<td style="text-align: left;">E(Defects) = 1,117 ± 66 (95% CI)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">“defects seem to cluster”</td>
+<td style="text-align: left;">Binomial: P(Batch pass) = 85.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">“near spec limits”</td>
+<td style="text-align: left;">98.72% within spec (Cpk = 0.83)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">“up to 40% reduction”</td>
+<td style="text-align: left;">E(Savings) = $215k, 9.3 year payback</td>
+</tr>
+</tbody>
+</table>
+<p>“Every decision is now quantified,” David adds. “That’s the power of probability.”</p>
+</section>
+<section id="chapter-summary-the-probability-toolkit" class="level2" data-number="3.14">
+<h2 data-number="3.14" class="anchored" data-anchor-id="chapter-summary-the-probability-toolkit"><span class="header-section-number">3.14</span> Chapter Summary: The Probability Toolkit</h2>
+<p>Six days after receiving PrecisionCast’s request, David and Maria present their final report. Gone are the phrases “around,” “seems,” and “pretty good.”</p>
+<p><strong>In their place:</strong></p>
+<p><strong>Basic Probability:</strong></p>
+<ul>
+<li>P(Defect) = 0.0203 (2.03% vs.&nbsp;99.5% aerospace requirement)</li>
+<li>Gap: 1.53 percentage points = $540,000 annual excess cost</li>
+<li>P(Good) = 0.9797 (97.97% yield)</li>
+</ul>
+<p><strong>Conditional Probability:</strong></p>
+<ul>
+<li>P(Defect | M3) = 0.0233 (20% higher than peers)</li>
+<li>P(M3 | Defect) = 0.229 (M3 contributes 22.9% of defects from 20% of production)</li>
+<li>Recommendation: $15,000 maintenance, $28,800 annual savings, 6-month payback</li>
+</ul>
+<p><strong>Bayes’ Theorem:</strong></p>
+<ul>
+<li>Sensitivity: 95%, Specificity: 98%</li>
+<li>PPV: 49.6% (positive tests only 50% reliable)</li>
+<li>NPV: 99.8% (negative tests highly reliable)</li>
+<li>Recommendation: Implement two-stage testing for positives</li>
+</ul>
+<p><strong>Expected Value:</strong></p>
+<ul>
+<li>E(Q2 Defects) = 1,117 ± 66</li>
+<li>E(Rework Cost) = $203,920</li>
+<li>Production buffer: 51,035 units needed for 50,000 good units</li>
+</ul>
+<p><strong>Binomial Distribution:</strong></p>
+<ul>
+<li>E(Defects per batch) = 2.03 ± 1.41</li>
+<li>P(Batch passes with ≤3 defects) = 85.4%</li>
+<li>Current threshold (3 defects) is optimal</li>
+</ul>
+<p><strong>Normal Distribution:</strong></p>
+<ul>
+<li>P(Within spec) = 98.72% (short of 99.5% requirement)</li>
+<li>Cpk = 0.83 &lt; 1.0 (process not capable)</li>
+<li>Need 38% reduction in variation to achieve Cpk = 1.33</li>
+<li>Out-of-spec cost: $460,000 annually</li>
+</ul>
+<p><strong>Investment Decision:</strong></p>
+<ul>
+<li>Expected savings: $215,422 annually</li>
+<li>Payback: 9.3 years → DO NOT INVEST</li>
+<li>Alternative improvements: $120,000 cost, $197,800 savings, 0.6-year payback</li>
+</ul>
+<p>Robert reads through the analysis. Every claim is specific. Every probability is calculated. Every recommendation is defensible. “This,” he says, “is a report I can act on. And more importantly, it’s a report that just saved my company from a terrible investment.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Key Takeaways: Your Probability Toolkit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Basic Probability:</strong> Converts frequencies to predictions</p>
+<ul>
+<li>P(Event) = Count/Total</li>
+<li>Enables future forecasting from historical data</li>
+<li>Foundation for all other probability concepts</li>
+</ul>
+<p><strong>Conditional Probability:</strong> Reveals hidden patterns</p>
+<ul>
+<li>P(A|B) asks “given B, what’s P(A)?”</li>
+<li>Identifies root causes (which machine causes defects?)</li>
+<li>Enables targeted interventions</li>
+</ul>
+<p><strong>Bayes’ Theorem:</strong> Reverses conditional probabilities</p>
+<ul>
+<li>Converts P(Test+|Disease) to P(Disease|Test+)</li>
+<li>Critical for medical testing, quality control, fraud detection</li>
+<li>Reveals counterintuitive results (95% accuracy ≠ 95% reliability)</li>
+</ul>
+<p><strong>Expected Value:</strong> Quantifies “what to expect”</p>
+<ul>
+<li>E(X) = weighted average of outcomes</li>
+<li>Enables capacity planning, budgeting, forecasting</li>
+<li>Framework for decision-making under uncertainty</li>
+</ul>
+<p><strong>Binomial Distribution:</strong> Models discrete counts</p>
+<ul>
+<li>Number of defects, successes, failures in fixed trials</li>
+<li>Batch quality control, acceptance sampling</li>
+<li>When counting successes/failures</li>
+</ul>
+<p><strong>Normal Distribution:</strong> Models continuous measurements</p>
+<ul>
+<li>Dimensions, times, weights, temperatures</li>
+<li>Process capability analysis (Cpk)</li>
+<li>Most widely used distribution in business</li>
+</ul>
+<p><strong>Decision Framework:</strong></p>
+<ul>
+<li>Identify scenarios</li>
+<li>Assign probabilities</li>
+<li>Calculate expected values</li>
+<li>Compare alternatives</li>
+<li>Choose optimal action</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="connecting-the-lectures-a-students-journey" class="level2" data-number="3.15">
+<h2 data-number="3.15" class="anchored" data-anchor-id="connecting-the-lectures-a-students-journey"><span class="header-section-number">3.15</span> Connecting the Lectures: A Student’s Journey</h2>
+<p>David and Maria sit in the EMBA lounge, reflecting on their statistical journey. “Remember three months ago?” Maria says. “TechFlow’s Sarah Chen asked: ‘What happened in Q4?’ We learned descriptive statistics to answer that.”</p>
+<p>David nods. “We calculated means to show typical performance. Standard deviations to measure consistency. Z-scores to identify outliers. Everything was backward-looking, describing the past.”</p>
+<p>“Then,” Maria continues, “PrecisionCast’s Robert Martinez asked: ‘What will happen in Q2?’ We needed probability to answer that.”</p>
+<p>“Same mathematical concepts,” David observes, “but different applications. The mean of historical defects becomes P(Defect) for future predictions. The standard deviation of past variation becomes the standard deviation of expected outcomes. Z-scores that identified historical outliers now calculate probabilities under the normal curve.”</p>
+<p>“But we’re still missing something,” David says. “Both TechFlow and PrecisionCast data were samples. TechFlow’s Q4 data was a sample of their overall business performance. PrecisionCast’s Q1 data was a sample of their production process.”</p>
+<p>“Right,” Maria agrees. “We’re treating sample statistics as if they’re population parameters. We say P(Defect) = 0.0203 based on 48,865 units. But what about all future production, millions of units over years? What’s the true defect probability of the process itself?”</p>
+<p>“And how confident are we in our estimates?” David adds. “When we forecast 1,117 ± 66 defects, that ±66 came from the binomial formula. But what if our estimate of p = 0.0203 is itself uncertain? How do we account for sampling error?”</p>
+<p>They both realize the next step in their journey.</p>
+<p>“We need statistical inference,” Maria says. “Confidence intervals to quantify our uncertainty. Hypothesis tests to make decisions. Sampling distributions to understand how sample statistics behave.”</p>
+<p>“That’s <strong>Lecture 3</strong>,” David confirms.</p>
+<p>Their journey continues. From describing the past, to predicting the future, to quantifying uncertainty in those predictions.</p>
+<hr>
+<p><strong>Final thought:</strong> In Lecture 1, you learned that “around $767,000” isn’t good enough, you need $766,667 exactly. In Lecture 2, you learned that “tests are pretty good” isn’t good enough, you need PPV = 49.6% precisely. In Lecture 3, you’ll learn that point estimates aren’t good enough either, you need confidence intervals to quantify your uncertainty.</p>
+<p>The journey from vague to precise to probabilistic to inference-based represents the full arc of statistical thinking in business.</p>
+<hr>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><em>Probability transforms data into predictions. Master it, and you can forecast demand, evaluate investments, and make decisions under uncertainty. But remember: probabilities are only as good as the data behind them. Next, we’ll learn how to quantify that uncertainty through statistical inference.</em></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="practice-problems" class="level2" data-number="3.16">
+<h2 data-number="3.16" class="anchored" data-anchor-id="practice-problems"><span class="header-section-number">3.16</span> Practice Problems</h2>
+<p>Now it’s your turn to apply probability analysis.</p>
+<p>These problems use both the PrecisionCast dataset and new scenarios. Work through them in Excel, showing your calculations and interpreting results in business context.</p>
+<p>🔢 Download the dataset: Get <code>PrecisionCast_Q1_2025.xlsx</code> from Blackboard before starting.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>About This Dataset
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Dataset structure:</p>
+<ul>
+<li>Sheet 1: Production Data (48,865 units)</li>
+<li>Sheet 2: Machine Performance (5 machines)</li>
+<li>Sheet 3: Inspection Results (2,000 test validations)</li>
+<li>Sheet 4: Defect Types (993 defects categorized)</li>
+<li>Sheet 5: Batch Data (488 batches of 100 units)</li>
+<li>Sheet 6: Dimensional Measurements (500 precision measurements)</li>
+</ul>
+<p><strong>Realism:</strong> Values reflect actual precision casting industry patterns</p>
+<p><strong>Completeness:</strong> No missing values for easier learning</p>
+<p><strong>Note:</strong> Some sheets contain more data than discussed in the chapter—explore them for additional insights!</p>
+</div>
+</div>
+</div>
+<section id="problem-set-1-basic-and-conditional-probability" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-1-basic-and-conditional-probability">Problem Set 1: Basic and Conditional Probability</h3>
+<p>Given PrecisionCast’s Q1 production data: - Total units: 48,865 - Defective: 993 - Good: 47,872</p>
+<p><strong>Calculate:</strong></p>
+<ol type="1">
+<li>P(Defect) and P(Good)—verify they sum to 1.0</li>
+<li>If aerospace requirement is P(Good) ≥ 0.995, what’s the gap?</li>
+<li>At 200,000 annual production, how many excess defects does this gap represent?</li>
+<li>Calculate P(Defect | Machine) for all five machines</li>
+<li>Which machine has the highest conditional defect probability?</li>
+<li>Calculate P(Machine | Defect) for all five machines</li>
+<li>Does any machine contribute disproportionately to defects?</li>
+<li>If you could only fix one machine, which should it be and why?</li>
+</ol>
+<hr>
+</section>
+<section id="problem-set-2-bayes-theorem-and-test-reliability" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-2-bayes-theorem-and-test-reliability">Problem Set 2: Bayes’ Theorem and Test Reliability</h3>
+<p>A diagnostic test for cracks in castings has: - Sensitivity: 92% - Specificity: 97% - Base rate of cracks: 3.5% of all parts</p>
+<p><strong>Calculate:</strong></p>
+<ol type="1">
+<li>Create a confusion matrix for 10,000 tested parts</li>
+<li>How many true positives? False positives? False negatives? True negatives?</li>
+<li>Calculate PPV: P(Crack | Test+)</li>
+<li>Calculate NPV: P(No Crack | Test-)</li>
+<li>If a part tests positive, should you automatically scrap it? Why or why not?</li>
+<li>How would PPV change if specificity improved to 99%?</li>
+<li>For a production run where you test 5,000 parts, how many false alarms should you expect?</li>
+<li>Write a one-paragraph recommendation about whether to implement two-stage testing for positive results.</li>
+</ol>
+<hr>
+</section>
+<section id="problem-set-3-expected-value-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-3-expected-value-analysis">Problem Set 3: Expected Value Analysis</h3>
+<p>PrecisionCast is planning Q3 production of 60,000 units with P(Defect) = 0.0203.</p>
+<p><strong>Calculate:</strong></p>
+<ol type="1">
+<li>Expected number of defects in Q3</li>
+<li>Standard deviation of expected defects</li>
+<li>95% confidence range (E ± 2SD)</li>
+<li>Expected rework cost using the defect type distribution from the chapter</li>
+<li>How many total units should be produced to guarantee 60,000 good units?</li>
+<li>If rework capacity is limited to 1,200 defects per quarter, what’s the probability production exceeds this capacity? (Hint: Use normal approximation to binomial)</li>
+</ol>
+<hr>
+</section>
+<section id="problem-set-4-binomial-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-4-binomial-distribution">Problem Set 4: Binomial Distribution</h3>
+<p>PrecisionCast uses batches of 150 units (not 100 as in the chapter). The company considers a batch acceptable if it contains 4 or fewer defects.</p>
+<p><strong>Calculate:</strong></p>
+<ol type="1">
+<li>Expected defects per batch of 150</li>
+<li>Standard deviation of defects per batch</li>
+<li>P(Batch passes) = P(Defects ≤ 4)</li>
+<li>If 500 batches are produced in a quarter, how many should pass?</li>
+<li>What pass threshold (number of defects) would give a 90% pass rate?</li>
+<li>What pass threshold would give a 95% pass rate?</li>
+<li>Compare the tradeoffs: Which threshold would you recommend?</li>
+</ol>
+<hr>
+</section>
+<section id="problem-set-5-normal-distribution-and-process-capability" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-5-normal-distribution-and-process-capability">Problem Set 5: Normal Distribution and Process Capability</h3>
+<p>A different critical dimension has specification 1.250 ± 0.002 inches. Sample measurements (n=400) show: - Mean: 1.25015 inches - Standard deviation: 0.00085 inches</p>
+<p><strong>Calculate:</strong></p>
+<ol type="1">
+<li>P(Within specification limits)</li>
+<li>P(Exceeds upper limit)</li>
+<li>P(Below lower limit)</li>
+<li>Calculate Cpk</li>
+<li>Is this process capable (Cpk ≥ 1.33)?</li>
+<li>What standard deviation would be needed to achieve Cpk = 1.33?</li>
+<li>At 200,000 annual production, how many parts fall outside specifications?</li>
+<li>If out-of-spec parts cost $200 each to scrap, what’s the annual cost?</li>
+</ol>
+<hr>
+</section>
+<section id="problem-set-6-investment-decision-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-6-investment-decision-analysis">Problem Set 6: Investment Decision Analysis</h3>
+<p>PrecisionCast is considering a $500,000 process improvement program. Industry data suggests three scenarios:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Scenario</th>
+<th style="text-align: center;">Defect Reduction</th>
+<th style="text-align: right;">Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Optimistic</td>
+<td style="text-align: center;">35%</td>
+<td style="text-align: right;">0.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected</td>
+<td style="text-align: center;">25%</td>
+<td style="text-align: right;">0.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pessimistic</td>
+<td style="text-align: center;">15%</td>
+<td style="text-align: right;">0.25</td>
+</tr>
+</tbody>
+</table>
+<p>Current annual rework cost is $741,194 (from chapter).</p>
+<p><strong>Calculate:</strong></p>
+<ol type="1">
+<li>New defect rate for each scenario</li>
+<li>Annual savings for each scenario</li>
+<li>Expected annual savings (probability-weighted)</li>
+<li>Payback period</li>
+<li>Should PrecisionCast invest? Defend your answer.</li>
+<li>What’s the probability of achieving payback within 3 years if the company requires at least $166,667 in annual savings?</li>
+<li>Compare this investment to the $2M machine from the chapter—which is better?</li>
+</ol>
+<hr>
+</section>
+<section id="problem-set-7-comprehensive-analysis-challenge" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-7-comprehensive-analysis-challenge">Problem Set 7: Comprehensive Analysis Challenge</h3>
+<p><strong>Scenario:</strong> PrecisionCast launches a new product line. Initial production run of 5,000 units shows: - 145 defects - Machine allocation: M1 (1,000 units, 25 defects), M2 (1,000 units, 28 defects), M3 (1,000 units, 35 defects), M4 (1,000 units, 30 defects), M5 (1,000 units, 27 defects) - Inspection test: Sensitivity 90%, Specificity 96%</p>
+<p><strong>Your task:</strong> Write a 2-page executive report addressing:</p>
+<ol type="1">
+<li>What’s the defect probability for this new product?</li>
+<li>How does it compare to the existing 2.03% rate?</li>
+<li>Which machine should be investigated first?</li>
+<li>If you test 500 units, how many false positives should you expect?</li>
+<li>What’s PPV for this test with this defect rate?</li>
+<li>For Q2 production of 25,000 units, forecast expected defects with 95% confidence range</li>
+<li>Should the company proceed with this product line or investigate further? Provide statistical justification.</li>
+</ol>
+</section>
+</section>
+<section id="excel-functions-quick-reference" class="level2" data-number="3.17">
+<h2 data-number="3.17" class="anchored" data-anchor-id="excel-functions-quick-reference"><span class="header-section-number">3.17</span> Excel Functions Quick Reference</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Complete Excel Function Guide for Probability
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Basic Probability:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=COUNTIF(range, criteria)/COUNT(range)  ' Simple probability`</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">`=COUNTIFS(range1, criteria1, range2, criteria2)/COUNTIF(range1, criteria1)  ' Conditional probability`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Binomial Distribution</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=BINOM.DIST(k, n, p, cumulative)`</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>k = number of successes</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>n = number of trials</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>p = probability of success</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>cumulative = TRUE for P(X ≤ k), FALSE for P(X = k)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>Examples:</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="in">`=BINOM.DIST(3, 100, 0.0203, TRUE)  ' P(X ≤ 3)`</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  =BINOM.DIST(2, 100, 0.0203, FALSE)  ' P(X = 2 exactly)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected Value and Variance (Binomial)</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=n*p`</span>  ' Expected value</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">`=SQRT(n*p*(1-p))`</span>  ' Standard deviation</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Normal Distribution</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>=NORM.DIST(x, mean, sd, cumulative)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>' cumulative = TRUE for P(X ≤ x), FALSE for density</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>' Examples:</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="in">`=NORM.DIST(2.501, 2.500004, 0.000401, TRUE)`</span>  ' P(X ≤ 2.501)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="in">`=NORM.DIST(2.501, 2.500004, 0.000401, TRUE) - NORM.DIST(2.499, 2.500004, 0.000401, TRUE)`</span>  ' P(2.499 &lt; X &lt; 2.501)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Standard Normal (Z-scores)</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=NORM.S.DIST(z, TRUE)`</span>  ' P(Z ≤ z)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in">`=NORM.S.INV(probability)`</span>  ' Find z for given probability</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>' Calculate z-score:</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="in">`=(x - mean)/sd`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Inverse Functions (find x for given probability):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=NORM.INV(probability, mean, sd)`</span>  ' Find x where P(X ≤ x) = probability</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="in">`=BINOM.INV(n, p, probability)`</span>  ' Find k where P(X ≤ k) ≥ probability</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected Value with Different Outcomes:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=SUMPRODUCT(values_range, probabilities_range)`</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>' Example: <span class="in">`=SUMPRODUCT(B2:B5, C2:C5)`</span> where B2:B5 are outcomes and C2:C5 are probabilities</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Process Capability (Cpk):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=MIN((USL-mean)/(3*sd), (mean-LSL)/(3*sd))`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Glossary
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Base Rate:</strong> The underlying prevalence or probability of a condition in the population; critically affects interpretation of test results</p>
+<p><strong>Bayes’ Theorem:</strong> Formula for calculating reverse conditional probabilities; converts P(B|A) to P(A|B)</p>
+<p><strong>Binomial Distribution:</strong> Probability distribution for counting successes in fixed number of independent trials with constant probability</p>
+<p><strong>Complement Rule:</strong> P(not A) = 1 - P(A); probabilities of an event and its complement sum to 1</p>
+<p><strong>Conditional Probability:</strong> P(A|B) = probability of A given that B has occurred; restricts sample space to cases where B is true</p>
+<p><strong>Cpk (Process Capability Index):</strong> Measures how well a process fits within specification limits; Cpk ≥ 1.33 indicates capable process</p>
+<p><strong>Expected Value:</strong> Probability-weighted average of all possible outcomes; E(X) = Σ x·P(x)</p>
+<p><strong>False Negative:</strong> Test says negative when condition is actually present; missed detection</p>
+<p><strong>False Positive:</strong> Test says positive when condition is actually absent; false alarm</p>
+<p><strong>Negative Predictive Value (NPV):</strong> P(No Disease | Test-); if test is negative, probability person is truly healthy</p>
+<p><strong>Normal Distribution:</strong> Continuous probability distribution with bell-shaped curve; characterized by mean (μ) and standard deviation (σ)</p>
+<p><strong>Positive Predictive Value (PPV):</strong> P(Disease | Test+); if test is positive, probability person truly has disease</p>
+<p><strong>Prior Probability:</strong> Initial probability before new evidence; also called base rate</p>
+<p><strong>Sensitivity:</strong> P(Test+ | Disease); true positive rate; probability test detects condition when present</p>
+<p><strong>Specificity:</strong> P(Test- | No Disease); true negative rate; probability test confirms absence when truly absent</p>
+<p><strong>Standard Normal Distribution:</strong> Normal distribution with μ=0 and σ=1; used via z-score standardization</p>
+<p><strong>Z-Score:</strong> Standardized value showing how many standard deviations an observation is from the mean; z = (x-μ)/σ</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ncachanosky\.github\.io\/XQMB-5311");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter_01.html" class="pagination-link" aria-label="Descriptive Statistics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter_03.html" class="pagination-link" aria-label="Interval Estimation and Hypothesis Testing">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interval Estimation and Hypothesis Testing</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Nicolas Cachanosky, The University of Texas at El Paso, Center for Free Enterprise</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ncachanosky/XQMB-5311/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://github.com/ncachanosky/XQMB-5311" aria-current="page">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/ncachanosky">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/n_cachanosky">
+      <i class="bi bi-twitter-x" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

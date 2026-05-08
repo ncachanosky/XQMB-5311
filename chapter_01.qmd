@@ -1,15 +1,12 @@
 ---
 title: "Descriptive Statistics"
-subtitle: "Lecture 1"
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: true
-    code-tools: true
-    fig-width: 10
-    fig-height: 6
+abstract: |
+  Vague language — "around $767,000," "pretty good," "varied quite a bit" — is the enemy 
+  of sound business decisions. This chapter introduces descriptive statistics as a tool 
+  for replacing imprecision with clarity. Working through TechFlow Solutions' Q4 revenue 
+  analysis, students learn to compute and interpret measures of location, variability, and 
+  distribution shape, and to quantify relationships between variables using correlation. 
+  By the end, a report full of approximations becomes a foundation for actionable insight.
 ---
 
 ## Learning Objectives {.unnumbered}

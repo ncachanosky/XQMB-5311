@@ -1,25 +1,82 @@
 project:
   type: book
+  output-dir: docs
 
 book:
-  title: "book"
-  author: "Norah Jones"
-  date: "5/8/2026"
+  title: "The Precision Advantage: Statistics for Business"
+  author: "Nicolas Cachanosky"
+  date: last-modified
+  date-format: "MMMM YYYY"
+  description: |
+    Course readings for XQMB 5311 – Statistics for Business – The University of Texas at El Paso.
+  repo-url: https://github.com/ncachanosky/XQMB-5311
+  repo-actions: [issue]
+  repo-branch: main
+
+  site-url: https://ncachanosky.github.io/XQMB-5311
+
+  open-graph:
+    title: "The Precision Advantage: Statistics for Business"
+    description: "Course readings for XQMB 5311 – Quantitative Methods for Business – The University of Texas at El Paso. An institutions-first treatment of monetary and financial economics."
+    image: assets/logo.png
+
+  twitter-card:
+    title: "The Precision Advantage: Statistics for Business"
+    description: "Course readings for ECON 3320 – Quantitative Methods for Business – The University of Texas at El Paso. An institutions-first treatment of monetary and financial economics."
+    image: assets/logo.png
+    card-style: summary
+    creator: "@n_cachanosky"
+
+  sidebar:
+    style: docked
+    search: true
+    logo: assets/logo.png
+
+  # ── Favicon ───────────────────────────────────────────────────────────────
+  # Run favicon_generator.py once to produce favicon.ico, then uncomment:
+  favicon: favicon.png
+
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    - chapter_01.qmd
+    - chapter_02.qmd
+    - chapter_03.qmd
+    - chapter_04.qmd
+    - chapter_05.qmd
+    - chapter_06.qmd
+    - chapter_07.qmd
 
-bibliography: references.bib
+  page-footer:
+    left: "© Nicolas Cachanosky, The University of Texas at El Paso, Center for Free Enterprise"
+    right:
+      - icon: github
+        href: https://github.com/ncachanosky/XQMB-5311
+      - icon: linkedin
+        href: https://www.linkedin.com/in/ncachanosky
+      - icon: twitter-x
+        href: https://twitter.com/n_cachanosky
 
 format:
   html:
     theme:
-      - cosmo
-      - brand
-  pdf:
-    documentclass: scrreprt
+      light: flatly
+      dark:  darkly
+    css: styles.css
+    # css: https://raw.github.com/ncachanosky/EO-styles/main/styles.css
+    fontsize: 1.2em
+    mainfont: "Georgia, serif"
+    highlight-style: github
+    code-fold: false
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    number-depth: 2
+    smooth-scroll: true
+    fig-align: center
+    fig-responsive: true
+    include-in-header:
+      text: |
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-
-
+bibliography: references.bib
+# csl: chicago-author-date.csl

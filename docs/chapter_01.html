@@ -1,0 +1,2468 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Course readings for XQMB 5311 – Statistics for Business – The University of Texas at El Paso.">
+
+<title>2&nbsp; Descriptive Statistics – The Precision Advantage: Statistics for Business</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter_02.html" rel="next">
+<link href="./index.html" rel="prev">
+<link href="./favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-224b48a91c0f626bf087add3423f4096.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-8fba65ec5d79e9223d5579f32ee5f772.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-224b48a91c0f626bf087add3423f4096.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="https://raw.github.com/ncachanosky/EO-styles/main/styles.css">
+<meta property="og:title" content="The Precision Advantage: Statistics for Business">
+<meta property="og:description" content="Course readings for XQMB 5311 – Quantitative Methods for Business – The University of Texas at El Paso. An institutions-first treatment of monetary and financial economics.">
+<meta property="og:image" content="https://ncachanosky.github.io/XQMB-5311/assets/logo.png">
+<meta property="og:site_name" content="The Precision Advantage: Statistics for Business">
+<meta property="og:image:height" content="1687">
+<meta property="og:image:width" content="1687">
+<meta name="twitter:title" content="Money, The Precision Advantage: Statistics for Business">
+<meta name="twitter:description" content="Course readings for ECON 3320 – Quantitative Methods for Business – The University of Texas at El Paso. An institutions-first treatment of monetary and financial economics.">
+<meta name="twitter:image" content="https://ncachanosky.github.io/XQMB-5311/assets/logo.png">
+<meta name="twitter:creator" content="@n_cachanosky">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="1687">
+<meta name="twitter:image-width" content="1687">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_01.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./assets/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./assets/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Precision Advantage: Statistics for Business</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ncachanosky/XQMB-5311" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_01.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interval Estimation and Hypothesis Testing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ANOVA: Analysis of Variance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical Data Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistical Foundations Review: From Description to Decision</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Regression Analysis: Introduction to Econometrics</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#introduction-the-2.3-million-question" id="toc-introduction-the-2.3-million-question" class="nav-link" data-scroll-target="#introduction-the-2.3-million-question"><span class="header-section-number">2.1</span> Introduction: The $2.3 Million Question</a></li>
+  <li><a href="#types-of-data-knowing-what-youre-working-with" id="toc-types-of-data-knowing-what-youre-working-with" class="nav-link" data-scroll-target="#types-of-data-knowing-what-youre-working-with"><span class="header-section-number">2.2</span> Types of Data: Knowing What You’re Working With</a>
+  <ul class="collapse">
+  <li><a href="#the-building-blocks-elements-variables-and-observations" id="toc-the-building-blocks-elements-variables-and-observations" class="nav-link" data-scroll-target="#the-building-blocks-elements-variables-and-observations">The Building Blocks: Elements, Variables, and Observations</a></li>
+  <li><a href="#categorical-vs.-quantitative-the-great-divide" id="toc-categorical-vs.-quantitative-the-great-divide" class="nav-link" data-scroll-target="#categorical-vs.-quantitative-the-great-divide">Categorical vs.&nbsp;Quantitative: The Great Divide</a></li>
+  <li><a href="#the-time-dimension-cross-sectional-time-series-and-panel-data" id="toc-the-time-dimension-cross-sectional-time-series-and-panel-data" class="nav-link" data-scroll-target="#the-time-dimension-cross-sectional-time-series-and-panel-data">The Time Dimension: Cross-Sectional, Time Series, and Panel Data</a></li>
+  </ul></li>
+  <li><a href="#measures-of-location-finding-the-center" id="toc-measures-of-location-finding-the-center" class="nav-link" data-scroll-target="#measures-of-location-finding-the-center"><span class="header-section-number">2.3</span> Measures of Location: Finding the Center</a>
+  <ul class="collapse">
+  <li><a href="#the-mean-precision-matters" id="toc-the-mean-precision-matters" class="nav-link" data-scroll-target="#the-mean-precision-matters">The Mean: Precision Matters</a></li>
+  <li><a href="#when-equal-isnt-equal-weighted-mean" id="toc-when-equal-isnt-equal-weighted-mean" class="nav-link" data-scroll-target="#when-equal-isnt-equal-weighted-mean">When Equal Isn’t Equal: Weighted Mean</a></li>
+  <li><a href="#when-multiplication-matters-geometric-mean" id="toc-when-multiplication-matters-geometric-mean" class="nav-link" data-scroll-target="#when-multiplication-matters-geometric-mean">When Multiplication Matters: Geometric Mean</a></li>
+  <li><a href="#the-median-when-the-middle-matters-more" id="toc-the-median-when-the-middle-matters-more" class="nav-link" data-scroll-target="#the-median-when-the-middle-matters-more">The Median: When the Middle Matters More</a></li>
+  <li><a href="#percentiles-drawing-lines-in-the-data" id="toc-percentiles-drawing-lines-in-the-data" class="nav-link" data-scroll-target="#percentiles-drawing-lines-in-the-data">Percentiles: Drawing Lines in the Data</a></li>
+  </ul></li>
+  <li><a href="#measures-of-variability-understanding-consistency" id="toc-measures-of-variability-understanding-consistency" class="nav-link" data-scroll-target="#measures-of-variability-understanding-consistency"><span class="header-section-number">2.4</span> Measures of Variability: Understanding Consistency</a>
+  <ul class="collapse">
+  <li><a href="#range-simple-but-dangerous" id="toc-range-simple-but-dangerous" class="nav-link" data-scroll-target="#range-simple-but-dangerous">Range: Simple but Dangerous</a></li>
+  <li><a href="#iqr-the-robust-alternative" id="toc-iqr-the-robust-alternative" class="nav-link" data-scroll-target="#iqr-the-robust-alternative">IQR: The Robust Alternative</a></li>
+  <li><a href="#variance-and-standard-deviation-measuring-typical-deviation" id="toc-variance-and-standard-deviation-measuring-typical-deviation" class="nav-link" data-scroll-target="#variance-and-standard-deviation-measuring-typical-deviation">Variance and Standard Deviation: Measuring Typical Deviation</a></li>
+  <li><a href="#coefficient-of-variation-comparing-apples-and-oranges" id="toc-coefficient-of-variation-comparing-apples-and-oranges" class="nav-link" data-scroll-target="#coefficient-of-variation-comparing-apples-and-oranges">Coefficient of Variation: Comparing Apples and Oranges</a></li>
+  </ul></li>
+  <li><a href="#distribution-characteristics-understanding-shape" id="toc-distribution-characteristics-understanding-shape" class="nav-link" data-scroll-target="#distribution-characteristics-understanding-shape"><span class="header-section-number">2.5</span> Distribution Characteristics: Understanding Shape</a>
+  <ul class="collapse">
+  <li><a href="#skewness-when-data-leans" id="toc-skewness-when-data-leans" class="nav-link" data-scroll-target="#skewness-when-data-leans">Skewness: When Data Leans</a></li>
+  <li><a href="#z-scores-your-statistical-alarm-system" id="toc-z-scores-your-statistical-alarm-system" class="nav-link" data-scroll-target="#z-scores-your-statistical-alarm-system">Z-Scores: Your Statistical Alarm System</a></li>
+  <li><a href="#chebyshevs-theorem-planning-for-any-distribution" id="toc-chebyshevs-theorem-planning-for-any-distribution" class="nav-link" data-scroll-target="#chebyshevs-theorem-planning-for-any-distribution">Chebyshev’s Theorem: Planning for Any Distribution</a></li>
+  <li><a href="#outliers-problems-or-opportunities" id="toc-outliers-problems-or-opportunities" class="nav-link" data-scroll-target="#outliers-problems-or-opportunities">Outliers: Problems or Opportunities?</a></li>
+  </ul></li>
+  <li><a href="#boxplots-seeing-the-whole-picture" id="toc-boxplots-seeing-the-whole-picture" class="nav-link" data-scroll-target="#boxplots-seeing-the-whole-picture"><span class="header-section-number">2.6</span> Boxplots: Seeing the Whole Picture</a>
+  <ul class="collapse">
+  <li><a href="#reading-a-boxplot" id="toc-reading-a-boxplot" class="nav-link" data-scroll-target="#reading-a-boxplot">Reading a Boxplot</a></li>
+  <li><a href="#comparative-boxplots-the-executives-dashboard" id="toc-comparative-boxplots-the-executives-dashboard" class="nav-link" data-scroll-target="#comparative-boxplots-the-executives-dashboard">Comparative Boxplots: The Executive’s Dashboard</a></li>
+  </ul></li>
+  <li><a href="#association-between-two-variables-finding-relationships" id="toc-association-between-two-variables-finding-relationships" class="nav-link" data-scroll-target="#association-between-two-variables-finding-relationships"><span class="header-section-number">2.7</span> Association Between Two Variables: Finding Relationships</a>
+  <ul class="collapse">
+  <li><a href="#covariance-the-direction-of-relationship" id="toc-covariance-the-direction-of-relationship" class="nav-link" data-scroll-target="#covariance-the-direction-of-relationship">Covariance: The Direction of Relationship</a></li>
+  <li><a href="#correlation-the-strength-and-direction" id="toc-correlation-the-strength-and-direction" class="nav-link" data-scroll-target="#correlation-the-strength-and-direction">Correlation: The Strength and Direction</a></li>
+  <li><a href="#business-applications-of-correlation" id="toc-business-applications-of-correlation" class="nav-link" data-scroll-target="#business-applications-of-correlation">Business Applications of Correlation</a></li>
+  </ul></li>
+  <li><a href="#using-ai-tools-for-statistical-analysis-a-guide" id="toc-using-ai-tools-for-statistical-analysis-a-guide" class="nav-link" data-scroll-target="#using-ai-tools-for-statistical-analysis-a-guide"><span class="header-section-number">2.8</span> Using AI Tools for Statistical Analysis: A Guide</a>
+  <ul class="collapse">
+  <li><a href="#the-proper-role-of-ai-in-statistical-analysis" id="toc-the-proper-role-of-ai-in-statistical-analysis" class="nav-link" data-scroll-target="#the-proper-role-of-ai-in-statistical-analysis">The Proper Role of AI in Statistical Analysis</a></li>
+  <li><a href="#the-right-approach-ai-as-assistant-not-replacement" id="toc-the-right-approach-ai-as-assistant-not-replacement" class="nav-link" data-scroll-target="#the-right-approach-ai-as-assistant-not-replacement">The Right Approach: AI as Assistant, Not Replacement</a></li>
+  <li><a href="#when-ai-becomes-a-crutch" id="toc-when-ai-becomes-a-crutch" class="nav-link" data-scroll-target="#when-ai-becomes-a-crutch">When AI Becomes a Crutch</a></li>
+  <li><a href="#a-practical-example" id="toc-a-practical-example" class="nav-link" data-scroll-target="#a-practical-example">A Practical Example</a></li>
+  <li><a href="#the-bottom-line" id="toc-the-bottom-line" class="nav-link" data-scroll-target="#the-bottom-line">The Bottom Line</a></li>
+  </ul></li>
+  <li><a href="#chapter-summary-from-vagueness-to-precision" id="toc-chapter-summary-from-vagueness-to-precision" class="nav-link" data-scroll-target="#chapter-summary-from-vagueness-to-precision"><span class="header-section-number">2.9</span> Chapter Summary: From Vagueness to Precision</a>
+  <ul class="collapse">
+  <li><a href="#the-statistical-toolkit-in-action" id="toc-the-statistical-toolkit-in-action" class="nav-link" data-scroll-target="#the-statistical-toolkit-in-action">The Statistical Toolkit in Action</a></li>
+  <li><a href="#from-student-to-analyst" id="toc-from-student-to-analyst" class="nav-link" data-scroll-target="#from-student-to-analyst">From Student to Analyst</a></li>
+  </ul></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems"><span class="header-section-number">2.10</span> Practice Problems</a>
+  <ul class="collapse">
+  <li><a href="#problem-set-1-techflow-product-analysis" id="toc-problem-set-1-techflow-product-analysis" class="nav-link" data-scroll-target="#problem-set-1-techflow-product-analysis">Problem Set 1: TechFlow Product Analysis</a></li>
+  <li><a href="#problem-set-2-customer-order-analysis" id="toc-problem-set-2-customer-order-analysis" class="nav-link" data-scroll-target="#problem-set-2-customer-order-analysis">Problem Set 2: Customer Order Analysis</a></li>
+  <li><a href="#problem-set-3-regional-performance" id="toc-problem-set-3-regional-performance" class="nav-link" data-scroll-target="#problem-set-3-regional-performance">Problem Set 3: Regional Performance</a></li>
+  <li><a href="#problem-set-4-investment-returns" id="toc-problem-set-4-investment-returns" class="nav-link" data-scroll-target="#problem-set-4-investment-returns">Problem Set 4: Investment Returns</a></li>
+  <li><a href="#problem-set-5-service-quality-analysis" id="toc-problem-set-5-service-quality-analysis" class="nav-link" data-scroll-target="#problem-set-5-service-quality-analysis">Problem Set 5: Service Quality Analysis</a></li>
+  </ul></li>
+  <li><a href="#excel-functions-quick-reference" id="toc-excel-functions-quick-reference" class="nav-link" data-scroll-target="#excel-functions-quick-reference"><span class="header-section-number">2.11</span> Excel Functions Quick Reference</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ncachanosky/XQMB-5311/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Vague language — “around $767,000,” “pretty good,” “varied quite a bit” — is the enemy of sound business decisions. This chapter introduces descriptive statistics as a tool for replacing imprecision with clarity. Working through TechFlow Solutions’ Q4 revenue analysis, students learn to compute and interpret measures of location, variability, and distribution shape, and to quantify relationships between variables using correlation. By the end, a report full of approximations becomes a foundation for actionable insight.</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ol type="1">
+<li>✅ Understand and apply measures of location (mean, median, mode, percentiles, quartiles)<br>
+</li>
+<li>✅ Calculate and interpret measures of variability (range, IQR, variance, standard deviation, coefficient of variation)<br>
+</li>
+<li>✅ Assess distribution characteristics (skewness, z-scores, outliers)<br>
+</li>
+<li>✅ Create and interpret boxplots for data comparison<br>
+</li>
+<li>✅ Measure association between two variables using covariance and correlation</li>
+</ol>
+</section>
+<section id="introduction-the-2.3-million-question" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="introduction-the-2.3-million-question"><span class="header-section-number">2.1</span> Introduction: The $2.3 Million Question</h2>
+<p>It’s 9:00 AM on January 16, 2025. Sarah Chen, CEO of TechFlow Solutions, sits in the executive conference room reviewing her marketing team’s Q4 2024 performance report. Her coffee grows cold as she reads:</p>
+<blockquote class="blockquote">
+<p>Total revenue for Q4 was <strong>$2.3 million</strong>, which is up from $2.1 million in Q3. That’s an increase of about $200,000 or roughly 9.5%. The average monthly revenue was around $767,000… Daily sales ranged quite a bit—our lowest day was around $18,000 and our highest was $52,000 during the holiday rush. Most days we did somewhere in the middle range… We had some outliers on both ends.</p>
+</blockquote>
+<p>Sarah sets down the report and looks at her leadership team. “What decisions can we actually make from this?”</p>
+<p>Silence.</p>
+<p>“Should we discontinue Product D? Expand in Asia-Pacific? Hire more customer service staff? This report tells me we made $2.3 million, but it doesn’t tell me what to do about it.”</p>
+<p>Her CFO clears his throat. “The numbers are vague. ‘Around $767,000’? ‘Somewhere in the middle’? I can’t forecast with that. I can’t set budgets with that.”</p>
+<p>Sarah slides the report across the table. “I want this redone. I want precision. I want statistics that tell us where to invest, what to fix, and which assumptions to challenge. And I want it by end of week.”</p>
+<p>The marketing team scrambles. They realize they lack the statistical expertise to transform their vague observations into actionable insights. In desperation, they reach out to the EMBA program at The University of Texas at El Paso, hoping to find students who can save the day.</p>
+<p>Enter David and Maria, two EMBA students specializing in quantitative methods. Within hours of receiving the raw data, they begin transforming vague impressions into statistical precision.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The Cost of Vague Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every year, businesses lose millions because of imprecise statistical reporting:</p>
+<ul>
+<li>“Around” numbers prevent tracking month-over-month changes<br>
+</li>
+<li>“Somewhere in the middle” doesn’t help set performance targets<br>
+</li>
+<li>“Some outliers” misses both problems (to fix) and opportunities (to leverage)<br>
+</li>
+<li>Vague language makes recommendations indefensible to stakeholders</li>
+</ul>
+<p><strong>The fix</strong>: Calculate exact values. Use proper statistical measures. Quantify variation.</p>
+</div>
+</div>
+<p>This chapter is about the difference between those two reports. The gap between “around” and “exactly.” Between “some outliers” and “15% of tickets exceed our 21-hour threshold.” Between data and decisions.</p>
+<p>Welcome to descriptive statistics. The art and science of making data speak clearly.</p>
+</section>
+<section id="types-of-data-knowing-what-youre-working-with" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="types-of-data-knowing-what-youre-working-with"><span class="header-section-number">2.2</span> Types of Data: Knowing What You’re Working With</h2>
+<p>Before the analytics team at TechFlow could redo their analysis, they faced a fundamental question: What kind of data do we actually have?</p>
+<p>It sounds simple, but this question matters. Calculate a mean for customer satisfaction categories (Very Unsatisfied, Unsatisfied, Neutral, Satisfied, Very Satisfied), and you’ll get a number that means nothing. Try to find an average color, and you’ll waste everyone’s time.</p>
+<section id="the-building-blocks-elements-variables-and-observations" class="level3">
+<h3 class="anchored" data-anchor-id="the-building-blocks-elements-variables-and-observations">The Building Blocks: Elements, Variables, and Observations</h3>
+<p>Think of your data as a spreadsheet. Each row represents an <strong>element</strong>—the thing you’re studying. At TechFlow, one element might be a single customer order. Another analysis might treat each product as an element, or each region, or each day.</p>
+<p>The columns are your <strong>variables</strong>—the characteristics you’ve measured. For a customer order, variables might include: order amount, product purchased, customer region, satisfaction score, and response time if they contacted support.</p>
+<p>Each cell (the intersection of a row and column) is an <strong>observation</strong>. It’s the specific value recorded. Order #1247 bought Product A for $220 from North America with a satisfaction score of 4.5 out of 5.</p>
+<p>Understanding this structure matters because it determines what questions you can ask. If your elements are orders, you can analyze typical order size. If your elements are customers, you can analyze purchase frequency. Same underlying data, different analytical structure, different insights.</p>
+</section>
+<section id="categorical-vs.-quantitative-the-great-divide" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-vs.-quantitative-the-great-divide">Categorical vs.&nbsp;Quantitative: The Great Divide</h3>
+<p>David pulls up the customer file.</p>
+<p>“Okay, we’ve got <code>product type</code>, that’s categorical. <code>Region</code>, also categorical. <code>Order amount</code>, that’s quantitative. <code>Satisfaction rating</code>… wait, is that categorical or quantitative?”</p>
+<p>Maria leans over. “It’s ordinal. The numbers have order; 5 is better than 4, but the distance between them isn’t necessarily equal. Someone going from 2 to 3 might be a bigger jump than 4 to 5.”</p>
+<p>After their discussion, David and Maria identify three types of variables in the TechFlow data.</p>
+<p><strong>Categorical (qualitative) data</strong> divides observations into groups. Some categorical variables are <strong>nominal</strong>, pure categories with no inherent order, like product type (A, B, C, D), region (North America, Europe, Asia-Pacific), or color. For nominal data, you can count how many observations fall into each category, calculate percentages, and identify which category appears most often (the mode). But you can’t rank them or calculate an average.</p>
+<p>Other categorical variables are <strong>ordinal</strong>, they have a meaningful order. Customer satisfaction ratings (1 through 5), education levels (high school, bachelor’s, master’s, doctorate), or performance categories (poor, fair, good, excellent) all have a natural sequence. With ordinal data, you can do everything you’d do with nominal data, plus you can calculate the median to find the middle category. But here’s the catch: the distances between categories aren’t necessarily equal. Moving from “dissatisfied” to “neutral” might represent a bigger psychological shift than moving from “satisfied” to “very satisfied,” even though both are one-step moves on a five-point scale.</p>
+<p><strong>Quantitative (numerical) data</strong> represents actual measurements you can do math with—sales revenue in dollars, response time in hours, age in years, temperature, weight. These are <strong>interval</strong> or <strong>ratio</strong> variables, and you can perform all mathematical operations on them: addition, subtraction, multiplication, division, mean, standard deviation. Most business metrics fall into this category.</p>
+<p>The key distinction David and Maria emphasize: ordinal data looks like numbers but behaves like categories. Just because satisfaction is rated 1 through 5 doesn’t mean you can treat those numbers like actual measurements. The distance between 1 and 2 may not equal the distance between 4 and 5.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Common Mistake: Calculating Mean for Ordinal Data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Wrong</strong>: “Average satisfaction is 3.7”</p>
+<p><strong>Problem</strong>: The distance between 3 and 4 may not equal the distance between 4 and 5. A mean of 3.7 implies precision that doesn’t exist.</p>
+<p><strong>Better</strong>: “Median satisfaction is 4” or “70% of customers rated us 4 or 5”</p>
+<p><strong>Exception</strong>: If you have large sample sizes and treat the scale as approximately continuous, mean can be acceptable—but report median too.</p>
+</div>
+</div>
+</section>
+<section id="the-time-dimension-cross-sectional-time-series-and-panel-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-time-dimension-cross-sectional-time-series-and-panel-data">The Time Dimension: Cross-Sectional, Time Series, and Panel Data</h3>
+<p>David pulls up three different analyses.</p>
+<p>“Report A looks at all four products’ Q4 performance—snapshot at one point in time. Report B tracks Product A’s sales monthly from 2020 to 2025. Report C tracks all four products monthly over the same period. These need different approaches.”</p>
+<p>A dataset can have one of the following three structures:</p>
+<ul>
+<li><strong>Cross-Sectional</strong>: Different entities, same time point
+<ul>
+<li>Example: Q4 2024 sales for Products A, B, C, D</li>
+<li>Order doesn’t matter (can scramble rows)</li>
+<li>Enables: Comparison across entities</li>
+<li>Use for: “Which product/region/customer is best?”</li>
+</ul></li>
+<li><strong>Time Series</strong>: One entity, multiple time points
+<ul>
+<li>Example: Product A monthly sales 2020-2025</li>
+<li>Order matters enormously (dates carry information)</li>
+<li>Enables: Trend identification, seasonality, forecasting</li>
+<li>Use for: “How are we changing over time?”</li>
+</ul></li>
+<li><strong>Panel Data</strong>: Multiple entities × multiple time points
+<ul>
+<li>Example: All products’ monthly sales 2020-2025</li>
+<li>Most information-rich, most complex</li>
+<li>Enables: Both cross-sectional and time series analysis</li>
+<li>Use for: “How do differences across products evolve over time?”</li>
+</ul></li>
+</ul>
+<p>Maria nods. “For the Q4 analysis, we’re mostly cross-sectional. But Sarah wants to know if Product D’s poor performance is new or ongoing. That requires time series thinking.”</p>
+</section>
+</section>
+<section id="measures-of-location-finding-the-center" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="measures-of-location-finding-the-center"><span class="header-section-number">2.3</span> Measures of Location: Finding the Center</h2>
+<p>Sarah’s directive was clear: precision, not approximation. The analytics team starts with the most basic question: What is typical performance?</p>
+<p>But “typical” turns out to be more complicated than it sounds.</p>
+<section id="the-mean-precision-matters" class="level3">
+<h3 class="anchored" data-anchor-id="the-mean-precision-matters">The Mean: Precision Matters</h3>
+<p>David pulls up the monthly revenue numbers.</p>
+<p>“October was $720,000. November hit $780,000. December reached $800,000. The marketing report said ‘around $767,000’ for average monthly revenue. Let me calculate the exact mean.”</p>
+<p><span class="math display">\[\bar{x} = \frac{720{,}000 + 780{,}000 + 800{,}000}{3} = \frac{2{,}300{,}000}{3} = \$766{,}666.67\]</span></p>
+<p>“So it’s $766,667, not ‘around $767,000.’ Big difference?” Maria asks.</p>
+<p>“Track this over six months,” David responds. “Month 1: ‘around $767k.’ Month 2: ‘around $770k.’ Month 3: ‘around $773k.’ You report to Sarah that revenue is growing, and she asks by how much. You can’t answer because ‘around’ doesn’t give you enough precision to measure change.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Sample Mean
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n} = \frac{x_1 + x_2 + \cdots + x_n}{n}\]</span></p>
+<p><strong>In plain English</strong>: Add up all values, divide by how many you have.</p>
+<p><strong>Population mean</strong> (when you have ALL possible values): <span class="math display">\[\mu = \frac{\sum_{i=1}^{N} x_i}{N}\]</span></p>
+<p><strong>What it represents</strong>: The “center of gravity” of your data. Each observation “pulls” the mean toward it.</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=AVERAGE(range)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The First Lesson: Calculate It, Don’t Estimate It
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“Around $767,000” vs.&nbsp;“$766,667”</p>
+<p><strong>Why precision matters</strong>:</p>
+<ul>
+<li>Can’t track month-over-month changes with “around”<br>
+</li>
+<li>Can’t calculate % achievement of targets<br>
+</li>
+<li>Can’t defend budget requests to finance<br>
+</li>
+<li>Can’t identify meaningful trends vs.&nbsp;noise</li>
+</ul>
+<p><strong>Business Rule</strong>: If it’s worth reporting, it’s worth calculating exactly.</p>
+</div>
+</div>
+</section>
+<section id="when-equal-isnt-equal-weighted-mean" class="level3">
+<h3 class="anchored" data-anchor-id="when-equal-isnt-equal-weighted-mean">When Equal Isn’t Equal: Weighted Mean</h3>
+<p>Maria moves to the customer satisfaction analysis. “We surveyed 150 customers. Simple mean satisfaction score is 4.1 out of 5. Looks good.”</p>
+<p>David frowns. “But wait; are all customers equally important? What if we weight by their revenue contribution?”</p>
+<p>He pulls up the data. The top 10% of customers by order value have average satisfaction of 3.8. The bottom 50% have average satisfaction of 4.3.</p>
+<p>“If we treat all responses equally, we get 4.1. But our high-value customers, the ones generating the most revenue, are actually less satisfied. That changes the story completely.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Weighted Mean
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\bar{x}_w = \frac{\sum w_i x_i}{\sum w_i} = \frac{w_1x_1 + w_2x_2 + \cdots + w_nx_n}{w_1 + w_2 + \cdots + w_n}\]</span></p>
+<p>where each observation <span class="math inline">\(x_i\)</span> has weight <span class="math inline">\(w_i\)</span>.</p>
+<p><strong>When to use</strong>: Not all observations are equally important. Weight by:</p>
+<ul>
+<li>Revenue (for customer metrics)</li>
+<li>Investment amount (for portfolio returns)</li>
+<li>Volume (for supplier quality)<br>
+</li>
+<li>Credit hours (for GPA)<br>
+</li>
+<li>Sales volume (for product profitability)</li>
+</ul>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=SUMPRODUCT(values_range, weights_range) / SUM(weights_range)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="when-multiplication-matters-geometric-mean" class="level3">
+<h3 class="anchored" data-anchor-id="when-multiplication-matters-geometric-mean">When Multiplication Matters: Geometric Mean</h3>
+<p>“Here’s another problem,” David says, pulling up a different analysis. “Product C pricing. Year 1: increased price 20%. Year 2: decreased price 10%. Marketing wants to report average annual price change.”</p>
+<p>Maria calculates: “(20% + (-10%))/2 = 5% average annual change.”</p>
+<p>“Wrong, that’s a common mistake” David says gently. “Watch what actually happens to a $100 product: Year 1: $100 × 1.20 = $120. Year 2: $120 × 0.90 = $108. That’s an 8% total increase over two years, or 3.9% average annual, not 5%.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Geometric Mean
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\bar{x}_g = \sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = (x_1 \cdot x_2 \cdot \ldots \cdot x_n)^{1/n}\]</span></p>
+<p><strong>For growth rates</strong>: Convert percentages to multipliers (1 + rate), calculate geometric mean, subtract 1.</p>
+<p><strong>What it represents</strong>: The constant rate that would produce the same cumulative effect as the varying rates.</p>
+<p><strong>When to use</strong>:</p>
+<ul>
+<li>Investment returns over multiple periods</li>
+<li>Inflation rates averaged over years</li>
+<li>Population growth rates</li>
+<li>Any compound interest calculation</li>
+<li>Productivity improvements over time</li>
+<li>Price changes over multiple periods</li>
+</ul>
+<p><strong>Red flag</strong>: If your calculation involves multiplying growth factors, you need geometric mean.</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=GEOMEAN(range)`</span>  </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>For growth rates:  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">`=GEOMEAN(1+rate1, 1+rate2, 1+rate3) - 1`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="the-median-when-the-middle-matters-more" class="level3">
+<h3 class="anchored" data-anchor-id="the-median-when-the-middle-matters-more">The Median: When the Middle Matters More</h3>
+<p>Maria pulls up the customer service response time data.</p>
+<p>“Mean response time is 7.5 hours. That seems reasonable.”</p>
+<p>David scrolls through the raw data. “Look closer. Most tickets get responses in 3-5 hours. But we’ve got tickets here at 24 hours, 36 hours, one at 52 hours. Those outliers are pulling the mean way up.”</p>
+<!--
+![Histogram: Response times, mean, and median](/pages/lecture_notes/QMB-5311/lecture_01/fig_histogram_2.png)
+-->
+<p>He calculates the median by sorting all 200 response times and finding the middle value: 4.2 hours.</p>
+<p>“So typical response time is actually 4.2 hours, not 7.5. The 7.5 is misleading because a few very slow responses are skewing it.”</p>
+<table class="caption-top table">
+<caption>Decision Rule: Mean vs.&nbsp;Median</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Use <strong>mean</strong> when</th>
+<th style="text-align: center;">Use <strong>median</strong> when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Data is symmetric</td>
+<td style="text-align: center;">Data is skewed</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">No extreme outliers</td>
+<td style="text-align: center;">Outliers are present</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">You care about all values</td>
+<td style="text-align: center;">You care about robustness</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mathematical properties matter</td>
+<td style="text-align: center;">Report “typical’ values”</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Median
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The middle value when data are sorted in ascending order.</p>
+<p><strong>Calculation</strong>:</p>
+<ul>
+<li><strong>Odd n</strong>: The middle observation<br>
+</li>
+<li><strong>Even n</strong>: Average of the two middle observations</li>
+</ul>
+<p><strong>What it represents</strong>: The point where 50% of data is below and 50% is above. Not affected by how extreme the extreme values are.</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=MEDIAN(range)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>Maria pulls up real estate data as an analogy. “Five houses sold: $200k, $210k, $225k, $230k, $1.2M. The mean is $413k. But would you advertise ‘average home price $413k’? That’s misleading. The median of $225k better represents the typical home.”</p>
+<p>This is why real estate agents, salary surveys, and income reports use median. One billionaire in a room doesn’t make everyone else rich, but it makes the mean useless.</p>
+</section>
+<section id="percentiles-drawing-lines-in-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="percentiles-drawing-lines-in-the-data">Percentiles: Drawing Lines in the Data</h3>
+<p>Sarah enters the analytics team’s workspace. “I need to launch a VIP customer program. Who qualifies?”</p>
+<p>David asks, “What’s the criteria?”</p>
+<p>“Top 10% by order value.”</p>
+<p>This is a percentile question. The 90th percentile is the value below which 90% of customers fall, meaning the top 10% are above it.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Percentiles
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <span class="math inline">\(p^{th}\)</span> percentile is the value below which <span class="math inline">\(p\%\)</span> of the data falls.</p>
+<p><strong>Position formula</strong>: <span class="math display">\[x_p = \frac{p}{100}(n + 1)\]</span></p>
+<p><strong>Interpretation</strong>:</p>
+<ul>
+<li><em>p</em>th percentile: <em>p</em>% of data below, (1-<em>p</em>%) above</li>
+</ul>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=PERCENTILE.INC(range, p/100)`</span>  </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">`=PERCENTILE.INC(range, 0.90)`</span> - *example for 90th percentile*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>For 90th percentile with 100 customer orders: <span class="math display">\[L_{90} = \frac{90}{100}(100 + 1) = 90.9\]</span></p>
+<p>This means the 90th percentile is 90% of the way between the 90th and 91st observations (when sorted).</p>
+<p>David sorts the 100 customer orders and finds:<br>
+</p>
+<ul>
+<li>90th observation: $420<br>
+</li>
+<li>91st observation: $435</li>
+</ul>
+<p><span class="math display">\[P_{90} = 420 + 0.9(435 - 420) = 420 + 13.5 = \$433.50\]</span></p>
+<p>“Anyone who orders $434 or more qualifies for VIP,” David announces.</p>
+<p>Sarah nods. “We have the standard percentiles (Q1, Q2, and Q3), but we could create tiers: Basic (&lt;$175), Standard ($175-$310), Premium (&gt;$310). That’s actionable.”</p>
+<table class="caption-top table">
+<caption>Quartile and percentile interpretation and example application</caption>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 26%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Quartile</th>
+<th>Interpretation</th>
+<th>TechFlow example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>25th percentile (Q1)</td>
+<td>25% of data below</td>
+<td>Bottom 25% (low spenders)</td>
+</tr>
+<tr class="even">
+<td>50th percentile (Q2)</td>
+<td>The median</td>
+<td>Median customer</td>
+</tr>
+<tr class="odd">
+<td>75th percentile (Q3)</td>
+<td>75% of data below</td>
+<td>Top 25% (high spenders)</td>
+</tr>
+<tr class="even">
+<td>90th percentils</td>
+<td>90% of data below</td>
+<td>Top 90% (VIP clients)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="measures-of-variability-understanding-consistency" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="measures-of-variability-understanding-consistency"><span class="header-section-number">2.4</span> Measures of Variability: Understanding Consistency</h2>
+<p>The next day, Sarah returns with a harder question. “Product D did $250,000 in Q4. Is that bad?”</p>
+<p>David looks confused. “Compared to what?”</p>
+<p>“Exactly,” Sarah says. “If all our products do $250k ± $10k, then Product D is normal. If they typically do $600k ± $50k, then Product D is a disaster. I need context. I need to understand variation.”</p>
+<p>David nods. “That’s exactly the right question. Location tells you the center—where you are on average. But variability tells you the spread—how consistent you are around that center.”</p>
+<p>He pulls up a comparison on his screen. “Look at two hypothetical businesses. Business A averages $100k in monthly sales, give or take $5k. Business B also averages $100k, but give or take $60k. Same mean, completely different businesses.”</p>
+<p>“Business A is predictable,” Maria adds. “You can plan inventory, set budgets, manage cash flow. Business B? You might have $40k one month and $160k the next. Same average, but you need way more safety margins, bigger cash reserves, different strategies entirely.”</p>
+<p>“So variability is about consistency, predictability, risk, and reliability,” David summarizes. “Two numbers that look identical on average can represent fundamentally different business realities. That’s why we measure spread, not just center.”</p>
+<section id="range-simple-but-dangerous" class="level3">
+<h3 class="anchored" data-anchor-id="range-simple-but-dangerous">Range: Simple but Dangerous</h3>
+<p>Maria starts simple. “Product sales range from $250,000 to $890,000. Range is $640,000.”</p>
+<p>“Okay, but what does that tell us?” Sarah asks.</p>
+<p>“That there’s… variation?” Maria says uncertainly.</p>
+<p>David jumps in. “The problem with range is it only uses two numbers, the min and max. Black Friday could have spiked the max. A data entry error could have created the min. Range ignores almost all of your data.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Range
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[R = x_{max} - x_{min}\]</span></p>
+<p><strong>Simplest measure of spread</strong>: Maximum value minus minimum value.</p>
+<p><strong>Advantages</strong>: Easy to calculate and understand.</p>
+<p><strong>Disadvantages</strong>: Extremely sensitive to outliers, uses only 2 data points, ignores the bulk of your data.</p>
+<p><strong>The problem</strong>: One outlier destroys the range.</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=MAX(range) - MIN(range)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="iqr-the-robust-alternative" class="level3">
+<h3 class="anchored" data-anchor-id="iqr-the-robust-alternative">IQR: The Robust Alternative</h3>
+<p>“What about the middle 50% of daily sales?” Sarah asks. “Ignore the extremes. What’s the range of typical days?”</p>
+<p>This is the <strong>Interquartile Range (IQR)</strong>:</p>
+<p><span class="math display">\[IQR = Q_3 - Q_1\]</span></p>
+<p>For TechFlow’s 92 days of sales:</p>
+<ul>
+<li>Q_1 = $22,500 (25th percentile)<br>
+</li>
+<li>Q_3 = $28,000 (75th percentile)<br>
+</li>
+<li>IQR = $28,000 - $22,500 = $5,500</li>
+</ul>
+<p>“So a typical day varies by about $5,500 from the lower to upper middle,” David explains. “This is robust, outliers don’t affect it.” The IQR solves the range problem—corporate bulk purchases don’t distort it.</p>
+<p>“Why is IQR better than range?” Sarah asks.</p>
+<p>David explains: “Robustness. The middle 50% tells you what’s normal without being fooled by outliers. Watch what happens if we get one unusual day.”</p>
+<p>He types quickly. “One day we get a $100,000 corporate bulk purchase. The range jumps from $5,500 to $82,000—completely meaningless now. But the IQR? Still $5,500. It ignored that one weird day and kept showing us what typical days look like.”</p>
+<p>“So use IQR for setting realistic performance targets, defining typical customer behavior, creating forecasts that are robust to unusual events—basically, understanding your core business range without letting extreme days distort the picture.”</p>
+</section>
+<section id="variance-and-standard-deviation-measuring-typical-deviation" class="level3">
+<h3 class="anchored" data-anchor-id="variance-and-standard-deviation-measuring-typical-deviation">Variance and Standard Deviation: Measuring Typical Deviation</h3>
+<p>“I still don’t have a single number that tells me how much variation is normal,” Sarah says.</p>
+<p>David opens a fresh calculation. “That’s what standard deviation does. It measures the typical distance from the mean.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Variance and Standard Deviation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Variance</strong> = Average squared deviation from mean: <span class="math display">\[s^2 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}\]</span></p>
+<p><strong>Standard Deviation</strong> = Square root of variance: <span class="math display">\[s = \sqrt{s^2}\]</span></p>
+<p><strong>Why square deviations?</strong></p>
+<ol type="1">
+<li>Prevents cancellation (positive and negative deviations would sum to zero)<br>
+</li>
+<li>Penalizes larger deviations more heavily (quadratic penalty)</li>
+</ol>
+<p><strong>What</strong> <span class="math inline">\(s\)</span> represents: The typical distance an observation is from the mean.</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=VAR.S(range)`</span>   ' Variance (sample)  </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">`=STDEV.S(range)`</span> ' Standard deviation (sample)  </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">`=VAR.P(range)`</span>   ' Variance (full populuation)  </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">`=STDEV.P(range)`</span> ' Standard deviation (full population)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>For TechFlow’s four product sales ($250k, $520k, $640k, $890k):</p>
+<ol type="1">
+<li>Mean: <span class="math inline">\(\bar{x} = \$575,000\)</span></li>
+<li>Deviations: -$325k, -$55k, +$65k, +$315k</li>
+<li>Squared deviations: $105,625M, $3,025M, $4,225M, $99,225M</li>
+<li>Sum: $212,100M</li>
+<li>Variance: <span class="math inline">\(s^2\)</span> = $212,100M / 3 = $70,700M</li>
+<li>Standard deviation: <span class="math inline">\(s = \sqrt{s^2}\)</span> = \$265,894</li>
+</ol>
+<p>“So a typical product deviates about $266,000 from the $575,000 mean,” David explains. “Product D is $325,000 below mean, about 1.2 standard deviations below. That’s unusual but not extremely rare.”</p>
+<p>“Where do I actually use standard deviation in business?” Sarah asks.</p>
+<p>Maria outlines several applications:</p>
+<p>“<strong>Inventory planning</strong>: Set your stock level at mean demand plus one standard deviation—that covers about 68% of days. Want 95% coverage? Go mean plus 1.65 standard deviations.</p>
+<p><strong>Quality control</strong>: If a product measures more than three standard deviations from specification, investigate immediately. Your process capability range should be at least six standard deviations wide.</p>
+<p><strong>Sales forecasting</strong>: Mean plus or minus one SD gives you a realistic range covering roughly 68% of scenarios. Extend that to two SDs for a conservative 95% range.</p>
+<p><strong>Risk assessment</strong>: Higher standard deviation means higher uncertainty, which means you need larger safety margins. Always compare SD to the mean to understand relative risk.”</p>
+</section>
+<section id="coefficient-of-variation-comparing-apples-and-oranges" class="level3">
+<h3 class="anchored" data-anchor-id="coefficient-of-variation-comparing-apples-and-oranges">Coefficient of Variation: Comparing Apples and Oranges</h3>
+<p>Sarah brings up a new challenge. “You told me product SD is $266,000. Regional SD is $588,784. Which should I worry about more?”</p>
+<p>“Can’t compare them directly,” David says. “Products average $575k; regions average $767k. A $266k SD on a $575k mean is different than a $589k SD on a $767k mean.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Coefficient of Variation (CV)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[CV = \frac{s}{\bar{x}} \times 100\%\]</span></p>
+<p><strong>What it is</strong>: Standard deviation expressed as a percentage of the mean.</p>
+<p><strong>What it does</strong>: Enables comparison of variability across different scales, units, or time periods.</p>
+<p><strong>Interpretation</strong>: “Variability is X% of the mean”</p>
+<ul>
+<li>CV &lt; 15%: Low variability<br>
+</li>
+<li>CV = 15%-30%: Moderate variability<br>
+</li>
+<li>CV = 30%-100%: High variability<br>
+</li>
+<li>CV &gt; 100%: Extreme variability</li>
+</ul>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=(STDEV.S(range) / AVERAGE(range)) * 100`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p><strong>Product sales</strong>:</p>
+<ul>
+<li>Mean = $575,000 * SD = $267,759<br>
+</li>
+<li>CV = (267,759 / 575,000) <span class="math inline">\(\times\)</span> 100% = 46.6%</li>
+</ul>
+<p><strong>Regional sales</strong>:</p>
+<ul>
+<li>Mean = $766,667<br>
+</li>
+<li>SD = $588,784<br>
+</li>
+<li>CV = (588,784 / 766,667) <span class="math inline">\(\times\)</span> 100% = 76.8%</li>
+</ul>
+<p>“So relative to their means,” Maria explains, “regions are MORE variable (76.8%) than products (46.6%). Geography is your bigger consistency problem.”</p>
+<p>Sarah leans back. “That changes priorities. I was going to restructure the product portfolio. But this says I should focus on geographic strategy—understand why one region dominates and others lag.”</p>
+</section>
+</section>
+<section id="distribution-characteristics-understanding-shape" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="distribution-characteristics-understanding-shape"><span class="header-section-number">2.5</span> Distribution Characteristics: Understanding Shape</h2>
+<p>“I’ve got location and variability,” Sarah says. “What else do I need?”</p>
+<p>“Shape,” David responds. “Is your data symmetric or skewed? Are there outliers? Is variation normal or are we seeing something unusual?”</p>
+<p>He pulls up two histograms showing daily sales for two different quarters.</p>
+<!--
+[INSERT TWO HISTOGRAMS SIDE BY SIDE:
+Left: Q3 daily sales - symmetric bell shape, mean and median nearly identical
+Right: Q4 daily sales - right-skewed, most values clustered left with long right tail
+Both marked with mean and median lines]
+-->
+<p>“Both have the same mean and same standard deviation,” he says. “But look—Q3 is symmetric, most days near the middle. Q4 is right-skewed, most days are low with occasional spikes.”</p>
+<p>“So what?” Sarah asks.</p>
+<p>“So in Q3, mean and median are both good measures. In Q4, median is better. In Q3, most days are near average. In Q4, ‘average’ is misleading because most days are below it. Your planning assumptions would be completely different.”</p>
+<section id="skewness-when-data-leans" class="level3">
+<h3 class="anchored" data-anchor-id="skewness-when-data-leans">Skewness: When Data Leans</h3>
+<p>Maria knows that skewness can change data interpretation. So, she analyzes TechFlow’s customer satisfaction scores:<br>
+</p>
+<ul>
+<li>Mean = 4.1<br>
+</li>
+<li>Median = 4.3<br>
+</li>
+<li>Skewness = -0.95</li>
+</ul>
+<p>“It’s left-skewed,” she explains. “Most customers are very satisfied (4-5 range), but a few unhappy customers drag the mean down.”</p>
+<p><strong>Skewness</strong> measures the asymmetry of a distribution:</p>
+<p><span class="math display">\[\text{Skewness} = \frac{n}{(n-1)(n-2)} \sum \left(\frac{x_i - \bar{x}}{s}\right)^3\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Skewness
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>What it measures</strong>: Asymmetry in the distribution.</p>
+<p><strong>Interpretation</strong>:</p>
+<ul>
+<li><strong>Skewness ≈ 0</strong>: Symmetric distribution<br>
+</li>
+<li><strong>Skewness &lt; 0</strong>: Left-skewed (negative) → Tail points left<br>
+</li>
+<li><strong>Skewness &gt; 0</strong>: Right-skewed (positive) → Tail points right</li>
+</ul>
+<p><strong>Rules of Thumb</strong>:</p>
+<ul>
+<li>|Skewness| &lt; 0.5: Approximately symmetric<br>
+</li>
+<li>|Skewness| = 0.5-1.0: Moderately skewed<br>
+</li>
+<li>|Skewness| &gt; 1.0: Highly skewed</li>
+</ul>
+<p><strong>The sign tells you where the tail points, not where most data is.</strong></p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=SKEW(range)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<!--
+![Histogram: Customer satisfactoin, mean, and median](pages\lecture_notes\QMB-5311\lecture_01\fig_histogram_1.png)
+-->
+<p>David adds the business implication: “When you report to Sarah, say ‘median satisfaction is 4.3’ not ‘average is 4.1.’ The median better represents typical experience.”</p>
+<p>Sarah nods. “And those few unhappy customers? I want to know who they are and why they’re unhappy. In a left-skewed satisfaction distribution, the tail is where you find churning customers.”</p>
+</section>
+<section id="z-scores-your-statistical-alarm-system" class="level3">
+<h3 class="anchored" data-anchor-id="z-scores-your-statistical-alarm-system">Z-Scores: Your Statistical Alarm System</h3>
+<p>Sarah brings in the quarterly product comparison. “Product D did $250,000. Products A, B, and C did $890k, $640k, and $520k. How do I know if Product D is just naturally lower or actually failing?”</p>
+<p>“Z-scores,” David says. He calculates:</p>
+<p><span class="math display">\[z = \frac{x - \bar{x}}{s}\]</span></p>
+<p>For Product D: <span class="math display">\[z_D = \frac{250{,}000 - 575{,}000}{267{,}759} = \frac{-325{,}000}{267{,}759} = -1.21\]</span></p>
+<p>“Product D is 1.21 standard deviations below the mean.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Z-Score (Standardized Value)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[z_i = \frac{x_i - \bar{x}}{s}\]</span></p>
+<p><strong>What it means</strong>: “How many standard deviations away from the mean is this value?”</p>
+<p><strong>Interpretation</strong>:</p>
+<p>* z = 0: Exactly at the mean<br>
+* z &gt; 0: Above the mean (positive = higher)<br>
+* z &lt; 0: Below the mean (negative = lower)<br>
+* |z| = 1: One standard deviation from mean<br>
+* |z| = 2: Two standard deviations from mean</p>
+<p><strong>Power</strong>: Enables comparison across different scales. A z-score of +1.5 has the same meaning whether you’re measuring sales, response times, or satisfaction.</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=(value - AVERAGE(range)) / STDEV.S(range)`</span> <span class="in">`=STANDARDIZE(value, AVERAGE(range), STDEV.S(range))`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>“Is that bad?” Sarah asks.</p>
+<p>David pulls up a reference guide:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Z-Score Business Alarm System
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>|z| &lt; 1.0</strong>: Normal variation</p>
+<ul>
+<li><strong>Action</strong>: None needed<br>
+</li>
+<li><strong>Interpretation</strong>: Within typical range<br>
+</li>
+<li><strong>Example</strong>: Product with z = 0.7 is slightly above average, but normal</li>
+</ul>
+<p><strong>|z| = 1.0-2.0</strong>: Worth monitoring</p>
+<ul>
+<li><strong>Action</strong>: Track closely, investigate if persists<br>
+</li>
+<li><strong>Interpretation</strong>: Unusual but not crisis<br>
+</li>
+<li><strong>Example</strong>: Product D at z = -1.21 → Monitor, investigate within 90 days</li>
+</ul>
+<p><strong>|z| = 2.0-3.0</strong>: Investigate immediately</p>
+<ul>
+<li><strong>Action</strong>: Urgent investigation required<br>
+</li>
+<li><strong>Interpretation</strong>: Highly unusual, likely problem or major opportunity<br>
+</li>
+<li><strong>Example</strong>: Regional sales z = -2.5 → Immediate strategic review</li>
+</ul>
+<p><strong>|z| &gt; 3.0</strong>: Crisis or extraordinary opportunity</p>
+<ul>
+<li><strong>Action</strong>: Emergency response or immediate leverage<br>
+</li>
+<li><strong>Interpretation</strong>: Extreme outlier, statistically very rare<br>
+</li>
+<li><strong>Example</strong>: Customer order z = 4.2 → Potential VIP, analyze immediately</li>
+</ul>
+</div>
+</div>
+<p>“Product D at -1.21 is in the monitoring zone,” David says. “Not a crisis yet, but definitely below normal performance. You should investigate.”</p>
+<p>Sarah makes a note: “Investigate Product D performance. Compare pricing to competitors, survey customers for product-specific feedback, evaluate marketing spend allocation. Set 90-day checkpoint: improve or consider discontinuation.”</p>
+</section>
+<section id="chebyshevs-theorem-planning-for-any-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="chebyshevs-theorem-planning-for-any-distribution">Chebyshev’s Theorem: Planning for Any Distribution</h3>
+<p>“Here’s a practical question,” Sarah says. “I’m setting Q1 budget. I want enough to cover most scenarios. What’s ‘most’?”</p>
+<p>David introduces Chebyshev’s Theorem:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Chebyshev’s Theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>For ANY distribution</strong> (regardless of shape):</p>
+<p>At least <span class="math inline">\(1 - \frac{1}{z^2}\)</span> of values fall within <span class="math inline">\(z\)</span> standard deviations of the mean (where <span class="math inline">\(z &gt; 1\)</span>).</p>
+<p><strong>Key Implications</strong>:</p>
+<ul>
+<li>At least <strong>75%</strong> within ±2 SD of mean<br>
+</li>
+<li>At least <strong>89%</strong> within ±3 SD of mean<br>
+</li>
+<li>At least <strong>94%</strong> within ±4 SD of mean</li>
+</ul>
+<p><strong>Power</strong>: Works for ANY distribution—symmetric, skewed, bimodal, whatever. No assumptions needed.</p>
+</div>
+</div>
+<p>For TechFlow daily sales:</p>
+<ul>
+<li>Mean = $25,000, SD = $5,000<br>
+</li>
+<li>2 SD range: [$15,000, $35,000] covers at least 75% of days<br>
+</li>
+<li>3 SD range: [$10,000, $40,000] covers at least 89% of days</li>
+</ul>
+<p>Sarah calculates: “If I budget for mean + 2 SD = $35,000 daily capacity, I’ll be prepared for at least 75% of days. If I want 89% coverage, I budget for $40,000 capacity.”</p>
+<!--
+[INSERT DIAGRAM: Bell curve (any shape) showing ranges at ±2 SD and ±3 SD with percentages marked as per Chebyshev's theorem]
+-->
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Practical Applications of Chebyshev’s Theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Safety Stock (Inventory)</strong>:</p>
+<ul>
+<li>Mean demand + 2 SD → Covers at least 75% of demand scenarios<br>
+</li>
+<li>Mean demand + 3 SD → Covers at least 89%<br>
+</li>
+<li>Conservative approach when demand pattern is unknown</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="outliers-problems-or-opportunities" class="level3">
+<h3 class="anchored" data-anchor-id="outliers-problems-or-opportunities">Outliers: Problems or Opportunities?</h3>
+<p>Maria pulls up a scatterplot of customer orders. Most cluster between $150-$350. But six orders exceed $600.</p>
+<!--
+[INSERT SCATTERPLOT: Customer orders on Y-axis, order number on X-axis. Most points clustered $150-$350, six clear outliers above $600]
+-->
+<p>“Are those data errors or real?” Sarah asks.</p>
+<p>“Real,” Maria confirms. “I verified them. Corporate bulk purchases, returning customers stocking up.”</p>
+<p>“Then those aren’t errors—they’re our most valuable customers,” Sarah says. “Can we identify them systematically?”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Outlier
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An observation with an unusually high or low value relative to the rest of the data.</p>
+<p><strong>Two types</strong>:<br>
+</p>
+<ol type="1">
+<li><strong>Problems</strong>: Data errors, fraud, defects, system failures<br>
+</li>
+<li><strong>Opportunities</strong>: Top performers, VIP customers, innovations</li>
+</ol>
+<p><strong>Key insight</strong>: Never automatically delete outliers. Always investigate WHY they’re unusual.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Two Methods for Detecting Outliers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Method 1: Z-Score Method</strong><br>
+- Calculate: <span class="math inline">\(z = \frac{x - \bar{x}}{s}\)</span><br>
+- Flag: |z| &gt; 3 (for large datasets) or |z| &gt; 2 (for small datasets)<br>
+- <strong>Best for</strong>: Approximately normal distributions</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">`z_score=(value - AVERAGE(range)) / STDEV.S(range)`</span>  </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">`Flag if ABS(z_score) \&gt; 3`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<p><strong>Method 2: IQR Method</strong></p>
+<ul>
+<li>Calculate: IQR = Q3 - Q1<br>
+</li>
+<li>Lower boundary: Q1 - 1.5 <span class="math inline">\(\times\)</span> IQR<br>
+</li>
+<li>Upper boundary: Q3 + 1.5 <span class="math inline">\(\times\)</span> IQR - Flag: Any value outside these boundaries<br>
+</li>
+<li><strong>Best for</strong>: Any distribution, especially skewed data</li>
+</ul>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="an">IQR:</span><span class="co">  </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in">`=QUARTILE.INC(range, 3) - QUARTILE.INC(range, 1)`</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>Lower boundary:  </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="in">`=QUARTILE.INC(range, 1) - 1.5 * IQR`</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>Upper boundary:  </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="in">`=QUARTILE.INC(range, 3) + 1.5 * IQR`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>For TechFlow customer orders using IQR method:</p>
+<ul>
+<li>Q1 = $175<br>
+</li>
+<li>Q3 = $310<br>
+</li>
+<li>IQR = $310 - $175 = $135</li>
+<li>Upper boundary: $$310 + 1.5 <span class="math inline">\(\times\)</span> ($135) = $512.50</li>
+<li>Lower boundary: $$310 - 1.5 <span class="math inline">\(\times\)</span> ($135) = $107.50</li>
+</ul>
+<p>Any order above $512.50 is statistically unusual.</p>
+<p>David creates a flagging system: “Orders above $513 automatically flag for VIP customer follow-up. Orders below lower boundary (\175 - 1.5($135) = -$27.50, not applicable) would flag for potential data errors if negative.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Common Mistake: See unusual value → assume error → delete → move on
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Never auto-delete. Always</strong>: (1) Verify, (2) Classify as problem vs opportunity, (3) Investigate why</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Outliers: Problems vs.&nbsp;Opportunities
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>PROBLEMS to Investigate</strong>:</p>
+<ul>
+<li>Defective products (quality control)<br>
+</li>
+<li>Fraudulent transactions (security)<br>
+</li>
+<li>Data entry errors (data quality)<br>
+</li>
+<li>Service breakdowns (customer service)</li>
+</ul>
+<p><strong>OPPORTUNITIES to Leverage</strong>:</p>
+<ul>
+<li>Exceptional salespeople (best practices)<br>
+</li>
+<li>High-value customers (VIP programs)<br>
+</li>
+<li>Top-performing stores (success factors)<br>
+</li>
+<li>Breakthrough innovations (scale up)<br>
+</li>
+<li>Unusually satisfied customers (testimonials)</li>
+</ul>
+</div>
+</div>
+<p>Sarah sees the opportunity: “Those six high-value orders—can we profile those customers? Find commonalities? Market to similar prospects?”</p>
+<p>Maria pulls up the analysis. “All six were B2B customers buying for their offices. Average order $687. They represent 3% of customers but 8% of revenue.”</p>
+<p>“I want a dedicated B2B sales strategy by end of quarter,” Sarah decides.</p>
+</section>
+</section>
+<section id="boxplots-seeing-the-whole-picture" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="boxplots-seeing-the-whole-picture"><span class="header-section-number">2.6</span> Boxplots: Seeing the Whole Picture</h2>
+<p>“I need to compare,” Sarah says. “Products. Regions. This quarter vs.&nbsp;last quarter. Can you show me all this variation in one visual?”</p>
+<p>David creates a boxplot.</p>
+<section id="reading-a-boxplot" class="level3">
+<h3 class="anchored" data-anchor-id="reading-a-boxplot">Reading a Boxplot</h3>
+<p>David shows Sarah the boxplot of monthly sales by product for Q4.</p>
+<!--
+[INSERT BOXPLOT: Four vertical boxplots side by side for Products A, B, C, D. Product A: high median, wide box. Product B: moderate median, moderate box. Product C: moderate-low median, moderate box. Product D: low median, narrow box. Mark outliers as dots if any exist.]
+-->
+<p>“The box shows the middle 50%—from Q1 to Q3. The line inside is the median. The whiskers extend to the min and max values within 1.5×IQR of the box. Anything beyond that plots as individual dots—outliers.”</p>
+<p>Sarah studies it. “So Product D’s box is lower—lower median. It’s also narrower—more consistent but consistently low. Product A’s box is higher and wider—higher median but more variable.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How to Read a Boxplot
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Position</strong> (vertical placement):<br>
+* Higher box = Higher values overall<br>
+* Compare medians to see which group is typically higher</p>
+<p><strong>Spread</strong> (box height):<br>
+* Taller box = More variability (larger IQR)<br>
+* Narrower box = More consistent performance</p>
+<p><strong>Skewness</strong> (median position in box):<br>
+* Median near bottom = Right-skewed (tail extends up)<br>
+* Median near top = Left-skewed (tail extends down)<br>
+* Median centered = Approximately symmetric</p>
+<p><strong>Outliers</strong> (dots beyond whiskers):<br>
+* Individual points show unusual values<br>
+* Above box = Unusually high<br>
+* Below box = Unusually low</p>
+<p><strong>Whiskers</strong> (lines from box):<br>
+* Long whiskers = Extended range (excluding outliers)<br>
+* Short whiskers = Compact range</p>
+</div>
+</div>
+</section>
+<section id="comparative-boxplots-the-executives-dashboard" class="level3">
+<h3 class="anchored" data-anchor-id="comparative-boxplots-the-executives-dashboard">Comparative Boxplots: The Executive’s Dashboard</h3>
+<p>David creates a regional comparison boxplot for all of 2024.</p>
+<!--
+[INSERT BOXPLOT: Three vertical boxplots for North America, Europe, Asia-Pacific. NA: high position, wide box. Europe: moderate position, moderate box. Asia-Pacific: low position, narrow box.]
+-->
+<p>Sarah points to Asia-Pacific. “Tiny box, very low position. Small market, very consistent performance, but consistently low. North America: high position, wider box—larger, more variable, but strong median.”</p>
+<p>“Should we invest in Asia-Pacific to grow it or North America to maintain our strength?” Sarah asks.</p>
+<p>Maria pulls up per-customer revenue. “Asia-Pacific: $1,908 per customer. North America: $1,790. Europe: $1,946. The revenue per customer is actually similar—Asia-Pacific’s problem is customer acquisition, not customer value.”</p>
+<p>Sarah makes the decision: “Asia-Pacific needs marketing and brand awareness, not product changes. The customers we have there are profitable. We just need more of them.”</p>
+<p>David and Maria recognize this as a question about <strong>association</strong>, whether two variables are systematically related. They have two tools for measuring this: covariance (which shows direction) and correlation (which shows both direction and strength).</p>
+</section>
+</section>
+<section id="association-between-two-variables-finding-relationships" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="association-between-two-variables-finding-relationships"><span class="header-section-number">2.7</span> Association Between Two Variables: Finding Relationships</h2>
+<p>Sarah’s final question: “Do longer response times hurt customer satisfaction?”</p>
+<p>This is a question about association—whether two variables are related.</p>
+<section id="covariance-the-direction-of-relationship" class="level3">
+<h3 class="anchored" data-anchor-id="covariance-the-direction-of-relationship">Covariance: The Direction of Relationship</h3>
+<p>David calculates covariance between response time and satisfaction for 200 customers:</p>
+<p><span class="math display">\[s_{xy} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{n-1}\]</span></p>
+<p>The result: <span class="math inline">\(s_{xy} = -2.3\)</span></p>
+<p>“Negative covariance,” Maria notes. “When response time goes up, satisfaction goes down.”</p>
+<p>“But how strong is the relationship?” Sarah asks. “Is -2.3 a lot or a little?”</p>
+<p>“Can’t tell,” David admits. “If satisfaction is measured 1-5 and response time in hours, -2.3 is in weird mixed units. We need to standardize.”</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Covariance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Sample covariance</strong>: <span class="math display">\[s_{xy} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{n-1}\]</span></p>
+<p><strong>What it measures</strong>: How two variables vary together.</p>
+<p><strong>Interpretation</strong>:<br>
+- <span class="math inline">\(s_{xy} &gt; 0\)</span>: Positive relationship (move together)<br>
+- <span class="math inline">\(s_{xy} &lt; 0\)</span>: Negative relationship (move opposite)<br>
+- <span class="math inline">\(s_{xy} = 0\)</span>: No linear relationship</p>
+<p><strong>Problem</strong>: Magnitude depends on units → Hard to interpret “Is 500 a strong relationship?”</p>
+<p><strong>Problem</strong>: Magnitude depends on units. Solution: Use correlation coefficient (next section).</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=COVARIANCE.S(range1, range2)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="correlation-the-strength-and-direction" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-the-strength-and-direction">Correlation: The Strength and Direction</h3>
+<p><strong>Correlation coefficient</strong> scales covariance to a standard range:</p>
+<p><span class="math display">\[r_{xy} = \frac{s_{xy}}{s_x \cdot s_y}\]</span></p>
+<p>where <span class="math inline">\(r \in [-1, 1]\)</span></p>
+<p>David recalculates: <span class="math inline">\(r = -0.68\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition: Correlation Coefficient
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Sample correlation</strong>: <span class="math display">\[r_{xy} = \frac{s_{xy}}{s_x \cdot s_y}\]</span></p>
+<p><strong>Population correlation</strong>: <span class="math display">\[\rho_{xy} = \frac{\sigma_{xy}}{\sigma_x \cdot \sigma_y}\]</span></p>
+<p><strong>Range</strong>: Always between -1 and +1</p>
+<p><strong>What it measures</strong>:<br>
+- <strong>Strength</strong>: How closely variables follow a linear relationship<br>
+- <strong>Direction</strong>: Whether they move together or opposite</p>
+<p><strong>Key property</strong>: Unit-free, enabling comparison across variable pairs</p>
+<hr>
+<p><strong>Excel</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">`=CORREL(range1, range2)`</span> <span class="in">`=PEARSON(range1, range2)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Correlation Strength Interpretation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Strong Relationship</strong>:<br>
+- |r| &gt; 0.8: Very strong<br>
+- Variables move together consistently<br>
+- One predicts the other well</p>
+<p><strong>Moderate Relationship</strong>:<br>
+- |r| = 0.5 to 0.8: Moderate<br>
+- Clear relationship but substantial scatter<br>
+- Some predictive value</p>
+<p><strong>Weak Relationship</strong>:<br>
+- |r| &lt; 0.5: Weak<br>
+- Relationship exists but highly variable<br>
+- Limited predictive value</p>
+<p><strong>No Linear Relationship</strong>:<br>
+- |r| ≈ 0: No linear relationship<br>
+- Variables independent or non-linear relationship</p>
+<p><strong>Sign (Direction)</strong>:<br>
+- Positive r: Variables move together (both increase/decrease)<br>
+- Negative r: Variables move opposite (one up, other down)</p>
+</div>
+</div>
+<p>“So r = -0.68 is a moderate negative relationship,” Maria explains. “Longer response times are associated with lower satisfaction, and the relationship is moderately strong.”</p>
+<!--
+[INSERT SCATTERPLOT: Response time (hours) on X-axis, satisfaction score on Y-axis. Points showing negative trend with moderate scatter. Trend line showing negative slope.]
+-->
+<p>Sarah asks the key question: “If we improve response times, will satisfaction improve?”</p>
+<p>“Probably,” David says carefully, “but correlation doesn’t prove causation. Maybe dissatisfied customers contact us more, leading to longer queues. The arrow could go either way. But it’s worth investigating.”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Common Mistake: Correlation ≠ Causation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Strong correlation does NOT mean one causes the other.</strong></p>
+<p><strong>Classic example</strong>:<br>
+* Ice cream sales correlate with drowning deaths (r ≈ +0.9)<br>
+* Does ice cream cause drowning? NO!&nbsp; * Both caused by summer weather (confounding variable)</p>
+<p><strong>TechFlow example</strong>:<br>
+* Response time correlates with satisfaction (r = -0.68)<br>
+* Could mean: Slow responses → Lower satisfaction ✓<br>
+* Could mean: Unhappy customers → Contact support more → Longer queues ✓<br>
+* Could mean: Both caused by understaffing ✓</p>
+<p><strong>To establish causation</strong>: Need controlled experiment, not just correlation.</p>
+<p><strong>Rule</strong>: Correlation tells you WHERE to investigate. Experimentation tells you WHAT to do.</p>
+</div>
+</div>
+</section>
+<section id="business-applications-of-correlation" class="level3">
+<h3 class="anchored" data-anchor-id="business-applications-of-correlation">Business Applications of Correlation</h3>
+<p>“Wait,” Sarah says. “If we’re looking at response time and satisfaction, what other relationships should we explore?”</p>
+<p>David pulls up a quick analysis of several variable pairs:</p>
+<ul>
+<li>Advertising spend vs.&nbsp;sales: r = +0.45 (moderate positive—advertising helps but isn’t the only factor)<br>
+</li>
+<li>Employee tenure vs.&nbsp;sales performance: r = +0.23 (weak positive—experience helps but many factors matter)<br>
+</li>
+<li>Product price vs.&nbsp;perceived quality: r = +0.61 (moderate positive—higher prices signal quality)<br>
+</li>
+<li>Order size vs.&nbsp;repeat purchase rate: r = +0.71 (strong positive—high-value customers return more often)</li>
+</ul>
+<p>This is actionable,” Sarah says. “Strong positive correlation between order size and repeat rate means we should focus retention efforts on high-value customers. The ROI will be better than trying to retain everyone equally.”</p>
+<p>Maria adds a warning: “But remember, <strong>correlation isn’t causation</strong>. Maybe high-value customers return more often because they’re more satisfied, not because they spend more. We’d need an experiment to know for sure.”</p>
+<p>Sarah nods. “Understood. Correlation tells me where to look. Experimentation tells me what to do.”</p>
+</section>
+</section>
+<section id="using-ai-tools-for-statistical-analysis-a-guide" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="using-ai-tools-for-statistical-analysis-a-guide"><span class="header-section-number">2.8</span> Using AI Tools for Statistical Analysis: A Guide</h2>
+<p>As David and Maria prepare the final report, Sarah asks: “You two completed this analysis incredibly fast. Did you use any AI tools like Claude?”</p>
+<p>“We did,” David admits. “But we used them strategically—as assistants, not replacements for our statistical thinking.”</p>
+<section id="the-proper-role-of-ai-in-statistical-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="the-proper-role-of-ai-in-statistical-analysis">The Proper Role of AI in Statistical Analysis</h3>
+<p><strong>When AI Tools Like Claude Are Helpful</strong></p>
+<p><strong>Good Uses</strong>: - <strong>Explaining concepts</strong>: “What’s the difference between mean and median?” - <strong>Syntax help</strong>: “What’s the Excel formula for calculating the 90th percentile?” - <strong>Interpretation guidance</strong>: “I have a CV of 65%. Is that high or low?” - <strong>Checking your work</strong>: “I calculated a correlation of 1.8. Is that possible?” - <strong>Exploring alternatives</strong>: “Should I use z-scores or IQR method to detect outliers in this skewed dataset?” - <strong>Understanding formulas</strong>: “Why do we divide by n-1 instead of n for sample variance?”</p>
+<p><strong>Why these work</strong>: AI can help you understand methods, troubleshoot errors, and learn statistical reasoning.</p>
+<p><strong>When AI Tools Can Lead You Astray</strong></p>
+<p><strong>Risky Uses</strong>: - <strong>Blind calculation</strong>: Pasting data and asking “analyze this” without understanding what’s being calculated - <strong>Interpretation without context</strong>: AI doesn’t know your business—it can’t tell you if a CV of 46% is acceptable for your industry - <strong>Statistical decision-making</strong>: AI shouldn’t decide whether to use mean vs.&nbsp;median, parametric vs.&nbsp;non-parametric tests - <strong>Causal claims</strong>: AI might suggest causation when only correlation exists - <strong>Unchecked outputs</strong>: AI can make calculation errors or misapply formulas</p>
+<p><strong>Why these fail</strong>: AI lacks business context, can’t assess data quality issues, and may confidently state incorrect information.</p>
+</section>
+<section id="the-right-approach-ai-as-assistant-not-replacement" class="level3">
+<h3 class="anchored" data-anchor-id="the-right-approach-ai-as-assistant-not-replacement">The Right Approach: AI as Assistant, Not Replacement</h3>
+<p>Maria explains their workflow: “We used Claude to: 1. <strong>Refresh our knowledge</strong>: ‘Remind me when to use geometric mean vs.&nbsp;arithmetic mean’ 2. <strong>Check formulas</strong>: ‘Is this the correct Excel formula for IQR?’ 3. <strong>Interpret results</strong>: ‘I have a skewness of -0.95. What does this suggest about my data?’ 4. <strong>Generate ideas</strong>: ‘What are common business applications of z-scores?’</p>
+<p>But we NEVER: - Let AI make statistical decisions (mean vs.&nbsp;median, which test to use) - Accept AI interpretations without business context - Use AI-generated numbers without verifying them ourselves - Skip the step of understanding what each statistic means”</p>
+<p><strong>Best Practices for Using AI in Statistics</strong></p>
+<p><strong>The Golden Rule</strong>: Understand first, compute second, interpret third.</p>
+<p><strong>Do</strong>: - Use AI to learn concepts you don’t understand - Verify AI-suggested formulas in Excel yourself - Apply your business knowledge to AI-provided interpretations - Use AI to explore alternative approaches - Double-check any numerical outputs AI provides</p>
+<p><strong>Don’t</strong>: - Copy-paste data and trust whatever numbers come back - Skip learning the underlying concepts - Let AI make methodological choices for you - Accept causal interpretations without critical thinking - Treat AI as an oracle—it’s a tool, not an authority</p>
+<p>David adds: “Think of Claude like a statistics textbook that can answer questions. You wouldn’t let a textbook analyze your company’s data and make business recommendations. But you would use it to understand what a z-score means or when to use IQR instead of range.”</p>
+</section>
+<section id="when-ai-becomes-a-crutch" class="level3">
+<h3 class="anchored" data-anchor-id="when-ai-becomes-a-crutch">When AI Becomes a Crutch</h3>
+<p>Sarah raises an important concern: “What about students who use AI to do all their homework without learning anything?”</p>
+<p>“That’s the trap,” Maria says. “If you use AI to: - Complete calculations you don’t understand → You learn nothing - Generate interpretations you can’t verify → You develop no judgment - Bypass the struggle of learning concepts → You miss the insight</p>
+<p>But if you use AI to: - Clarify concepts you’re genuinely trying to understand → You learn faster - Check your logic after attempting the work yourself → You learn from mistakes - Explore why your answer differs from the expected one → You deepen understanding”</p>
+<p><strong>The Learning Paradox</strong></p>
+<p><strong>Short-term</strong>: AI can make you faster at getting answers.<br>
+<strong>Long-term</strong>: If you never struggle with concepts, you never develop statistical intuition.</p>
+<p><strong>The test</strong>: If Claude disappeared tomorrow, could you still complete the analysis? If not, you’re using it as a crutch, not a tool.</p>
+<p><strong>For students</strong>: Use AI to learn, not to avoid learning. The goal isn’t to finish the assignment—it’s to understand statistics well enough to use them in your career.</p>
+</section>
+<section id="a-practical-example" class="level3">
+<h3 class="anchored" data-anchor-id="a-practical-example">A Practical Example</h3>
+<p>David demonstrates: “Wrong way to use AI:</p>
+<p><strong>Prompt</strong>: ‘Here’s my data: 250000, 520000, 640000, 890000. Analyze it and tell me what I should do.’</p>
+<p><strong>Problem</strong>: You learn nothing. You don’t know what was calculated or why. You can’t apply this to new problems.</p>
+<p><strong>Right way to use AI</strong>:</p>
+<p><strong>Step 1</strong> (You): Calculate mean, median, SD, CV yourself in Excel<br>
+<strong>Step 2</strong> (You to AI): ‘I calculated CV = 46.6%. In general, is this considered high or low variability?’<br>
+<strong>Step 3</strong> (AI): Provides general interpretation guidelines<br>
+<strong>Step 4</strong> (You): Apply those guidelines to YOUR business context<br>
+<strong>Step 5</strong> (You to AI): ‘Does my interpretation make sense?’ [Explain your reasoning]<br>
+<strong>Step 6</strong> (AI): Validates or challenges your reasoning</p>
+<p><strong>Result</strong>: You learned. You can repeat this process on new data. You understand the concepts.”</p>
+</section>
+<section id="the-bottom-line" class="level3">
+<h3 class="anchored" data-anchor-id="the-bottom-line">The Bottom Line</h3>
+<p>Sarah appreciates the honesty. “So AI is a powerful learning tool and workflow accelerator, but it can’t replace statistical thinking or business judgment.”</p>
+<p>“Exactly,” Maria confirms. “We used Claude to work faster and check our understanding. But every number in this report, we calculated. Every interpretation, we made based on our knowledge of TechFlow’s business. Every recommendation, we developed using our judgment.”</p>
+<p>“AI made us more efficient analysts. It didn’t make us analysts.”</p>
+</section>
+</section>
+<section id="chapter-summary-from-vagueness-to-precision" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="chapter-summary-from-vagueness-to-precision"><span class="header-section-number">2.9</span> Chapter Summary: From Vagueness to Precision</h2>
+<p>Six days after Sarah’s request, the analytics team presents their revised Q4 2024 report. Gone are the phrases “around,” “somewhere in the middle,” and “some outliers.”</p>
+<p>In their place:</p>
+<p><strong>Monthly Performance</strong>:</p>
+<ul>
+<li>Mean: $766,667 (CV: 5.3% - highly consistent)<br>
+</li>
+<li>Median: $780,000 (slight negative skew from October baseline)<br>
+</li>
+<li>Progressive growth: +8.3% Oct-Nov, +2.6% Nov-Dec</li>
+</ul>
+<p><strong>Product Portfolio</strong>:</p>
+<ul>
+<li>Product D: z-score = -1.21 (statistical underperformer)<br>
+</li>
+<li>Performance gap: $325,000 below portfolio mean (56.5% shortfall)<br>
+</li>
+<li>Product CV: 46.6% (high variability requiring individual strategies)<br>
+</li>
+<li>Recommendation: 90-day investigation, pricing, quality, or market fit</li>
+</ul>
+<p><strong>Regional Analysis</strong>:</p>
+<ul>
+<li>Regional CV: 76.8% vs Product CV: 46.6% (geography is primary challenge)<br>
+</li>
+<li>61% revenue concentration in North America (vulnerability risk)<br>
+</li>
+<li>Asia-Pacific: $1,908 per customer vs $1,845 average (customer quality is good; need more customers)</li>
+</ul>
+<p><strong>Customer Insights</strong>:</p>
+<ul>
+<li>90th percentile order: $425 (VIP threshold)<br>
+</li>
+<li>IQR: $135 ($175-$310 represents middle 50% of customers)<br>
+</li>
+<li>6 orders exceed $513 (B2B opportunity: 3% of customers, 8% of revenue)</li>
+</ul>
+<p><strong>Service Quality</strong>:</p>
+<ul>
+<li>Median response time: 4.2 hours (mean: 7.5 hours skewed by outliers)<br>
+</li>
+<li>15% of tickets exceed 21 hours (outlier threshold)<br>
+</li>
+<li>Correlation with satisfaction: r = -0.68 (moderate negative)<br>
+</li>
+<li>Recommendation: 12-hour SLA for 95th percentile</li>
+</ul>
+<p>Sarah reads through the new report. Every claim is specific. Every comparison is quantified. Every recommendation is defensible.</p>
+<p>“This,” she says, “is a report I can act on.”</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Key Takeaways: Your Statistical Toolkit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Measures of Location</strong> answer “What’s typical?”:</p>
+<ul>
+<li>Use <strong>mean</strong> for symmetric data without outliers<br>
+</li>
+<li>Use <strong>median</strong> for skewed data or data with outliers<br>
+</li>
+<li>Use <strong>geometric mean</strong> for growth rates and compound returns<br>
+</li>
+<li>Use <strong>weighted mean</strong> when observations have different importance<br>
+</li>
+<li>Use <strong>percentiles</strong> to define thresholds and create tiers</li>
+</ul>
+<p><strong>Measures of Variability</strong> answer “How consistent are we?”:</p>
+<ul>
+<li><strong>Range</strong> and <strong>IQR</strong> show spread (IQR is robust to outliers)<br>
+</li>
+<li><strong>Standard deviation</strong> measures typical deviation from mean<br>
+</li>
+<li><strong>Coefficient of variation</strong> enables comparison across different scales<br>
+</li>
+<li>Higher variability = higher uncertainty = larger safety margins needed</li>
+</ul>
+<p><strong>Distribution Characteristics</strong> answer “What’s the shape?”:</p>
+<ul>
+<li><strong>Skewness</strong> indicates asymmetry (affects choice of location measure)<br>
+</li>
+<li><strong>Z-scores</strong> identify unusually high or low values (your alarm system)<br>
+</li>
+<li><strong>Chebyshev’s theorem</strong> works for any distribution shape (planning tool)<br>
+</li>
+<li><strong>Outliers</strong> can be problems to fix or opportunities to leverage</li>
+</ul>
+<p><strong>Visual Tools</strong> answer “Can you show me?”:</p>
+<ul>
+<li><strong>Boxplots</strong> display five-number summary plus outliers<br>
+</li>
+<li>Enable instant comparison across groups<br>
+</li>
+<li>Reveal median, spread, skewness, and extremes at a glance<br>
+</li>
+<li>Perfect executive dashboard for comparative analysis</li>
+</ul>
+<p><strong>Association Measures</strong> answer “Are things related?”:</p>
+<ul>
+<li><strong>Covariance</strong> shows direction but hard to interpret magnitude<br>
+</li>
+<li><strong>Correlation</strong> standardizes to [-1, 1] for easy interpretation<br>
+</li>
+<li>Strong correlation suggests where to investigate<br>
+</li>
+<li>Remember: Correlation ≠ Causation (always)</li>
+</ul>
+</div>
+</div>
+<section id="the-statistical-toolkit-in-action" class="level3">
+<h3 class="anchored" data-anchor-id="the-statistical-toolkit-in-action">The Statistical Toolkit in Action</h3>
+<p>The difference between TechFlow’s vague marketing report and the rigorous analytics report came down to proper application of descriptive statistics:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Before &amp; After Comparison
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Marketing Report</strong> (❌):<br>
+- “Revenue was around $767,000”<br>
+- “Most days somewhere in the middle”<br>
+- “Some outliers on both ends”<br>
+- <strong>Result</strong>: No actionable insights, no defensible recommendations</p>
+<p><strong>Analytics Report</strong> (✓):<br>
+- Mean monthly revenue: $767,000 (CV: 5.3% - highly consistent)<br>
+- Product D: z-score = -1.21 (statistical underperformer, 56.5% below mean)<br>
+- Regional CV: 76.8% vs Product CV: 46.6% (geography is bigger challenge)<br>
+- Customer satisfaction: median 4.3/5 (left-skewed, majority highly satisfied)<br>
+- Response time outliers: 15% exceed 21-hour threshold (service quality issue)<br>
+- <strong>Result</strong>: Specific, quantifiable opportunities and risks with clear action items</p>
+</div>
+</div>
+</section>
+<section id="from-student-to-analyst" class="level3">
+<h3 class="anchored" data-anchor-id="from-student-to-analyst">From Student to Analyst</h3>
+<p>The difference between a weak analyst and a strong one isn’t mathematical sophistication—it’s knowing which tool to use when, and what the results actually mean for decisions.</p>
+<p><strong>Weak analysts</strong> calculate means and call it done. <strong>Strong analysts</strong> ask: “Is this data skewed? Should I use median instead? Are there outliers I should investigate? How does this variability compare to last quarter? What’s unusual enough to flag?”</p>
+<p><strong>Weak analysts</strong> report “average customer satisfaction: 4.1 out of 5.” <strong>Strong analysts</strong> report “median satisfaction: 4.3 (left-skewed distribution), but 10% of customers score below 3.0 (correlation with response times: r = -0.68).”</p>
+<p><strong>Weak analysts</strong> see a number below average and call it “disappointing.” <strong>Strong analysts</strong> calculate z-scores, compare to historical variation, and determine if it’s normal fluctuation or statistical evidence of a problem.</p>
+<p>Sarah’s directive was simple: “Give me precision.” The analytics team delivered by applying the right statistical tools to answer the right business questions.</p>
+<p>Now it’s your turn.</p>
+</section>
+</section>
+<section id="practice-problems" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="practice-problems"><span class="header-section-number">2.10</span> Practice Problems</h2>
+<p>Now it’s your turn to apply what you’ve learned. These problems use the TechFlow dataset and mirror the types of analyses David and Maria performed. Work through them using Excel, showing your calculations and interpreting your results in business context.</p>
+<p><strong>Download the dataset</strong>: Get <code>TechFlow_Q4_2024.xlsx</code> from Blackboard before starting.</p>
+<p><strong>Remember</strong>: The goal isn’t just getting the right number—it’s understanding what that number means for business decisions.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>About This Dataset
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Dataset structure:</p>
+<ul>
+<li>Sheet 1: Daily Sales</li>
+<li>Sheet 2: Product Sales</li>
+<li>Sheet 3: Regional Sales</li>
+<li>Sheet 4: Customer Orders</li>
+<li>Sheet 5: Customer Satisfaction</li>
+<li>Sheet 6: Response Times</li>
+</ul>
+<p><strong>Realism</strong>: Values reflect typical patterns in the consumer electronics industry, including:</p>
+<ul>
+<li>Weekend sales dips in daily data<br>
+</li>
+<li>Black Friday spike (November 29)<br>
+</li>
+<li>Holiday season surge (December)<br>
+</li>
+<li>Right-skewed response times (most fast, some very slow)<br>
+</li>
+<li>Left-skewed satisfaction (most satisfied, few unhappy)</li>
+</ul>
+<p><strong>Completeness</strong>: No missing values. All fields populated for easier learning (real-world data would require cleaning).</p>
+<p><strong>Rounding</strong>: Financial figures rounded to nearest dollar for readability.</p>
+</div>
+</div>
+</div>
+<section id="problem-set-1-techflow-product-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-1-techflow-product-analysis">Problem Set 1: TechFlow Product Analysis</h3>
+<p>Given TechFlow’s Q4 product sales:<br>
+- Product A: $890,000<br>
+- Product B: $640,000<br>
+- Product C: $520,000<br>
+- Product D: $250,000</p>
+<p><strong>Calculate</strong>:<br>
+1. Mean and median product sales—are they different? What does this suggest?<br>
+2. Standard deviation and coefficient of variation<br>
+3. Z-score for each product<br>
+4. Which products are statistical outliers (use |z| &gt; 2 criterion)?<br>
+5. If you could only invest in improving one product, which one and why?</p>
+</section>
+<section id="problem-set-2-customer-order-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-2-customer-order-analysis">Problem Set 2: Customer Order Analysis</h3>
+<p>TechFlow’s customer order data shows:<br>
+- 25th percentile: $175<br>
+- Median: $220<br>
+- 75th percentile: $310<br>
+- Mean: $245</p>
+<p><strong>Answer</strong>:<br>
+1. Calculate the IQR<br>
+2. Calculate outlier boundaries using the IQR method<br>
+3. Is the distribution skewed? Which direction? How do you know?<br>
+4. What minimum order value qualifies for the top 10% (VIP program)?<br>
+5. Should TechFlow use mean or median when reporting “typical order value” in marketing materials? Explain your reasoning.</p>
+</section>
+<section id="problem-set-3-regional-performance" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-3-regional-performance">Problem Set 3: Regional Performance</h3>
+<p>TechFlow’s regional Q4 sales:<br>
+- North America: $1,400,000 (782 customers)<br>
+- Europe: $650,000 (334 customers)<br>
+- Asia-Pacific: $250,000 (131 customers)</p>
+<p><strong>Calculate and Analyze</strong>:<br>
+1. Mean and standard deviation of regional sales<br>
+2. Coefficient of variation<br>
+3. Revenue per customer for each region<br>
+4. Z-score for each region<br>
+5. Write a one-paragraph recommendation to Sarah about regional strategy, citing specific statistics.</p>
+</section>
+<section id="problem-set-4-investment-returns" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-4-investment-returns">Problem Set 4: Investment Returns</h3>
+<p>An investment has the following annual returns over 5 years:<br>
+Year 1: +15%, Year 2: -5%, Year 3: +20%, Year 4: +10%, Year 5: -8%</p>
+<p><strong>Calculate</strong>:<br>
+1. Arithmetic mean<br>
+2. Geometric mean<br>
+3. Which measure correctly represents average annual return? Why?<br>
+4. If you invested $10,000 initially, what’s your ending value after 5 years?<br>
+5. Why would using arithmetic mean lead to wrong conclusions?</p>
+</section>
+<section id="problem-set-5-service-quality-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="problem-set-5-service-quality-analysis">Problem Set 5: Service Quality Analysis</h3>
+<p>Response times (hours) for 200 customer tickets:<br>
+- Mean: 7.5 hours<br>
+- Median: 4.2 hours<br>
+- Q1: 2.5 hours, Q3: 6.0 hours<br>
+- Standard deviation: 8.2 hours<br>
+- Correlation with satisfaction: r = -0.68</p>
+<p><strong>Answer</strong>:<br>
+1. Is the distribution skewed? Provide two pieces of evidence.<br>
+2. Calculate the IQR and outlier boundaries<br>
+3. Should the company report mean or median in their public customer service metrics? Why?<br>
+4. If management sets “95% of tickets under 12 hours” as a goal, use Chebyshev’s theorem to assess if this is realistic<br>
+5. What does the correlation of -0.68 tell you? What action would you recommend?</p>
+</section>
+</section>
+<section id="excel-functions-quick-reference" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="excel-functions-quick-reference"><span class="header-section-number">2.11</span> Excel Functions Quick Reference</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Complete Excel Function Guide
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Measures of Location</strong>:</p>
+<pre class="excel"><code>=AVERAGE(range)              ' Mean
+=MEDIAN(range)               ' Median
+=MODE.SNGL(range)            ' Mode
+=PERCENTILE.INC(range, k)    ' kth percentile (k = 0.25 for 25th)
+=QUARTILE.INC(range, q)      ' Quartiles (q = 1, 2, or 3)
+=GEOMEAN(range)              ' Geometric mean</code></pre>
+<p><strong>Measures of Variability</strong>:</p>
+<pre class="excel"><code>=MAX(range) - MIN(range)     ' Range
+=VAR.S(range)                ' Sample variance
+=STDEV.S(range)              ' Sample standard deviation
+=(STDEV.S(range)/AVERAGE(range))*100  ' CV (%)
+=QUARTILE.INC(range,3)-QUARTILE.INC(range,1)  ' IQR</code></pre>
+<p><strong>Distribution Measures</strong>:</p>
+<pre class="excel"><code>=SKEW(range)                 ' Skewness
+=STANDARDIZE(x, mean, std)   ' Z-score
+=(value-AVERAGE(range))/STDEV.S(range)  ' Z-score alternative</code></pre>
+<p><strong>Association</strong>:</p>
+<pre class="excel"><code>=COVARIANCE.S(array1, array2)  ' Sample covariance
+=CORREL(array1, array2)        ' Correlation coefficient</code></pre>
+<p><strong>Helpful Combinations</strong>:</p>
+<pre class="excel"><code>' Outlier detection (IQR method)
+=IF(OR(A2&lt;Q1-1.5*IQR, A2&gt;Q3+1.5*IQR), "Outlier", "Normal")
+
+' Skewness check
+=IF(SKEW(range)&gt;0.5, "Right-skewed", IF(SKEW(range)&lt;-0.5, "Left-skewed", "Symmetric"))
+
+' Z-score alarm
+=IF(ABS(z)&gt;3, "URGENT", IF(ABS(z)&gt;2, "Investigate", IF(ABS(z)&gt;1, "Monitor", "Normal")))</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Glossary
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Boxplot</strong>: Visual display showing five-number summary (min, Q1, median, Q3, max) plus outliers</p>
+<p><strong>Coefficient of Variation (CV)</strong>: Ratio of standard deviation to mean (as percentage); enables comparison across different scales</p>
+<p><strong>Correlation Coefficient</strong>: Standardized measure of linear association between two variables; ranges from -1 to +1</p>
+<p><strong>Covariance</strong>: Measure of how two variables vary together; positive = move together, negative = move opposite</p>
+<p><strong>Geometric Mean</strong>: Appropriate average for growth rates and returns; accounts for compounding</p>
+<p><strong>Interquartile Range (IQR)</strong>: Range of middle 50% of data (Q3 - Q1); robust to outliers</p>
+<p><strong>Mean</strong>: Arithmetic average; sum divided by count</p>
+<p><strong>Median</strong>: Middle value when data sorted; robust to outliers and appropriate for skewed data</p>
+<p><strong>Outlier</strong>: Unusually high or low value; can be problem (error) or opportunity (exceptional case)</p>
+<p><strong>Percentile</strong>: Value below which a given percentage of data falls</p>
+<p><strong>Quartile</strong>: Specific percentiles dividing data into four equal parts (Q1 = 25th, Q2 = 50th, Q3 = 75th)</p>
+<p><strong>Range</strong>: Difference between maximum and minimum; sensitive to outliers</p>
+<p><strong>Skewness</strong>: Measure of distribution asymmetry; negative = left tail, positive = right tail</p>
+<p><strong>Standard Deviation</strong>: Square root of variance; measures typical deviation from mean</p>
+<p><strong>Variance</strong>: Average squared deviation from mean</p>
+<p><strong>Weighted Mean</strong>: Average where observations have different importance/weights</p>
+<p><strong>Z-score</strong>: Number of standard deviations an observation is from the mean; standardizes values for comparison</p>
+</div>
+</div>
+</div>
+<hr>
+<p><em>Statistics tell stories about business performance. Learn to read them, and you’ll make better decisions. Learn to tell them, and you’ll lead.</em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ncachanosky\.github\.io\/XQMB-5311");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter_02.html" class="pagination-link" aria-label="Probability">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Nicolas Cachanosky, The University of Texas at El Paso, Center for Free Enterprise</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ncachanosky/XQMB-5311/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://github.com/ncachanosky/XQMB-5311" aria-current="page">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/ncachanosky">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/n_cachanosky">
+      <i class="bi bi-twitter-x" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

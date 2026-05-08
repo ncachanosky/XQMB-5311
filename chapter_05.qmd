@@ -1,15 +1,13 @@
 ---
 title: "Categorical Data Analysis"
-subtitle: "Lecture 5"
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: true
-    code-tools: true
-    fig-width: 10
-    fig-height: 6
+abstract: |
+  A statistically significant result is not a license to claim causation. This chapter 
+  covers chi-square goodness-of-fit and independence tests, confidence intervals for 
+  proportions, and — critically — the boundary between association and causation in 
+  observational data. Working through PixelPerfect Marketing's campaign analysis, where 
+  a correct chi-square test leads to dangerously wrong conclusions, students learn to 
+  interpret categorical data honestly and avoid the analytical errors that can send 
+  $150,000 in the wrong direction.
 ---
 
 ## Learning Objectives {.unnumbered}

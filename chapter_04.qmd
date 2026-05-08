@@ -1,15 +1,13 @@
 ---
 title: "ANOVA: Analysis of Variance"
-subtitle: "Lecture 4"
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: true
-    code-tools: true
-    fig-width: 10
-    fig-height: 6
+abstract: |
+  When a hotel CEO faces $8 million in renovation proposals, the key question is whether 
+  observed differences in guest satisfaction across properties are real or just random 
+  noise. This chapter introduces Analysis of Variance (ANOVA) as a framework for 
+  comparing means across multiple groups simultaneously. Working through DesertVine 
+  Hospitality's satisfaction data, students learn one-way and two-way ANOVA, post-hoc 
+  pairwise comparisons, and the statistical discipline required to avoid spending millions 
+  on problems that may not exist.
 ---
 
 ## Learning Objectives {.unnumbered}

@@ -1,15 +1,12 @@
 ---
 title: "Probability"
-subtitle: "Lecture 2"
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: true
-    code-tools: true
-    fig-width: 10
-    fig-height: 6
+abstract: |
+  Descriptive statistics tell you what happened. Probability tells you what is likely to 
+  happen next — and at what cost. This chapter builds a probability toolkit for business 
+  decision-making, covering conditional probability, Bayes' theorem, expected value, and 
+  the binomial and normal distributions. Working through PrecisionCast Industries' $2 
+  million equipment decision, students learn to quantify uncertainty, evaluate diagnostic 
+  tests, and turn "roughly 2% defects" into a rigorous, defensible investment analysis.
 ---
 
 ## Learning Objectives {.unnumbered}
