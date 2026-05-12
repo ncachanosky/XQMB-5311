@@ -1,4 +1,4 @@
-# Decisions Under Uncertainty: Quantitative Methods for Business
+# The Precision Advantage: Statistics for Business
 
 Course readings for a 7-week **Statistics for Business** course  
 The University of Texas at El Paso · Center for Free Enterprise
